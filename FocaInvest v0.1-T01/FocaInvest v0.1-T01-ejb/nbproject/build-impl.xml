@@ -819,7 +819,6 @@ exists or setup the property manually. For example like this:
     <target depends="compile,-library-inclusion-in-archive-weblogic,-library-inclusion-in-archive-by-user" name="library-inclusion-in-archive"/>
     <target if="is.jars.in.ejbjar" name="-library-inclusion-in-archive-by-user">
         <copyfiles files="${file.reference.postgresql-9.4-1201.jdbc4.jar}" todir="${build.classes.dir}"/>
-        <copyfiles files="${file.reference.hibernate3.jar}" todir="${build.classes.dir}"/>
         <copyfiles files="${file.reference.antlr-2.7.6.jar}" todir="${build.classes.dir}"/>
         <copyfiles files="${file.reference.commons-collections-3.1.jar}" todir="${build.classes.dir}"/>
         <copyfiles files="${file.reference.dom4j-1.6.1.jar}" todir="${build.classes.dir}"/>
@@ -828,10 +827,12 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${file.reference.slf4j-api-1.6.1.jar}" todir="${build.classes.dir}"/>
         <copyfiles files="${file.reference.cglib-2.2.jar}" todir="${build.classes.dir}"/>
         <copyfiles files="${libs.junit_4.classpath}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.FocaInvest_v0.1-T01-FocaInvest_v0.1-T01-war}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.hibernate3.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.hibernate3.jar-1}" todir="${build.classes.dir}"/>
     </target>
     <target if="is.server.weblogic" name="-library-inclusion-in-archive-weblogic">
         <basename file="${file.reference.postgresql-9.4-1201.jdbc4.jar}" property="manifest.file.reference.postgresql-9.4-1201.jdbc4.jar"/>
-        <basename file="${file.reference.hibernate3.jar}" property="manifest.file.reference.hibernate3.jar"/>
         <basename file="${file.reference.antlr-2.7.6.jar}" property="manifest.file.reference.antlr-2.7.6.jar"/>
         <basename file="${file.reference.commons-collections-3.1.jar}" property="manifest.file.reference.commons-collections-3.1.jar"/>
         <basename file="${file.reference.dom4j-1.6.1.jar}" property="manifest.file.reference.dom4j-1.6.1.jar"/>
@@ -840,23 +841,27 @@ exists or setup the property manually. For example like this:
         <basename file="${file.reference.slf4j-api-1.6.1.jar}" property="manifest.file.reference.slf4j-api-1.6.1.jar"/>
         <basename file="${file.reference.cglib-2.2.jar}" property="manifest.file.reference.cglib-2.2.jar"/>
         <basename file="${libs.junit_4.classpath}" property="manifest.libs.junit_4.classpath"/>
+        <basename file="${file.reference.FocaInvest_v0.1-T01-FocaInvest_v0.1-T01-war}" property="manifest.file.reference.FocaInvest_v0.1-T01-FocaInvest_v0.1-T01-war"/>
+        <basename file="${file.reference.hibernate3.jar}" property="manifest.file.reference.hibernate3.jar"/>
+        <basename file="${file.reference.hibernate3.jar-1}" property="manifest.file.reference.hibernate3.jar-1"/>
         <manifest file="${build.ear.classes.dir}/META-INF/MANIFEST.MF" mode="update">
-            <attribute name="Extension-List" value="jar-1 jar-2 jar-3 jar-4 jar-5 jar-6 jar-7 jar-8 jar-9 jar-10 "/>
+            <attribute name="Extension-List" value="jar-1 jar-2 jar-3 jar-4 jar-5 jar-6 jar-7 jar-8 jar-9 jar-10 jar-11 jar-12 "/>
             <attribute name="jar-1-Extension-Name" value="${manifest.file.reference.postgresql-9.4-1201.jdbc4.jar}"/>
-            <attribute name="jar-2-Extension-Name" value="${manifest.file.reference.hibernate3.jar}"/>
-            <attribute name="jar-3-Extension-Name" value="${manifest.file.reference.antlr-2.7.6.jar}"/>
-            <attribute name="jar-4-Extension-Name" value="${manifest.file.reference.commons-collections-3.1.jar}"/>
-            <attribute name="jar-5-Extension-Name" value="${manifest.file.reference.dom4j-1.6.1.jar}"/>
-            <attribute name="jar-6-Extension-Name" value="${manifest.file.reference.javassist-3.12.0.GA.jar}"/>
-            <attribute name="jar-7-Extension-Name" value="${manifest.file.reference.jta-1.1.jar}"/>
-            <attribute name="jar-8-Extension-Name" value="${manifest.file.reference.slf4j-api-1.6.1.jar}"/>
-            <attribute name="jar-9-Extension-Name" value="${manifest.file.reference.cglib-2.2.jar}"/>
-            <attribute name="jar-10-Extension-Name" value="${manifest.libs.junit_4.classpath}"/>
+            <attribute name="jar-2-Extension-Name" value="${manifest.file.reference.antlr-2.7.6.jar}"/>
+            <attribute name="jar-3-Extension-Name" value="${manifest.file.reference.commons-collections-3.1.jar}"/>
+            <attribute name="jar-4-Extension-Name" value="${manifest.file.reference.dom4j-1.6.1.jar}"/>
+            <attribute name="jar-5-Extension-Name" value="${manifest.file.reference.javassist-3.12.0.GA.jar}"/>
+            <attribute name="jar-6-Extension-Name" value="${manifest.file.reference.jta-1.1.jar}"/>
+            <attribute name="jar-7-Extension-Name" value="${manifest.file.reference.slf4j-api-1.6.1.jar}"/>
+            <attribute name="jar-8-Extension-Name" value="${manifest.file.reference.cglib-2.2.jar}"/>
+            <attribute name="jar-9-Extension-Name" value="${manifest.libs.junit_4.classpath}"/>
+            <attribute name="jar-10-Extension-Name" value="${manifest.file.reference.FocaInvest_v0.1-T01-FocaInvest_v0.1-T01-war}"/>
+            <attribute name="jar-11-Extension-Name" value="${manifest.file.reference.hibernate3.jar}"/>
+            <attribute name="jar-12-Extension-Name" value="${manifest.file.reference.hibernate3.jar-1}"/>
         </manifest>
     </target>
     <target depends="compile" name="library-inclusion-in-manifest">
         <copyfiles files="${file.reference.postgresql-9.4-1201.jdbc4.jar}" todir="${dist.ear.dir}/lib"/>
-        <copyfiles files="${file.reference.hibernate3.jar}" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${file.reference.antlr-2.7.6.jar}" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${file.reference.commons-collections-3.1.jar}" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${file.reference.dom4j-1.6.1.jar}" todir="${dist.ear.dir}/lib"/>
@@ -865,6 +870,9 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${file.reference.slf4j-api-1.6.1.jar}" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${file.reference.cglib-2.2.jar}" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${libs.junit_4.classpath}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.FocaInvest_v0.1-T01-FocaInvest_v0.1-T01-war}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.hibernate3.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.hibernate3.jar-1}" todir="${dist.ear.dir}/lib"/>
         <manifest file="${build.ear.classes.dir}/META-INF/MANIFEST.MF" mode="update"/>
     </target>
     <target name="-copy-meta-inf">

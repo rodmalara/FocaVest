@@ -30,7 +30,17 @@ public class PremiacaoTO {
    private String nome;
    private int estabelecimentoID;
    private int consumidorID;
-    
+
+    public PremiacaoTO() {
+    }
+ 
+   public PremiacaoTO(int _estabelecimentoID, int _consumidorID, String _nome, int _pontoBrinde){
+       this.consumidorID = _consumidorID;
+       this.estabelecimentoID = _estabelecimentoID;
+       this.nome = _nome;
+       this.pontoBrinde = _pontoBrinde;
+   }
+   
     public void setPremiacaoID(int premiacaoID) {
         this.premiacaoID = premiacaoID;
     }

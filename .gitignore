@@ -8,3 +8,7 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/FocaInvest v0.1-T01/nbproject/private/
+/FocaInvest v0.1-T01/FocaInvest v0.1-T01-ejb/nbproject/private/
+/FocaInvest v0.1-T01/FocaInvest v0.1-T01-war/nbproject/private/
+/FocaInvest v0.1-T01/FocaInvest v0.1-T01-ejb/build/
