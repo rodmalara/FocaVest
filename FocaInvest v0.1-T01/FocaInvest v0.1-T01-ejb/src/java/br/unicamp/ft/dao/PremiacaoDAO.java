@@ -9,6 +9,7 @@ package br.unicamp.ft.dao;
 import br.unicamp.ft.commons.util.HibernateUtil;
 import br.unicamp.ft.transferobjects.PremiacaoTO;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -29,8 +30,19 @@ public class PremiacaoDAO {
         HibernateUtil.close();
     }  
     
-    public void updatePremiacao(){
-        
+    public PremiacaoTO selectByID(int ID) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            PremiacaoTO premiacaoTO = (PremiacaoTO) session.load(PremiacaoTO.class, ID);
+            HibernateUtil.close();
+            return premiacaoTO;
+        } catch (HibernateException he) {
+            he.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
     
     public void selectPremiacaoByNomeConsumidor(String _nomeConsumidor){
@@ -42,4 +54,16 @@ public class PremiacaoDAO {
         query.setParameter("estabeleimentoID", 1);
         List listPremiacoes = query.list();
     }
+    
+    public void selectPremiacaoByEstabelecimento(String _nomeEstabelecimento){
+        session.beginTransaction();
+        Query query = session.createQuery(
+                "FROM Premiacao premiacao "
+                        + "LEFT JOIN premiacao.estabelecimentoID estabelecimento "
+                        + "WHERE estabelecimento.estabelecimentoID = :estabeleimentoID");
+        query.setParameter("estabeleimentoID", 1);
+        List listPremiacoes = query.list();
+    }
+    
+    
 }

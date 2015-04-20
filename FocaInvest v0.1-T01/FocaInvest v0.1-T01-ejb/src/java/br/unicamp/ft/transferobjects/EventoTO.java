@@ -17,28 +17,49 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author Matheus
  */
 @Entity
-@Table(name="T_EventoTO")
+@Table(name="T_Evento")
 public class EventoTO {
-    private int eventoID;
-    private String nome;
-    private String descricao;
-    private int qtdPessoa;
-    private Date data;
-    private float preco;
-   
-    @ManyToOne
-    @JoinColumn(name = "C_EstabelecimentoID")
-    private int estabelecimentoID;
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "C_EventoID")
+    private int eventoID;
+    @Column(name = "C_Nome")
+    private String nome;
+    @Column(name = "C_Descricao")
+    private String descricao;
+    @Column(name = "C_QtdPessoa")
+    private int qtdPessoa;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "C_Data")
+    private Date data;
+    @Column(name = "C_Preco")
+    private float preco;
+    @ManyToOne
+    @JoinColumn(name = "estabelecimentoID")
+    private EstabelecimentoTO estabelecimentoTO;
+
+    /**
+     * @return the estabelecimentoTO
+     */
+    public EstabelecimentoTO getEstabelecimentoTO() {
+        return estabelecimentoTO;
+    }
+
+    /**
+     * @param estabelecimentoTO the estabelecimentoTO to set
+     */
+    public void setEstabelecimentoTO(EstabelecimentoTO estabelecimentoTO) {
+        this.estabelecimentoTO = estabelecimentoTO;
+    }
+    
     public int getEventoID() {
         return eventoID;
     }
@@ -46,8 +67,7 @@ public class EventoTO {
     public void setEventoID(int eventoID) {
         this.eventoID = eventoID;
     }
-    
-    @Column(name = "C_Nome")
+        
     public String getNome() {
         return nome;
     }
@@ -56,7 +76,7 @@ public class EventoTO {
         this.nome = nome;
     }
     
-    @Column(name = "C_Descricao")
+    
     public String getDescricao() {
         return descricao;
     }
@@ -65,7 +85,6 @@ public class EventoTO {
         this.descricao = descricao;
     }
 
-    @Column(name = "C_QtdPessoa")
     public int getQtdPessoa() {
         return qtdPessoa;
     }
@@ -74,7 +93,7 @@ public class EventoTO {
         this.qtdPessoa = qtdPessoa;
     }
 
-    @Column(name = "C_Data")
+    
     public Date getData() {
         return data;
     }
@@ -83,7 +102,6 @@ public class EventoTO {
         this.data = Data;
     }
 
-    @Column(name = "C_Preco")
     public float getPreco() {
         return preco;
     }

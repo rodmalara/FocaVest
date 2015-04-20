@@ -7,13 +7,11 @@
 package br.unicamp.ft.transferobjects;
 
 import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.*;
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.hibernate.annotations.Entity;
-
 /**
  *
  * @author Matheus
@@ -21,18 +19,42 @@ import org.hibernate.annotations.Entity;
 @Entity
 @Table(name="T_Estabelecimento")
 public class EstabelecimentoTO{
-    private int estabelecimentoID;
-    private int cnpj;
-    private String nome;
-    private String senha;
-    private String email;
-    private String telefone;
-    private int role;
-    //ArrayList<Evento> listEvento = new ArrayList<Evento>)();
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "C_EstabelecimentoID")
+    private int estabelecimentoID;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "premiacaoID")
+    private PremiacaoTO premiacaoTO;
+    @Column(name = "C_Cnpj")
+    private int cnpj;
+    @Column(name ="C_Nome")
+    private String nome;
+    @Column(name = "C_Senha")
+    private String senha;
+    @Column(name = "C_Email")
+    private String email;
+    @Column(name = "C_Telefone")
+    private String telefone;
+    @Column(name = "C_Role")
+    private int role;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    List<EventoTO> listEvento;
+    
+    public EstabelecimentoTO(){
+    }
+    
+    public EstabelecimentoTO(PremiacaoTO _premiacaoTO, int _cnpj, String _nome, String _senha, String _email, String _telefone, int _role){
+     listEvento = new ArrayList<>();
+     this.premiacaoTO = _premiacaoTO;
+     this.cnpj = _cnpj;
+     this.nome = _nome;
+     this.senha = _senha;
+     this.email = _email;
+     this.telefone = _telefone;
+     this.role = _role;
+    }
+    
     public int getEstabelecimentoID() {
         return estabelecimentoID;
     }
@@ -40,8 +62,7 @@ public class EstabelecimentoTO{
     public void setEstabelecimentoID(int estabelecimentoID) {
         this.estabelecimentoID = estabelecimentoID;
     }
-
-    @Column(name = "C_Cnpj")
+    
     public int getCnpj() {
         return cnpj;
     }
@@ -50,7 +71,6 @@ public class EstabelecimentoTO{
         this.cnpj = cnpj;
     }
     
-    @Column(name ="C_Nome")
      public String getNome() {
         return nome;
     }
@@ -58,8 +78,7 @@ public class EstabelecimentoTO{
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    @Column(name = "C_Senha")
+    
     public String getSenha() {
         return senha;
     }
@@ -68,7 +87,6 @@ public class EstabelecimentoTO{
         this.senha = senha;
     }
 
-    @Column(name = "C_Email")
     public String getEmail() {
         return email;
     }
@@ -77,21 +95,33 @@ public class EstabelecimentoTO{
         this.email = email;
     }
 
-    @Column(name = "C_Telefone")
     public String getTelefone() {
         return telefone;
     }
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }    
+    }
     
-    @Column(name = "C_Role")
     public int getRole() {
         return role;
     }
 
     public void setRole(int role) {
         this.role = role;
+    }
+
+    /**
+     * @return the premiacaoTO
+     */
+    public PremiacaoTO getPremiacaoTO() {
+        return premiacaoTO;
+    }
+
+    /**
+     * @param premiacaoTO the premiacaoTO to set
+     */
+    public void setPremiacaoTO(PremiacaoTO premiacaoTO) {
+        this.premiacaoTO = premiacaoTO;
     }
 }

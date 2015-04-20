@@ -3,44 +3,41 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package br.unicamp.ft.transferobjects;
 
 /**
  *
  * @author Matheus
  */
- 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.*;
- 
-/**
-*
-* @author Matheus
-*/
- 
-@Entity
-@Table(name="T_Premiacao")
-public class PremiacaoTO {
-    
-   private int premiacaoID;
-   private int pontoBrinde;
-   private String nome;
-   private int estabelecimentoID;
-   private int consumidorID;
 
+/**
+ *
+ * @author Matheus
+ */
+@Entity
+@Table(name = "T_Premiacao")
+public class PremiacaoTO {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "C_PremiacaoID")
+    private int premiacaoID;
+    @Column(name = "C_PontoBrinde")
+    private int pontoBrinde;
+    @Column(name = "C_Nome")
+    private String nome;
+    
     public PremiacaoTO() {
     }
- 
-   public PremiacaoTO(int _estabelecimentoID, int _consumidorID, String _nome, int _pontoBrinde){
-       this.consumidorID = _consumidorID;
-       this.estabelecimentoID = _estabelecimentoID;
-       this.nome = _nome;
-       this.pontoBrinde = _pontoBrinde;
-   }
-   
+
+    public PremiacaoTO(String _nome, int _pontoBrinde) {
+        this.nome = _nome;
+        this.pontoBrinde = _pontoBrinde;
+    }
+
     public void setPremiacaoID(int premiacaoID) {
         this.premiacaoID = premiacaoID;
     }
@@ -52,40 +49,15 @@ public class PremiacaoTO {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "C_PremiacaoID")
+
     public int getPremiacaoID() {
         return premiacaoID;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "C_EstabelecimentoID")
-    public int getEstabelecimentoID() {
-        return estabelecimentoID;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "C_ConsumidorID")
-    public int getConsumidorID() {
-        return consumidorID;
-    }
-
-    public void setConsumidorID(int consumidorID) {
-        this.consumidorID = consumidorID;
-    }
-
-    public void setEstabelecimentoID(int estabelecimentoID) {
-        this.estabelecimentoID = estabelecimentoID;
-    }
-
-    @Column(name = "C_PontoBrinde")
     public int getPontoBrinde() {
         return pontoBrinde;
     }
 
-    @Column(name = "C_Nome")
     public String getNome() {
         return nome;
     }

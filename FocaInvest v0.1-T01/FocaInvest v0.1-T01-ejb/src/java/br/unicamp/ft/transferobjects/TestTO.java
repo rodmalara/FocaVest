@@ -17,8 +17,8 @@ import javax.persistence.*;
  * @author Matheus
  */
 
-@Entity
-@Table(name="T_TestTO")
+//@Entity
+//@Table(name="T_TestTO")
 public class TestTO {
     
     private int testID;
