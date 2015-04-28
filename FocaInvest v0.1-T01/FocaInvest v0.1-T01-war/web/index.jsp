@@ -7,7 +7,7 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% /* Import Statements  %>
+<% /* Import Statements */ %>
 <%@page import="org.postgresql.Driver" %> 
 <!DOCTYPE html>
 <html>
