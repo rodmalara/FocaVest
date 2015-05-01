@@ -2,12 +2,10 @@ package br.unicamp.ft.dao;
 
 import br.unicamp.ft.commons.util.HibernateUtil;
 import br.unicamp.ft.transferobjects.ConsumidorTO;
-import br.unicamp.ft.transferobjects.EventoTO;
-import java.util.List;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 public class ConsumidorDAO {
 
@@ -16,6 +14,20 @@ public class ConsumidorDAO {
     private Transaction trans;
             
     public ConsumidorDAO(){}
+    
+    public ConsumidorTO getUsuarioLoginSenha(String login,String senha){
+        session = HibernateUtil.getSessionFactory().openSession();
+        session.getTransaction();  
+        
+        return (ConsumidorTO) session.getCurrentSession().createCriteria(ConsumidorTO.class)
+
+                                
+                                .add(Restrictions.eq("login", login)) 
+
+                                .add(Restrictions.eq("senha", senha))
+
+                                .uniqueResult();
+    }
     
     public void insert(ConsumidorTO consumidorTO) {
     session = HibernateUtil.getSessionFactory().openSession();

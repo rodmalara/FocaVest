@@ -6,9 +6,6 @@
 
 package br.unicamp.ft.testunit;
 
-import HibernateStudies.OneToOne.Endereco;
-import HibernateStudies.OneToOne.EnderecoDAO;
-import HibernateStudies.OneToOne.Pessoa;
 import br.unicamp.ft.dao.EstabelecimentoDAO;
 import org.junit.After;
 import org.junit.Before;
@@ -26,7 +23,7 @@ public class OneToOneTest {
    
    @Test
    public void insert(){
-       new EnderecoDAO().insert(new Endereco(new Pessoa("Matheus"), "Rua Cinira Fonseca de Oliveira"));
+   //    new EnderecoDAO().insert(new Endereco(new Pessoa("Matheus"), "Rua Cinira Fonseca de Oliveira"));
    }
    
    @After
