@@ -2,10 +2,10 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>EstabelecimentoServlet</servlet-name>
-        <servlet-class>br.unicamp.ft.controller.CadastrarEstabelecimentoServlet</servlet-class>
+        <servlet-class>br.unicamp.ft.controller.InsertEstabelecimentoServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
+    <!--<servlet-mapping>
         <servlet-name>EstabelecimentoServlet</servlet-name>
         <url-pattern>/EstabelecimentoServlet</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 </web-app>

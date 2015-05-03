@@ -1,18 +1,25 @@
+<%-- 
+    Document   : addEstabelecimento
+    Created on : 27/04/2015, 21:00:09
+    Author     : Matheus
+--%>
+
+<%@page import="java.lang.String"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.ForEach"%>
+<%@page import="java.util.ArrayList"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
     <title>ESTABELECIMENTO</title>
     <meta charset="UTF-8">
     <script src="http://code.jquery.com/jquery.js"></script>
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="cssrel="stylesheet" media="screen">
     <script src="js/bootstrap.min.js"></script>
-	
-	
 </head>
 <body>
-<form class="form-horizontal">
+    <form class="form-horizontal" method="post" action="InsertEstabelecimentoServlet" >
 <fieldset>
-
  
 <!-- Form Name -->
 <legend>ESTABELECIMENTO</legend>
@@ -25,12 +32,13 @@
 </div>
 </div>
 <!-- Campo Nome proprietário-->
-<div class="control-group">
+<!--<div class="control-group">
   <label class="control-label">Proprietário</label>
   <div class="controls">
     <input id="proprietario" name="proprietário" type="text" placeholder ="Nome proprietário do bar"class="input-xxlarge" required>
 </div>
 </div>
+-->
 <!-- Campo e-mail-->
 <div class="control-group">
   <label class="control-label">Estabelecimento</label>
@@ -40,12 +48,12 @@
 </div>
 </div>
 <!-- Campo usuário-->
-<div class="control-group">
+<!--<div class="control-group">
   <label class="control-label">Usuário</label>
   <div class="controls">
     <input id="usuario" name="usuario" type="text" class="input-xlarge" placeholder="Usuário para login" required>
 </div>
-</div>
+</div> -->
 <!-- Campo senha-->
 <div class="control-group">
   <label class="control-label">Senha</label>
@@ -58,8 +66,8 @@
   <label class="control-label" for="appendedtext">E-mail</label>
   <div class="controls">
     <div class="input-append">
-      <input id="appendedtext" name="appendedtext" class="input-xlarge" placeholder="E-mail" type="text">
-      <span class="add-on">@</span>
+      <input id="email" name="email" class="input-xlarge" placeholder="E-mail" type="text">
+      <!--<span class="add-on">@</span>-->
     </div>
     </div>
 </div>
@@ -78,13 +86,13 @@
 </div>
 </div>
 <!-- Campo role-->
-<div class="control-group">
+<!--<div class="control-group">
   <label class="control-label">Role</label>
   <div class="controls">
     <input id="role" name="role" type="text" class="input-xxlarge" placeholder="Função" required>
 </div>
-</div>
-<div class="control-group">
+</div>-->
+<!--<div class="control-group">
   <label class="control-label" for="selectbasic">Eventos</label>
   <div class="controls">
     <select id="selectbasic" name="selectbasic" placeholder="Lista de eventos" class="input-xxlarge">
@@ -93,15 +101,16 @@
 	  </option>
     </select>
   </div>
-</div>
+</div>-->
 
 <!-- Button -->
 <div class="control-group">
   <div class="controls">
-    <button id="btnCadastrar" name="btnCadastrar" class="btn btn-success">Cadastrar</button>
+        <!--<button id="btnCadastrar" name="btnCadastrar" class="btn btn-success" value="">Cadastrar</button>-->
 	<button id="btnCadastrar" name="btnCadastrar" class="btn btn-success">Alterar</button>
 	<button id="btnCadastrar" name="btnCadastrar" class="btn btn-success">Pesquisar</button>
-	<button id="btnCadastrar" name="btnCadastrar" class="btn btn-success">Deletar</button>
+	<button id="btnCadastrar" name="btnCadastrar" class="btn btn-success">   <input id="btnBuscar" name="btnBuscar"  class="btn-success" type="submit" value="btnBuscar"/>
+        <input id="btnCadastrar" name="btnCadastrar"  class="btn-success" type="submit" value="btnCadastrar"/>
   </div>
 </div>
  
@@ -110,3 +119,4 @@
  
 </body>
 </html>
+

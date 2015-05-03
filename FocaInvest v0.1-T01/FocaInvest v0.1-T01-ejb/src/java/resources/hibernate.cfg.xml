@@ -8,16 +8,12 @@
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
     <property name="show_sql">true</property>
-    <property name="hbm2ddl.auto">create</property>
-    <!--
-        Test Mapping
-    <mapping class="OneToOne.Pessoa"/>
-    <mapping class="OneToOne.Endereco"/>
-    -->
+    <property name="hbm2ddl.auto">update</property>
+    <property name="hibernate.current_session_context_class">thread</property>
     <mapping class="br.unicamp.ft.transferobjects.TestTO"/>
     <mapping class="br.unicamp.ft.transferobjects.EstabelecimentoTO"/>
     <mapping class="br.unicamp.ft.transferobjects.PremiacaoTO"/>
     <mapping class="br.unicamp.ft.transferobjects.ConsumidorTO"/>
     <mapping class="br.unicamp.ft.transferobjects.EventoTO"/>
-    </session-factory>
+  </session-factory>
 </hibernate-configuration>
