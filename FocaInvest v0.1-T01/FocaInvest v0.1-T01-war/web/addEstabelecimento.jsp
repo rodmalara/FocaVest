@@ -17,7 +17,7 @@
 	
 </head>
 <body>
-    <form class="form-horizontal" method="post" action="EstabelecimentoServlet" >
+    <form class="form-horizontal" method="post" action="CadastrarEstabelecimentoServlet" >
 <fieldset>
  
 <!-- Form Name -->

@@ -15,7 +15,7 @@ public class ConsumidorDAO {
             
     public ConsumidorDAO(){}
     
-    public ConsumidorTO getUsuarioLoginSenha(String login,String senha){
+    /*public ConsumidorTO getUsuarioLoginSenha(String login,String senha){
         session = HibernateUtil.getSessionFactory().openSession();
         session.getTransaction();  
         
@@ -27,7 +27,7 @@ public class ConsumidorDAO {
                                 .add(Restrictions.eq("senha", senha))
 
                                 .uniqueResult();
-    }
+    }*/
     
     public void insert(ConsumidorTO consumidorTO) {
     session = HibernateUtil.getSessionFactory().openSession();
