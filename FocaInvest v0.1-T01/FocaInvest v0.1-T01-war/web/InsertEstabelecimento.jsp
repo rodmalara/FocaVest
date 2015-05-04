@@ -18,11 +18,7 @@
     <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-<<<<<<< HEAD:FocaInvest v0.1-T01/FocaInvest v0.1-T01-war/web/addEstabelecimento.jsp
-    <form class="form-horizontal" method="post" action="CadastrarEstabelecimentoServlet" >
-=======
     <form class="form-horizontal" method="post" action="InsertEstabelecimentoServlet" >
->>>>>>> origin/master:FocaInvest v0.1-T01/FocaInvest v0.1-T01-war/web/InsertEstabelecimento.jsp
 <fieldset>
  
 <!-- Form Name -->
