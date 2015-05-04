@@ -23,14 +23,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-<<<<<<< HEAD:FocaInvest v0.1-T01/FocaInvest v0.1-T01-war/src/java/br/unicamp/ft/controller/CadastrarEstabelecimentoServlet.java
-@WebServlet("/CadastrarEstabelecimentoServlet")
-public class CadastrarEstabelecimentoServlet extends HttpServlet {
-=======
+
 @WebServlet(name = "InsertEstabelecimentoServlet", urlPatterns = "/InsertEstabelecimentoServlet")
 public class InsertEstabelecimentoServlet extends HttpServlet {
->>>>>>> origin/master:FocaInvest v0.1-T01/FocaInvest v0.1-T01-war/src/java/br/unicamp/ft/controller/InsertEstabelecimentoServlet.java
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
