@@ -22,7 +22,7 @@
         <c:forEach items="${requestScope.eventMap}" var="map">
             <c:forEach items="${map.value}" var="event">
                 <div>
-                <c:out value="${event.nome}"></c:out>
+                    <a href="InviteFriendsServlet?event_id=${event.eventoID}">${event.nome}</a>
                 </div>
             </c:forEach>
         </c:forEach>

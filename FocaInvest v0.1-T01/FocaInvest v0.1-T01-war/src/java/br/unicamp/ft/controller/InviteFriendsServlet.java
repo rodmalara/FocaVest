@@ -6,32 +6,22 @@
 
 package br.unicamp.ft.controller;
 
-import br.unicamp.ft.dao.EstabelecimentoDAO;
-import br.unicamp.ft.dao.EventoDAO;
-import br.unicamp.ft.transferobjects.EstabelecimentoTO;
-import br.unicamp.ft.transferobjects.EventoTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Matheus
  */
-@WebServlet(name = "SearchListBarServlet", urlPatterns = {"/SearchListBarServlet"})
-public class SearchListBarServlet extends HttpServlet {
+@WebServlet(name = "InviteFriendsServlet", urlPatterns = {"/InviteFriendsServlet"})
+public class InviteFriendsServlet extends HttpServlet {
 
-    HttpSession httpSession;
-    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -43,17 +33,12 @@ public class SearchListBarServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<EstabelecimentoTO> barList = new EstabelecimentoDAO().selectListEstabelecimentoByRelevancia();
-        HashMap<Integer, List<EventoTO>> eventMap = new HashMap<>();
-        
-        for(EstabelecimentoTO _estabelecimentoTO : barList){
-            eventMap.put(_estabelecimentoTO.getEstabelecimentoID(), 
-                    new EventoDAO().selectListEventoByEstabelecimentoID(_estabelecimentoTO.getEstabelecimentoID()));
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            request.setAttribute("test", request.getParameter("event_id"));
+            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/InviteFriends.jsp");
+            requestDispatcher.forward(request, response);
         }
-        request.setAttribute("barList", barList);
-        request.setAttribute("eventMap", eventMap);
-        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/SearchListBar.jsp");
-        requestDispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
