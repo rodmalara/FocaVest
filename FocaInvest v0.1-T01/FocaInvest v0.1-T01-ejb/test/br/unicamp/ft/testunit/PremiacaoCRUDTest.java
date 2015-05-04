@@ -26,11 +26,11 @@ public class PremiacaoCRUDTest {
         premiacaoDAO = new PremiacaoDAO(); 
     }
     
-    //@Test
+    /*@Test
     public void InsertPremiacaoTest(){
       //new PremiacaoDAO().insertPremiacao(new PremiacaoTO(1, "Matheus Florêncio", 20));
       System.out.println("** Inserção executada com sucesso\n");
-    }
+    }*/
     
     //@Test
     public void selectPremiacaoByNomeConsumidorTest(){

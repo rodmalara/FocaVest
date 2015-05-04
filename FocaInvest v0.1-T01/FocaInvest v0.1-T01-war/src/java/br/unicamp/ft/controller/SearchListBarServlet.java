@@ -1,30 +1,33 @@
-package br.unicamp.ft.controller;
-
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-/**
- *
- * @author Matheus
- */
+package br.unicamp.ft.controller;
 
 import br.unicamp.ft.dao.EstabelecimentoDAO;
+import br.unicamp.ft.dao.EventoDAO;
 import br.unicamp.ft.transferobjects.EstabelecimentoTO;
+import br.unicamp.ft.transferobjects.EventoTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/CadastrarEstabelecimentoServlet")
-public class CadastrarEstabelecimentoServlet extends HttpServlet {
+/**
+ *
+ * @author Matheus
+ */
+@WebServlet(name = "SearchListBarServlet", urlPatterns = {"/SearchListBarServlet"})
+public class SearchListBarServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,19 +40,17 @@ public class CadastrarEstabelecimentoServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EstabelecimentoServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet EstabelecimentoServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        List<EstabelecimentoTO> barList = new EstabelecimentoDAO().selectListEstabelecimentoByRelevancia();
+        HashMap<Integer, List<EventoTO>> eventMap = new HashMap<>();
+        
+        for(EstabelecimentoTO _estabelecimentoTO : barList){
+            eventMap.put(_estabelecimentoTO.getEstabelecimentoID(), 
+                    new EventoDAO().selectListEventoByEstabelecimentoID(_estabelecimentoTO.getEstabelecimentoID()));
         }
+        request.setAttribute("barList", barList);
+        request.setAttribute("eventMap", eventMap);
+        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/SearchListBar.jsp");
+        requestDispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -78,14 +79,7 @@ public class CadastrarEstabelecimentoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        EstabelecimentoTO estabelecimentoTO = new EstabelecimentoTO(null, 
-                Integer.parseInt(request.getParameter("cnpj").toString()),
-                request.getParameter("estabelecimento"), 
-                request.getParameter("senha"), 
-                request.getParameter("email"), 
-                request.getParameter("telefone"), 
-                2);
-        new EstabelecimentoDAO().insert(estabelecimentoTO);
+        processRequest(request, response);
     }
 
     /**

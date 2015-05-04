@@ -5,7 +5,6 @@
  */
 package br.unicamp.ft.transferobjects;
 
-import br.unicamp.ft.dao.ConsumidorDAO;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
