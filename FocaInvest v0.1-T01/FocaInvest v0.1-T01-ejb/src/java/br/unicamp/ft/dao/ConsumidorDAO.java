@@ -8,12 +8,12 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 public class ConsumidorDAO {
-
-
     private Session session;
     private Transaction trans;
             
-    public ConsumidorDAO(){}
+    public ConsumidorDAO(){
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+    }
     
     /*public ConsumidorTO getUsuarioLoginSenha(String login,String senha){
         session = HibernateUtil.getSessionFactory().openSession();
@@ -30,11 +30,7 @@ public class ConsumidorDAO {
     }*/
     
     public void insert(ConsumidorTO consumidorTO) {
-    session = HibernateUtil.getSessionFactory().openSession();
-    session.beginTransaction();
-    session.save(consumidorTO);
-    session.getTransaction().commit();
-    HibernateUtil.close();
+        session.save(consumidorTO);
     }
 
     public void update(ConsumidorTO consumidorTO) {

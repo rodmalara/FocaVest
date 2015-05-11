@@ -23,7 +23,7 @@ public class HibernateUtil {
     
     private static SessionFactory buildSessionFactory(){
         try{
-            return new Configuration().configure(new File("/Users/rodrigo/GitHub/FocaVest/FocaInvest v0.1-T01/FocaInvest v0.1-T01-ejb/src/java/resources/hibernate.cfg.xml")).buildSessionFactory();
+            return new Configuration().configure(new File("C:\\Users\\Matheus\\Documents\\GitHub\\FocaVest\\FocaInvest v0.1-T01\\FocaInvest v0.1-T01-ejb\\src\\java\\resources\\hibernate.cfg.xml")).buildSessionFactory();
         }catch(HibernateException hibernateError){
             System.out.println("Error: " + hibernateError.getMessage());
             return null;

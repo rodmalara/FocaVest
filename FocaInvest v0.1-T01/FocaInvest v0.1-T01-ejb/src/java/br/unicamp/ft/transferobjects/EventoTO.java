@@ -109,41 +109,5 @@ public class EventoTO {
     public void setPreco(float preco) {
         this.preco = preco;
     }
-    
-    // METODOS
-    public void cadastrarEvento()
-    {
-        
-    }
-            
-    public void alterarEvento()
-    {
-        
-    }
-    
-    public void consultarEvento()
-    {
-        
-    }
-    
-    public void deletarEvento()
-    {
-        
-    }
-    
-    public void inserePessoa()
-    {
-        
-    }
-    
-    public void removePessoa()
-    {
-        
-    }
-    
-    public void consultarPessoa()
-    {
-        
-    }
 }
 

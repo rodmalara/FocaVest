@@ -38,8 +38,10 @@ public class EstabelecimentoTO{
     private String telefone;
     @Column(name = "C_Role")
     private int role;
+    @Column(name = "C_Relevancia")
+    private int relevancia;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    List<EventoTO> listEvento;
+    private List<EventoTO> listEvento;
     
     public EstabelecimentoTO(){
     }
@@ -123,5 +125,27 @@ public class EstabelecimentoTO{
      */
     public void setPremiacaoTO(PremiacaoTO premiacaoTO) {
         this.premiacaoTO = premiacaoTO;
+    }
+    
+    public void setRelevancia(int relevancia){
+        this.relevancia = relevancia;
+    }
+    
+    public int getRelevancia(){
+        return this.relevancia;
+    }
+
+    /**
+     * @return the listEvento
+     */
+    public List<EventoTO> getListEvento() {
+        return listEvento;
+    }
+
+    /**
+     * @param listEvento the listEvento to set
+     */
+    public void setListEvento(List<EventoTO> listEvento) {
+        this.listEvento = listEvento;
     }
 }

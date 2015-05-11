@@ -6,8 +6,11 @@
 package br.unicamp.ft.dao;
 
 import br.unicamp.ft.commons.util.HibernateUtil;
+import br.unicamp.ft.transferobjects.EstabelecimentoTO;
 import br.unicamp.ft.transferobjects.EventoTO;
 import br.unicamp.ft.transferobjects.TestTO;
+import java.util.List;
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -17,26 +20,34 @@ import org.hibernate.Transaction;
  * @author Matheus
  */
 public class EventoDAO {
-
     private Session session;
-
+    
     public EventoDAO() {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
 
-    public void insert(EventoTO eventoTO) {
-        session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.save(eventoTO);
-        session.getTransaction().commit();
-        HibernateUtil.close();
+    public void insertEvento(EventoTO eventoTO) {
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.save(eventoTO);
+            session.getTransaction().commit();
+            session.close();
+            HibernateUtil.close();
+        }catch(HibernateException he){
+            he.printStackTrace();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
-    public void update(EventoTO eventoTO) {
+    public void updateEvento(EventoTO eventoTO) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             session.update(eventoTO);
             session.getTransaction().commit();
+            session.close();
             HibernateUtil.close();
         } catch (HibernateException he) {
             he.printStackTrace();
@@ -51,6 +62,7 @@ public class EventoDAO {
             session.beginTransaction();
             session.delete(eventoTO);
             session.getTransaction().commit();
+            session.close();
             HibernateUtil.close();
         } catch (HibernateException he) {
             he.printStackTrace();
@@ -60,18 +72,12 @@ public class EventoDAO {
     }
 
     public EventoTO selectByID(int ID) {
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            EventoTO eventoTO = (EventoTO) session.load(EventoTO.class, ID);
-            HibernateUtil.close();
-            return eventoTO;
-        } catch (HibernateException he) {
-            he.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+            return (EventoTO)
+                    session.createQuery("from EventoTO e where e.id = " + ID).list().get(0);
     }
-
+    
+    public List<EventoTO> selectListEventoByEstabelecimentoID(int _id){
+        return session.
+            createQuery("from EventoTO e where e.estabelecimentoTO.id = "+ _id).list();
+    }
 }

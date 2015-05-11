@@ -16,7 +16,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class loginManager {
+public class LoginManager {
 
     private Session session;
     private int count = 0;
