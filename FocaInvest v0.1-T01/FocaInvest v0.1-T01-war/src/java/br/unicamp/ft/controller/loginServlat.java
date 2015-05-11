@@ -75,14 +75,12 @@ public class loginServlat extends HttpServlet {
             if (manger.isValidLogin(uname, pass)) {;
                 request.setAttribute("uname", uname);
                 dispatcher = request.getRequestDispatcher("/loginSuccess.jsp");
-                System.out.println("PASSOUUUU/n/n/n/n/n");
                 dispatcher.forward(request,response);
 
                 response.sendRedirect("/loginSuccess.jsp");
             } else {
                 //error login
-                response.sendRedirect("/login.jsp");
-                System.out.println("NAAAAAAAAAAOOOO =/ /n/n/n/n/n");
+                //response.sendRedirect("/login.jsp");
                 dispatcher = request.getRequestDispatcher("/login.jsp");
                 dispatcher.forward(request,response);
             }
