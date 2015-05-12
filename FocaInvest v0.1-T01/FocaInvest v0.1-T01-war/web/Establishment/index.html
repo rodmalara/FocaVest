@@ -1,0 +1,175 @@
+<html>
+	<head>
+		<title>FOCA VEST</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="css/bootstrap.css" rel="stylesheet">
+		
+		<script type="text/javascript">
+		
+			function abrirMenu(){ 
+				location.href="menu.html"; 
+			}
+		
+		</script>
+		
+		<style type="text/css">
+		
+
+#divUsuario{
+background-color:#FFFFFF;
+    border:solid 10px #32CD32;
+    border-radius:10px;
+    width:300px;
+    height:320px;
+	padding: 30px 100px 100px;
+	color:#000000;
+
+
+}
+
+body{
+
+	background-color: #000000;
+
+}	
+
+#textoLink{
+
+	color: #BDBDBD;
+	text-align: center;
+	font-size: 15px;
+	margin-top:0px;
+
+
+}
+
+#texto01{
+
+	color: #BDBDBD;
+	text-align: left;
+	font-size: 40px;
+
+}
+
+#texto02{
+
+	color: #BDBDBD;
+	text-align: left;
+	font-size: 20px;
+
+}
+
+#texto03{
+	
+	padding: 0px 0px 0px 0px;
+	color: #BDBDBD;
+	text-align: center;
+	font-size: 15px;
+	margin-top:5px;
+
+}
+
+
+#btnConfirma{
+	border:none;
+    float:center;
+    height:32px;
+    border-radius: 0px 0px 0px 0px;
+    width:260px;
+    font-weight:bold;
+    background:#32CD32;
+	margin-top: 5px;
+
+}	
+		
+ 
+#txtUsuario{
+    float:left;
+    background-color:#FFFFFF;
+    padding-left:0px;
+    font-size:15px;
+   	border-radius:0px;
+    height:35px;
+    width:260px;
+	color:##2E2E2E;
+	border:solid 3px #32CD32;
+}
+
+
+
+	
+		.formulario-login{
+			position: relative;
+			left: 700px;
+			top: 100px;
+			max-width: 250px;
+			background-color: ##424242;
+			border: 1px solid #000000;
+			 padding: 30px 100px 100px;
+			  margin: 20px -30px; <!--é isto que da a posição do formulário-->
+		
+		}
+		
+		#img-logo{
+			position: relative;
+			right: 650px;
+			bottom: 380px;
+			max-width: 330px;
+			padding: 30px 100px 100px;
+			margin: 20px -30px; <!--é isto que da a posição do formulário-->
+		
+		}
+
+		
+					
+		.form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 50px;
+        background-color: #FFF;
+        border: 1px solid #FFFFFF;
+        -webkit-border-radius: 0px;
+           -moz-border-radius: 0px;
+                border-radius: 0px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }	
+		
+		</style>
+		
+		<link href="css/bootstrap-responsive.css" rel="stylesheet">
+		
+	</head>
+
+<body>
+	
+	
+	<!-- Incluindo o jQuery que é requisito do JavaScript do Bootstrap -->
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+	<!-- Incluindo o JavaScript do Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	
+
+	<form class="formulario-login">
+		<div class="divUsuario">
+		<p id="texto01">Bem vindo!</p></br>
+		<p id="texto02">Usuário</p>
+		<input type="text" id="txtUsuario" placeholder="Usuário"></div>
+		<div class="divUsuario">
+		<p id="texto02">Senha</p>
+		<input type="password" id="txtUsuario" placeholder="Senha"></div>
+		<input type="button" id="btnConfirma" value="Entrar" onclick="abrirMenu()" /><br/><br/>
+		<p id="texto03">Não cadastrado ainda?</p>
+		<p align = "center"><a id="textoLink" href="formEstabelecimento.html">Clique aqui.</a></p>
+		<img id="img-logo" src="caneca.jpg">
+	
+	</form>
+
+</body>
+
+
+
+</html>
