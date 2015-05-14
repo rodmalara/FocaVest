@@ -4,15 +4,12 @@
 		<script type="text/javascript">
 		
 			function abrirFormEvento(){
-				//document.getElementById("formularioTeste").src = "formCadastraEvento.html"; 
+				
 				location.href = "formCadastraEvento.html";
 			}
 			
-			function criarTabela{
-			
-			
-			
-			
+			function exibirFormulario() {
+				document.getElementById("formulario").style.display = "block";
 			}
 		
 		</script>
@@ -92,7 +89,7 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 </style>
 
 <body>
-	<form id="formulario">
+	<form id="formulario" style="display:block;">
 		<h1 id="h1_texto">Lista de eventos</h1>
 		<table><!--acredito que aqui vai um loop para criar as linhas da tabela conforme o número de eventos que vão sendo cadastrados-->
 		
@@ -101,7 +98,7 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 		</script>
 			<td>
 			<label id="labelEvento">AQUI VAI O NOME DO EVENTO UM</label>
-			<input type="button" class="button" value="Editar" id="botao" onclick="abrirFormEvento()" />
+			<input type="button" class="button" value="Editar" id="botao" onclick="abrirFormEvento()"/>
 			<input type="button" class="button" value="Excluir" id="botao"/>
 			<input type="button" class="button" value="Ver clientes" id="botao"/>
 			</td>
@@ -112,10 +109,9 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 			</td>
 		
 		</table>
+	
+		</form>
 		
-		
-	</form>
-
 </body>
 
 </head>
