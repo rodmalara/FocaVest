@@ -70,6 +70,16 @@ body{
 
 }
 
+#textoErro{
+	
+	padding: 0px 0px 0px 0px;
+	color: #FF0000;
+	text-align: center;
+	font-size: 15px;
+	margin-top:5px;
+
+}
+
 
 #btnConfirma{
 	border:none;
@@ -93,7 +103,7 @@ body{
     height:35px;
     width:260px;
 	color:##2E2E2E;
-	border:solid 3px #32CD32;
+	border:solid 3px #FF0000;
 }
 
 
@@ -160,7 +170,8 @@ body{
 		<input type="text" id="txtUsuario" placeholder="Usuário cadastrado"></div>
 		<div class="divUsuario">
 		<p id="texto02">Senha</p>
-		<input type="password" id="txtUsuario" placeholder="Senha cadastrada"></div>
+		<input type="password" id="txtUsuario" placeholder="Senha cadastrada"></div><br><br>
+		<p id="textoErro">Usuário ou senha incorretos</p>
 		<input type="button" id="btnConfirma" value="Entrar" onclick="abrirMenu()" /><br/><br/>
 		<p id="texto03">Não cadastrado ainda?</p>
 		<p align = "center"><a id="textoLink" href="formEstabelecimento.html">Clique aqui.</a></p>

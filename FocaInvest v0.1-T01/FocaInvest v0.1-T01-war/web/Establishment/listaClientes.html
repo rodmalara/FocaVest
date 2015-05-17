@@ -21,16 +21,22 @@
 
 <style type="text/css">
 
+
+
 body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 
-#confirma{
-    content: "\2713";
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
-    font-size: 15px;
-    color: #f3f3f3;
-    text-align: center;
-    line-height: 15px;
+.checkbox{
+   width: 24px;
+   height: 24px;
+   background: transparent url(check2.png) no-repeat 0 50%
 }
+.checked{
+   background: transparent url(check2.png) no-repeat 80% 50%
+}
+
+$(".checkbox").click(function(){
+    $(this).toggleClass('checked')
+});
 
 input,select,textarea{margin:0; padding:0; color:#000000;}
 
@@ -58,7 +64,7 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 		#Tabela{
 			
 				width: 40px;
-				height: 50px;
+				height: 70px;
 		
 		}
 		
@@ -73,7 +79,7 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 		}
 		
 
-	#labelEvento{
+	#txtCliente{
 		width: 500px;
 		border-top:2px solid #32CD32; 
 		border-bottom:2px solid #32CD32;
@@ -106,21 +112,18 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 		<table><!--acredito que aqui vai um loop para criar as linhas da tabela conforme o número de eventos que vão sendo cadastrados-->
 		
 		<tr id="Tabela"> <!--linha-->
-		<script language=”JavaScript”>
-		</script>
 			<td>
-			<input type="checkbox" id="confirma" value="presenca">
-			<label id="labelEvento">AQUI VAI O NOME DO CLIENTE UM</label>
-			</td>
-		<tr id="Tabela">
-			<td>
-			<label id="labelEvento">AQUI VAI O NOME DO CLIENTE DOIS</label>
-			
+			<input type="checkbox" class="checkbox" value="presenca">
+			<label>
+			<!--<span>Senha: </span>-->-
+				<input type="text" class="input_text" name="nome" id="txtCliente" disabled/>
+			</label>
 			</td>
 		
 		</table>
 		
-		<input type="button" class="button" value="Excluir" id="botao"/>
+		<input type="button" class="button" value="Confirmar" id="botao"/>
+		<input type="button" class="button" value="Cancelar" id="botao"/>
 		
 	</form>
 

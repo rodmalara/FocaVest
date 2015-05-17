@@ -5,7 +5,7 @@
 		
 			function abrirFormEvento(){
 				
-				location.href = "formCadastraEvento.html";
+				location.href = "editarEvento.html";
 			}
 			
 			function abrirListaClientes(){
@@ -66,8 +66,8 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 		}
 		
 
-	#labelEvento{
-		width: 500px;
+	#txtEvento{
+		width: 350px;
 		border-top:2px solid #32CD32; 
 		border-bottom:2px solid #32CD32;
 		border-right:2px solid #32CD32;
@@ -102,7 +102,7 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 		<script language=”JavaScript”>
 		</script><!--Nesta parte olhar o arquivo exemplo_criar_table.txt que se encontra no mesmo diretório das páginas web, lá há um exemplo para criação dinâmica das tabelas-->
 			<td>
-			<label id="labelEvento">AQUI VAI O NOME DO EVENTO UM</label>
+			<input type="text" class="input_text" name="nome" id="txtEvento" disabled/>
 			<input type="button" class="button" value="Editar" id="botao" onclick="abrirFormEvento()"/>
 			<input type="button" class="button" value="Excluir" id="botao"/>
 			<input type="button" class="button" value="Ver clientes" id="botao" onclick="abrirListaClientes()"/>
