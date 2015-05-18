@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/loginServlat")
+@WebServlet("/Establishment/loginServlet")
 public class LoginServlet extends HttpServlet {
 
     /** 
@@ -74,14 +74,14 @@ public class LoginServlet extends HttpServlet {
             LoginManager manger = new LoginManager();
             if (manger.isValidLogin(uname, pass)) {;
                 request.setAttribute("uname", uname);
-                dispatcher = request.getRequestDispatcher("/SearchListBarServlet");
+                dispatcher = request.getRequestDispatcher("/Establishment/menu.html");
                 dispatcher.forward(request,response);
 
-                response.sendRedirect("/loginSuccess.jsp");
+                response.sendRedirect("/Establishment/menu.html");
             } else {
                 //error login
                 //response.sendRedirect("/login.jsp");
-                dispatcher = request.getRequestDispatcher("/SignIn.jsp");
+                dispatcher = request.getRequestDispatcher("/Establishment/loginFail.html");
                 dispatcher.forward(request,response);
             }
     
