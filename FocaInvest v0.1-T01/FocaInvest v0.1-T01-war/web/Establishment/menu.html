@@ -34,6 +34,7 @@ background-color: #000000;
 		left:10%;
 		border:0px solid #00FF00;
 	}
+	
 
 #menu {
     width: 100%;
@@ -166,24 +167,24 @@ background-color: #000000;
 <body>
 
 	<ul id="menu">
-    <li><a href="#">Home</a></li>
-    <li>
-        <a href="#">Evento</a>
-        <ul>
-            <li><a href="formCadastraEvento.html" target="iframeCorpo">Cadastrar</a></li>
-            <li><a href="listaEventos.html" target="iframeCorpo">Gerenciar</a></li>
-        </ul>
-    </li>
-    <li><a href="formExibePerfil.html" target="iframeCorpo">Perfil</a></li>
-	<li><a href="formExibePerfil.html" target="iframeCorpo">Prêmiação</a></li>
-		<ul>
-			<li><a href="#">Cadastrar</a></li>
-			<li><a href="#">Gerenciar</a></li>
-			<li><a href="#">Verificar pontuação</a></li>
-			<li><a href="#">Gerar prêmio</a></li>
-	<li><a href="index.html">Sair</a></li>
-	</ul>
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Evento</a>
+			<ul>
+				<li><a href="formCadastraEvento.html" target="iframeCorpo">Cadastrar</a></li>
+				<li><a href="listaEventos.html" target="iframeCorpo">Gerenciar</a></li>
+			</ul>
+		</li>
+		<li><a href="formExibePerfil.html" target="iframeCorpo">Perfil</a></li>
+		<li><a href="formExibePerfil.html" target="iframeCorpo">Premiação</a>
+			<ul>
+				<li><a href="#">Cadastrar</a></li>
+				<li><a href="#">Gerenciar</a></li>
+				<li><a href="#">Verificar pontuação</a></li>
+				<li><a href="#">Gerar prêmio</a></li>
 	
+			</ul>
+			
+	<li><a href="index.html">Sair</a></li>
 	<iframe name="iframeCorpo" method="post" id="formularioCorpoCSS">
 	
 	</iframe>

@@ -3,12 +3,12 @@
 	font-size: 12px;
 	min-width: 300px; /* Dialog will be no smaller than this */
 	max-width: 600px; /* Dialog will wrap after this width */
-	background: #FFF;
-	border: solid 5px #999;
-	color: #000;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
+	background: #32CD32;
+	border: solid 5px #32CD32;
+	color: #000000;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
 }
 
 #popup_title {
@@ -16,10 +16,10 @@
 	font-weight: bold;
 	text-align: center;
 	line-height: 1.75em;
-	color: #666;
+	color: ##32CD32;
 	background: #CCC url(../gfx/jquery.alerts/title.gif) top repeat-x;
-	border: solid 1px #FFF;
-	border-bottom: solid 1px #999;
+	border: solid 4px #32CD32;
+	border-bottom: solid 4px #32CD32;
 	cursor: default;
 	padding: 0em;
 	margin: 0em;
@@ -32,7 +32,7 @@
 }
 
 #popup_content.alert {
-	background-image: url(../gfx/jquery.alerts/info.gif);
+	background-image: url(../gfx/jquery.alerts/Confirmar.png);
 }
 
 #popup_content.confirm {
