@@ -3,17 +3,17 @@
 
 		<script type="text/javascript">
 		
-			function abrirFormEvento(){
-				//document.getElementById("formularioTeste").src = "formCadastraEvento.html"; 
-				location.href = "formCadastraEvento.html";
+			function eventoCancelar(){
+				
+				location.href = "home.html";
 			}
 			
-			function criarTabela{
+			function eventoVoltar(){
+				
+			location.href = "listaEventos.html";
+		}
 			
 			
-			
-			
-			}
 		
 		</script>
 		
@@ -115,7 +115,7 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 			<td>
 			<input type="checkbox" class="checkbox" value="presenca">
 			<label>
-			<!--<span>Senha: </span>-->-
+			
 				<input type="text" class="input_text" name="nome" id="txtCliente" disabled/>
 			</label>
 			</td>
@@ -123,7 +123,8 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 		</table>
 		
 		<input type="button" class="button" value="Confirmar" id="botao"/>
-		<input type="button" class="button" value="Cancelar" id="botao"/>
+		<input type="button" class="button" value="Voltar" id="botao" onClick="eventoVoltar()"/>
+		<input type="button" class="button" value="Cancelar" id="botao" onClick="eventoCancelar()"/>
 		
 	</form>
 

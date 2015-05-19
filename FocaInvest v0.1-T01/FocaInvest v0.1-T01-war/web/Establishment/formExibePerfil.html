@@ -4,10 +4,11 @@
 		
 		<script type="text/javascript">
 		
-		function abrirIndex(){ 
-		location.href="index.html"; 
-		} 
-		
+		function eventoCancelar(){
+				
+				location.href = "home.html";
+			}
+			
 		function abrirEstabelecimento(){ 
 		location.href="editarEstabelecimento.html"; 
 		} 
@@ -178,7 +179,7 @@
 				<input type="text" class="input_text" name="role" id="input_cnpj" disabled/>
 			</label>
 			<input type="button" class="button" value="Editar" onclick="abrirEstabelecimento()"/>
-			<input type="button" class="button" value="Cancelar" onclick="abrirIndex()" />
+			<input type="button" class="button" value="Cancelar" onclick="eventoCancelar()" />
 		
 			
 		</div>
