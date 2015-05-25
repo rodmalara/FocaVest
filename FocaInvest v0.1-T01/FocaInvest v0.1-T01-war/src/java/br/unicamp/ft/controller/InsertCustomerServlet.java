@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Matheus
  */
-@WebServlet(name = "InserConsumidorServlet", urlPatterns = {"/InserConsumidorServlet"})
-public class InsertConsumidorServlet extends HttpServlet {
+@WebServlet(name = "InsertCustomerServlet", urlPatterns = {"/Customer/InsertCustomerServlet"})
+public class InsertCustomerServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

@@ -11,8 +11,6 @@ import br.unicamp.ft.dao.EventoDAO;
 import br.unicamp.ft.transferobjects.EstabelecimentoTO;
 import br.unicamp.ft.transferobjects.EventoTO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -52,7 +50,7 @@ public class SearchListBarServlet extends HttpServlet {
         }
         request.setAttribute("barList", barList);
         request.setAttribute("eventMap", eventMap);
-        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Home.jsp");
+        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Customer/Home.jsp");
         requestDispatcher.forward(request, response);
     }
 
