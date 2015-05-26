@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "InsertEstabelecimentoServlet", urlPatterns = "/InsertEstabelecimentoServlet")
+@WebServlet(name = "InsertEstabelecimentoServlet", urlPatterns = "/Establishment/InsertEstabelecimentoServlet")
 public class InsertEstabelecimentoServlet extends HttpServlet {
 
     /**
@@ -77,7 +77,7 @@ public class InsertEstabelecimentoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         EstabelecimentoTO estabelecimentoTO = new EstabelecimentoTO(null, 
-                Integer.parseInt(request.getParameter("cnpj")),
+                Integer.parseInt(request.getParameter("cnpj").toString()),
                 request.getParameter("estabelecimento"), 
                 request.getParameter("senha"), 
                 request.getParameter("email"), 
