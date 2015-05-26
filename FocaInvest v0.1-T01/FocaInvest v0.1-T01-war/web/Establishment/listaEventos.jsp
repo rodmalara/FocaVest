@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+
 <html>
 <head>
 
@@ -96,13 +99,26 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 <body>
 	<form id="formulario" style="display:block;">
 		<h1 id="h1_texto">Lista de eventos</h1>
-		<table><!--acredito que aqui vai um loop para criar as linhas da tabela conforme o número de eventos que vão sendo cadastrados-->
+		<table bgcolor="#00FF00"><!--acredito que aqui vai um loop para criar as linhas da tabela conforme o n�mero de eventos que v�o sendo cadastrados-->
 		
+                 <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Descri��o</th>
+                    </tr>
+                 </thead>
+                 <tbody>
+                    <c:forEach items="${users}" var="user">
+                        <tr>
+                            <td><c:out value="${user.nome}" /></td>
+                            <td><c:out value="${user.descricao}" /></td>
+                        </tr>
+                    </c:forEach>
+                 </tbody>
+                    
+                    
 		<tr id="Tabela"> <!--linha-->
-		<script language=”JavaScript”>
-		</script><!--Nesta parte olhar o arquivo exemplo_criar_table.txt que se encontra no mesmo diretório das páginas web, lá há um exemplo para criação dinâmica das tabelas-->
 			<td>
-			<input type="text" class="input_text" name="nome" id="txtEvento" disabled/>
 			<input type="button" class="button" value="Editar" id="botao" onclick="abrirFormEvento()"/>
 			<input type="button" class="button" value="Ver clientes" id="botao" onclick="abrirListaClientes()"/>
 			<input type="button" class="button" value="Excluir" id="botao"/>

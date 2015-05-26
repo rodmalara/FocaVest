@@ -10,6 +10,7 @@ package br.unicamp.ft.controller;
  * @author rodrigo
  */
 import br.unicamp.ft.dao.EstabelecimentoDAO;
+import br.unicamp.ft.dao.EventoDAO;
 import br.unicamp.ft.transferobjects.EstabelecimentoTO;
 import java.io.IOException;
 import java.text.ParseException;
@@ -23,15 +24,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class EstabelecimentoController extends HttpServlet {
+public class EventoController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/user.jsp";
-    private static String LIST_USER = "/ListaConsumidores.jsp";
-    private EstabelecimentoDAO dao;
+    private static String LIST_USER = "/Establishment/listaEventos.jsp";
+    private EventoDAO dao;
  
-    public EstabelecimentoController() {
+    public EventoController() {
         super();
-        dao = new EstabelecimentoDAO();
+        dao = new EventoDAO();
     }
  
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -50,7 +51,7 @@ public class EstabelecimentoController extends HttpServlet {
             request.setAttribute("user", user);
         } else */if (action.equalsIgnoreCase("listUser")){
             forward = LIST_USER;
-            request.setAttribute("users", dao.selectListEstabelecimento());
+            request.setAttribute("users", dao.selectListEventoByEstabelecimentoID(1));
         } /*else {
             forward = INSERT_OR_EDIT;
         }*/

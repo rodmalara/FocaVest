@@ -6,6 +6,6 @@
         <title>CRUD Example</title>
     </head>
     <body>
-        <jsp:forward page="/EstabelecimentoController?action=listuser" />
+        <jsp:forward page="/Establishment/EventoController?action=listuser" />
     </body>
 </html>

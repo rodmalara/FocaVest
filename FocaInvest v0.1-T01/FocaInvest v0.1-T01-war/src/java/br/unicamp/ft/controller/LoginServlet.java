@@ -77,7 +77,7 @@ public class LoginServlet extends HttpServlet {
                 dispatcher = request.getRequestDispatcher("/Establishment/menu.html");
                 dispatcher.forward(request,response);
 
-                response.sendRedirect("/Establishment/menu.html");
+                //response.sendRedirect("/Establishment/menu.html");
             } else {
                 //error login
                 //response.sendRedirect("/login.jsp");
