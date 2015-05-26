@@ -82,7 +82,8 @@ public class InsertEstabelecimentoServlet extends HttpServlet {
                 request.getParameter("senha"), 
                 request.getParameter("email"), 
                 request.getParameter("telefone"), 
-                2);
+                2,
+                1);
         new EstabelecimentoDAO().insertEstabelecimento(estabelecimentoTO);
     }
 

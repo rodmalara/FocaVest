@@ -4,8 +4,20 @@
         <servlet-name>EstabelecimentoServlet</servlet-name>
         <servlet-class>br.unicamp.ft.controller.InsertEstabelecimentoServlet</servlet-class>
     </servlet>
-    <!--<servlet-mapping>
-        <servlet-name>EstabelecimentoServlet</servlet-name>
-        <url-pattern>/EstabelecimentoServlet</url-pattern>
-    </servlet-mapping>-->
+    <servlet>
+        <servlet-name>EstabelecimentoController</servlet-name>
+        <servlet-class>br.unicamp.ft.controller.EstabelecimentoController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EstabelecimentoController</servlet-name>
+        <url-pattern>/EstabelecimentoController</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>

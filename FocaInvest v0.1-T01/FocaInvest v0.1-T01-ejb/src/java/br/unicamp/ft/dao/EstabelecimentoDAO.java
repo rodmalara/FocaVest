@@ -8,6 +8,8 @@ package br.unicamp.ft.dao;
 import br.unicamp.ft.commons.util.HibernateUtil;
 import br.unicamp.ft.transferobjects.EstabelecimentoTO;
 import br.unicamp.ft.transferobjects.EventoTO;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
@@ -39,11 +41,15 @@ public class EstabelecimentoDAO {
     }
 
     public EstabelecimentoTO selectByID(int ID) {
-        return (EstabelecimentoTO) session.load(EstabelecimentoTO.class, ID);
-        
+        return (EstabelecimentoTO) session.load(EstabelecimentoTO.class, ID);     
     }
 
     public List<EstabelecimentoTO> selectListEstabelecimentoByRelevancia(){
        return session.createQuery("from EstabelecimentoTO e order by e.relevancia").list();
     }
+    
+    public List<EstabelecimentoTO> selectListEstabelecimento(){
+       return session.createQuery("from EstabelecimentoTO").list();
+    }
+    
 }
