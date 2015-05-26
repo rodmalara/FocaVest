@@ -1,3 +1,11 @@
+<%-- 
+    Document   : formEstabelecimento.jsp
+    Created on : 25/05/2015, 19:55:23
+    Author     : Matheus
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html lang="pt-br">
 	<head>
 		<title>FOCA VEST</title>
@@ -183,7 +191,7 @@
 		<img class="img-barra-2" src="barra.jpg"/>
 	</div>
 
-	<form name="f1" method="post" id="formulario">
+    <form name="f1" method="post" id="formulario" action="InsertEstabelecimentoServlet">
 	<h1 id="h1_texto">Cadastre seu estabelecimento:</h1>
 		<div class="box">
 			<!--<label>
@@ -191,8 +199,12 @@
 				<input type="text" required class="input_text" name="nome" id="name" placeholder="Nome do seu estabelecimento"/>
 			</label>-->
 			<label>
-			<span>Estabelecimento: </span>
-				<input type="text" required class="input_text" name="estabelecimento" id="input_login" placeholder="Usuário para login"/>
+			<span>Nome: </span>
+				<input type="text" required class="input_text" name="estabelecimento" id="input_login" placeholder="Nome do estabelecimento"/>
+			</label>
+                        <label>
+			<span>E-mail: </span>
+				<input type="text" required class="input_text" name="email" id="name" placeholder="contato@contato.com"/>
 			</label>
 			<label>
 			<span>Senha: </span>
@@ -203,10 +215,6 @@
 				<input type="password" required class="input_text" name="senha2" size="20" id="input_login" placeholder="Confirme sua senha"/>
 			</label>
 			<label>
-			<span>E-mail: </span>
-				<input type="text" required class="input_text" name="email" id="name" placeholder="contato@contato.com"/>
-			</label>
-			<label>
 			<span>CNPJ: </span>
 				<input type="text" required class="input_text" name="cnpj" id="input_cnpj" placeholder="000-000-000-00"/>
 			</label>	
@@ -214,7 +222,7 @@
 			<span>Telefone: </span>
 				<input type="text" required class="input_text" name="telefone" id="input_cnpj" placeholder="(00)0000-0000"/>
 			</label>
-			<input type="button" id="alertNormal"  value="Confirmar" />
+			<input type="submit" id="alertNormal"  value="Confirmar" />
 			<input type="button" class="button" value="Cancelar" onclick="abrirIndex()" />
 			
 			
