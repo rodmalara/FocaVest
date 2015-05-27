@@ -10,6 +10,7 @@ import br.unicamp.ft.dao.EstabelecimentoDAO;
 import br.unicamp.ft.transferobjects.EstabelecimentoTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,6 +24,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "EditEstabelecimentoServlet", urlPatterns = {"/Establishment/EditEstabelecimentoServlet"})
 public class EditEstabelecimentoServlet extends HttpServlet {
 
+    EstabelecimentoTO estabelecimentoTO;
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,7 +37,11 @@ public class EditEstabelecimentoServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        EstabelecimentoTO estabelecimentoTO = new EstabelecimentoDAO().selectByID(ID)
+        this.estabelecimentoTO = (EstabelecimentoTO) request.getSession().getAttribute("establishment_data");
+        
+        request.setAttribute("estabelecimento", estabelecimentoTO);
+        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Establishment/editarEstabelecimento.jsp");
+        requestDispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,6 +71,13 @@ public class EditEstabelecimentoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        this.estabelecimentoTO.setCnpj(Integer.parseInt(request.getParameter("cnpj")));
+        this.estabelecimentoTO.setEmail(request.getParameter("email"));
+        this.estabelecimentoTO.setNome(request.getParameter("nome"));
+        this.estabelecimentoTO.setSenha(request.getParameter("senha"));
+        this.estabelecimentoTO.setTelefone(request.getParameter("telefone"));
+    
+        new EstabelecimentoDAO().updateEstabelecimento(estabelecimentoTO);
     }
 
     /**

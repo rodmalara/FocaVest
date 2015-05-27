@@ -75,14 +75,15 @@ public class LoginServlet extends HttpServlet {
             LoginManager manger = new LoginManager();
             if (manger.isValidLogin(uname, pass)) {;
                 request.setAttribute("uname", uname);
-                dispatcher = request.getRequestDispatcher("/Establishment/menu.html");
-                dispatcher.forward(request,response);
                 
                 HttpSession httpSession = request.getSession();
                 httpSession.setAttribute("establishment_data", 
-                        new EstabelecimentoDAO().selectByEstablishmentName(uname));
+                       new EstabelecimentoDAO().selectByEstablishmentByEmail(uname));
                 
-                response.sendRedirect("/Establishment/menu.html");
+                dispatcher = request.getRequestDispatcher("/Establishment/menu.html");
+                dispatcher.forward(request,response);
+                
+                //response.sendRedirect("/Establishment/menu.html");
             } else {
                 //error login
                 //response.sendRedirect("/login.jsp");

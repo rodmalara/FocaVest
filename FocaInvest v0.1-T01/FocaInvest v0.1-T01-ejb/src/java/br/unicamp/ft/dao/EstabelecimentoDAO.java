@@ -44,6 +44,10 @@ public class EstabelecimentoDAO {
         return (EstabelecimentoTO) session.load(EstabelecimentoTO.class, ID);     
     }
 
+    public EstabelecimentoTO selectByEstablishmentByEmail(String _name){
+        return (EstabelecimentoTO) session.createQuery("from EstabelecimentoTO e where e.email = '" + _name + "'").list().get(0);
+    }
+    
     public List<EstabelecimentoTO> selectListEstabelecimentoByRelevancia(){
        return session.createQuery("from EstabelecimentoTO e order by e.relevancia").list();
     }
