@@ -9,6 +9,7 @@ package br.unicamp.ft.controller;
  *
  * @author rodrigo
  */
+import br.unicamp.ft.dao.EstabelecimentoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -74,10 +75,15 @@ public class LoginServlet extends HttpServlet {
             LoginManager manger = new LoginManager();
             if (manger.isValidLogin(uname, pass)) {;
                 request.setAttribute("uname", uname);
+                
+                HttpSession httpSession = request.getSession();
+                httpSession.setAttribute("establishment_data", 
+                       new EstabelecimentoDAO().selectByEstablishmentByEmail(uname));
+                
                 dispatcher = request.getRequestDispatcher("/Establishment/menu.html");
                 dispatcher.forward(request,response);
-
-                response.sendRedirect("/Establishment/menu.html");
+                
+                //response.sendRedirect("/Establishment/menu.html");
             } else {
                 //error login
                 //response.sendRedirect("/login.jsp");

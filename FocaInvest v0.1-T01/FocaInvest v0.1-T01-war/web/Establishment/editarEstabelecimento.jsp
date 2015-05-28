@@ -1,3 +1,11 @@
+<%-- 
+    Document   : editarEstabelecimento
+    Created on : 25/05/2015, 21:17:19
+    Author     : Matheus
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>   
@@ -24,18 +32,6 @@
 		top:90px;
 		left:350px;
 		border:0px solid #00FF00;
-		}
-		
-		#formulario{
-		
-		margin:0 auto; 
-		width:550px; <!--aqui na largura-->
-		background:#000000; 
-		position:relative; 
-		top:100px; <!--aqui na posicao de cima-->
-		left:5px; <!--aqui na posicao esquerda-->
-		border:0px solid #32CD32;
-		
 		}
 		
 		input,select,textarea{margin:0; padding:0; color:#000000;}
@@ -160,37 +156,35 @@
 		<div class="box">
 			
 			<label>
-			<span>Nome: </span>
-			<input type="text" class="input_text" name="nome" id="name" />
+			<span>Nome do estabelecimento: </span>
+                        <input type="text" class="input_text" name="nome" id="name" value="${requestScope.estabelecimento.nome}" />
 			</label>
 			<label>
-			<span>Usuário: </span>
-				<input type="text" class="input_text" name="nome" id="input_login"/>
-			</label>
+			<!--<span>Usuário: </span>
+                        <input type="text" class="input_text" name="nome" id="input_login" value=""/>
+			</label>-->
 			<label>
 			<span>Senha: </span>
-				<input type="password" class="input_text" name="nome" id="input_login" />
+                        <input type="password" class="input_text" name="nome" id="input_login" value="${requestScope.estabelecimento.senha}"/>
 			</label>
 			<label>
 			<span>Confirmar senha: </span>
-				<input type="password" class="input_text" name="nome" id="input_login" />
+				<input type="password" class="input_text" name="nome" id="input_login" value="${requestScope.estabelecimento.senha}"/>
 			</label>
 			<label>
 			<span>E-mail: </span>
-				<input type="text" class="input_text" name="nome" id="name" />
+                        <input type="text" class="input_text" name="nome" id="name" value="${requestScope.estabelecimento.email}" />
 			</label>
 			<label>
 			<span>CNPJ: </span>
-				<input type="text" class="input_text" name="cnpj" id="input_cnpj"/>
+                        <input type="text" class="input_text" name="cnpj" id="input_cnpj" value="${requestScope.estabelecimento.cnpj}"/>
 			</label>	
 			<label>
 			<span>Telefone: </span>
-				<input type="text" class="input_text" name="role" id="input_cnpj"/>
+				<input type="text" class="input_text" name="role" id="input_cnpj" ${requestScope.estabelecimento.telefone}/>
 			</label>
-			<input type="button" class="button" value="Enviar"/>
-			<input type="button" class="button" value="Cancelar" onclick="abrirIndex()" />
-		
-			
+			<input type="submit" class="button" value="Enviar"/>
+			<input type="button" class="button" value="Cancelar" onclick="abrirIndex()" />	
 		</div>
 		
 			

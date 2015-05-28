@@ -13,7 +13,7 @@
 
     </head>
     <body>
-
+        
         <h1>Bem vindo <%=uname%></h1>
     </body>
 </html>

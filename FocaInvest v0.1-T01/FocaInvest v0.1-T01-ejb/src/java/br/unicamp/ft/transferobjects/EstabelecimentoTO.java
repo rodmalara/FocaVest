@@ -46,7 +46,7 @@ public class EstabelecimentoTO{
     public EstabelecimentoTO(){
     }
     
-    public EstabelecimentoTO(PremiacaoTO _premiacaoTO, int _cnpj, String _nome, String _senha, String _email, String _telefone, int _role){
+    public EstabelecimentoTO(PremiacaoTO _premiacaoTO, int _cnpj, String _nome, String _senha, String _email, String _telefone, int _role, int _relevancia){
      listEvento = new ArrayList<>();
      this.premiacaoTO = _premiacaoTO;
      this.cnpj = _cnpj;
@@ -55,6 +55,7 @@ public class EstabelecimentoTO{
      this.email = _email;
      this.telefone = _telefone;
      this.role = _role;
+     this.relevancia = _relevancia;
     }
     
     public int getEstabelecimentoID() {
