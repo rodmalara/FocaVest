@@ -184,9 +184,7 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
                         </tr>
                     </c:forEach>
                  </tbody>
-                    
-             
-		</table>
+             </table>
 	
 		</form>
 		

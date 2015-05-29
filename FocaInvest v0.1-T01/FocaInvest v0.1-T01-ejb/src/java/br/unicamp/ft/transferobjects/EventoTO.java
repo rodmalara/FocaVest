@@ -50,6 +50,11 @@ public class EventoTO {
     @JoinColumn(name = "estabelecimentoID")
     private EstabelecimentoTO estabelecimentoTO;
 
+    
+    public EventoTO(){
+       
+    }
+    
     public EventoTO(EstabelecimentoTO estabelecimentoTO, String nome, String descricao, int qtdPessoa, Float preco, Date data) throws ParseException {
         //DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
         //Date typedata = (java.util.Date)formatter.parse(data);  
