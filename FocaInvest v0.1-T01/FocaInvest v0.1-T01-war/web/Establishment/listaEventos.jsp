@@ -68,6 +68,29 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 		border-top:1px solid #696969; 
 		}
 		
+		
+	#headTable{
+	
+		background-color: #2E2E2E;
+		color: #FFFFFF;
+		border-bottom: 2px solid #32CD32;
+		border-top: 2px solid #32CD32;
+		
+	
+	
+	}
+	
+	#tamanhoDescricao{
+	
+		height: 1%;
+		width: 50%;
+	
+	
+	}
+	
+
+
+		
 
 	#txtEvento{
 		width: 350px;
@@ -82,16 +105,47 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 	}
 	
 	
-	#botao{ 
-		margin:0 0 10px 0; 
-		float:center;
-		padding:4px 7px; 
-		background:#32CD32;
-		font-weight:bold;
-		border:none;
-		height:32px;
-		width:100px; 
+				
+		#botao1{
+		background-image: url(editar.png); 
+		background-color: transparent; 
+		background-repeat: no-repeat;  
+		background-position: 0px 0px;  
+		border: none;         
+		cursor: pointer;        
+		height: 25px;  
+		width: 25px;
+		padding-left: 16px;     
+		vertical-align: middle;
 		}
+		
+		#botao2{
+		background-image: url(cliente.png); 
+		background-color: transparent; 
+		background-repeat: no-repeat;  
+		background-position: 0px 0px;  
+		border: none;          
+		cursor: pointer;       
+		height: 25px;  
+		width: 25px;
+		padding-left: 16px;    
+		vertical-align: middle;
+		}
+		
+		#botao3{
+		background-image: url(excluir.png); 
+		background-color: transparent; 
+		background-repeat: no-repeat;  
+		background-position: 0px 0px;  
+		border: none;          
+		cursor: pointer;       
+		height: 25px;  
+		width: 25px;
+		padding-left: 16px;    
+		vertical-align: middle;
+		}
+
+
 
 
 </style>
@@ -101,34 +155,37 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 		<h1 id="h1_texto">Lista de eventos</h1>
 		<table bgcolor="#00FF00"><!--acredito que aqui vai um loop para criar as linhas da tabela conforme o número de eventos que vão sendo cadastrados-->
 		
-                 <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Descrição</th>
-                    </tr>
-                 </thead>
+                 <table id="headTable"><!--acredito que aqui vai um loop para criar as linhas da tabela conforme o número de eventos que vão sendo cadastrados-->
+		
+					<!-- <thead>
+						<tr>
+							<th>Nome</th>
+							<th>Descrição</th>
+						</tr>
+					 </thead>-->
+                 <tbody>
+				 <tr>
+					<td>Nome</td>
+					<td>Descrição</td>
+					<td>Editar</td>
+					<td>Clientes</td>
+					<td>Excluir</td>
+				 
+				 </tr>
+        
                  <tbody>
                     <c:forEach items="${users}" var="user">
                         <tr>
-                            <td><c:out value="${user.nome}" /></td>
-                            <td><c:out value="${user.descricao}" /></td>
+                            <td id="tamanhoDescricao"><c:out value="${user.nome}" /></td>
+                            <td id="tamanhoDescricao"><c:out value="${user.descricao}" /></td>
+							<td> <input type="button" class="button" id="botao1" onclick="abrirFormEvento()"/></td>
+							<td> <input type="button" class="button" id="botao2" onclick="abrirListaClientes()"/></td>
+							<td> <input type="button" class="button" id="botao3"/></td>
                         </tr>
                     </c:forEach>
                  </tbody>
                     
-                    
-		<tr id="Tabela"> <!--linha-->
-			<td>
-			<input type="button" class="button" value="Editar" id="botao" onclick="abrirFormEvento()"/>
-			<input type="button" class="button" value="Ver clientes" id="botao" onclick="abrirListaClientes()"/>
-			<input type="button" class="button" value="Excluir" id="botao"/>
-						</td>
-		<tr id="Tabela">
-			<td>
-			
-			
-			</td>
-		
+             
 		</table>
 	
 		</form>
