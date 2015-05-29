@@ -9,6 +9,17 @@
 <html>
 <head>
 
+	<meta charset="utf-8">
+
+	<script type="text/javascript">
+	
+		function eventoCancelar(){
+				
+				location.href = "home.html";
+			}
+			
+	</script>
+	
 
 <style type="text/css">
 
@@ -19,14 +30,15 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 		#formulario{
 		
 		margin:0 auto; 
-		width:1000px; 
+		width:550px; <!--aqui na largura-->
 		background:#000000; 
 		position:relative; 
-		top:100px; 
-		left:200px;
+		top:100px; <!--aqui na posicao de cima-->
+		left:5px; <!--aqui na posicao esquerda-->
 		border:0px solid #32CD32;
 		
 		}
+		
 		
 		div.formulario { 
 		margin:0 auto; 
@@ -51,7 +63,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 		background:#FFFFFF; 
 		border:solid 3px #32CD32;}
 		
-		#input_numPessoas { padding:10px 10px; 
+		#input_numPremio { padding:10px 10px; 
 		width:80px; 
 		background:#FFFFFF; 
 		border:solid 3px #32CD32;}
@@ -103,16 +115,12 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 </head>
 <body>
 
-	<form name="meuForm" method="post" id="formulario">
-	<h1 id="h1_texto">Cadastre seu evento:</h1>
+	<form name="meuForm" method="post" id="formulario" action="InsertPremioServlet">
+	<h1 id="h1_texto">Cadastre o prêmio:</h1>
 	<div class="box">
 			<label>
 			<span>Pontos: </span>
-				<input type="text" class="input_text" name="nome" id="name" />
-			</label>
-			<label>
-			<span>Brinde: </span>
-				<input type="text" class="input_text" name="nome" id="name" />
+				<input type="text" class="" name="pontos" id="input_numPremio" />
 			</label>
 			<label>
 			<span>Nome: </span>
@@ -120,8 +128,8 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 			</label>
 			
 			
-						<input type="button" class="button" value="Enviar"/>
-			<input type="button" class="button" value="Cancelar"/>
+			<input type="submit" class="button" value="Enviar"/>
+			<input type="button" class="button" value="Cancelar" onClick="eventoCancelar()"/>
 	</div>
 	</form>
 

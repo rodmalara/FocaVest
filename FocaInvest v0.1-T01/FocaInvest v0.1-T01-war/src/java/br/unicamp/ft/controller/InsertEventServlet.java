@@ -32,7 +32,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.crypto.Data;
 
-@WebServlet(name = "InsertEventServlet", urlPatterns = "/InsertEventServlet")
+@WebServlet(name = "InsertEventServlet", urlPatterns = "/Establishment/InsertEventServlet")
 public class InsertEventServlet extends HttpServlet {
 
     /**

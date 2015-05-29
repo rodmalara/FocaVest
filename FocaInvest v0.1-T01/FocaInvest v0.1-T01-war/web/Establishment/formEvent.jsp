@@ -1,6 +1,6 @@
 <%-- 
-    Document   : formEvento
-    Created on : 25/05/2015, 22:02:17
+    Document   : formEvent
+    Created on : 29/05/2015, 12:30:18
     Author     : asus
 --%>
 
@@ -8,6 +8,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	
+	<title>FOCA VEST</title>
 
 	<meta charset="utf-8">
 	
@@ -30,14 +32,15 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 		#formulario{
 		
 		margin:0 auto; 
-		width:1000px; 
+		width:550px; <!--aqui na largura-->
 		background:#000000; 
 		position:relative; 
-		top:100px; 
-		left:200px;
+		top:100px; <!--aqui na posicao de cima-->
+		left:5px; <!--aqui na posicao esquerda-->
 		border:0px solid #32CD32;
 		
 		}
+		
 		
 		div.formulario { 
 		margin:0 auto; 
@@ -114,7 +117,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 </head>
 <body>
 
-	<form name="meuForm" method="post" action="InsertEventServlet" id="formulario">
+	<form name="meuForm" method="post" id="formulario" action="InsertEventServlet">
 	<h1 id="h1_texto">Cadastre seu evento:</h1>
 	<div class="box">
 			<label>
