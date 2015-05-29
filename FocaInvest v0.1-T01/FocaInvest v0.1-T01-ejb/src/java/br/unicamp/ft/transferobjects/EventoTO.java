@@ -7,6 +7,9 @@
 package br.unicamp.ft.transferobjects;
 
 import br.unicamp.ft.transferobjects.ConsumidorTO;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.persistence.Column;
@@ -19,6 +22,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.crypto.Data;
 
 /**
  *
@@ -45,6 +49,23 @@ public class EventoTO {
     @ManyToOne
     @JoinColumn(name = "estabelecimentoID")
     private EstabelecimentoTO estabelecimentoTO;
+
+    public EventoTO(EstabelecimentoTO estabelecimentoTO, String nome, String descricao, int qtdPessoa, Float preco, Date data) throws ParseException {
+        //DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+        //Date typedata = (java.util.Date)formatter.parse(data);  
+        
+        this.nome = nome;
+        this.descricao = descricao;
+        this.qtdPessoa = qtdPessoa;
+        //this.data = typedata;
+        this.data = (Date) data;
+        this.preco = preco;
+        this.estabelecimentoTO = estabelecimentoTO;
+    }
+
+    public EventoTO(Object object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     /**
      * @return the estabelecimentoTO
