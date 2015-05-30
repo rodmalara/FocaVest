@@ -1,39 +1,26 @@
-package br.unicamp.ft.controller;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-/**
- *
- * @author Matheus
- */
+package br.unicamp.ft.controller;
 
 import br.unicamp.ft.dao.EstabelecimentoDAO;
-import br.unicamp.ft.dao.EventoDAO;
 import br.unicamp.ft.transferobjects.EstabelecimentoTO;
-import br.unicamp.ft.transferobjects.EventoTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.Float.parseFloat;
-import static java.lang.Float.valueOf;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.crypto.Data;
 
-@WebServlet(name = "InsertEventServlet", urlPatterns = "/Establishment/InsertEventServlet")
-public class InsertEventServlet extends HttpServlet {
+/**
+ *
+ * @author rodrigo
+ */
+@WebServlet(name = "UpdateEstabelecimentoServlet", urlPatterns = {"/Establishment/UpdateEstabelecimentoServlet"})
+public class UpdateEstabelecimentoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -52,10 +39,10 @@ public class InsertEventServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EventoServlet</title>");            
+            out.println("<title>Servlet UpdateEstabelecimentoServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet EventoServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdateEstabelecimentoServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -88,28 +75,15 @@ public class InsertEventServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String strDespesasData = request.getParameter("data");  
-        DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");  
-  
-        Date data;
-        try {
-            data = df.parse (strDespesasData);
-        
-        EventoTO eventoTO;
         EstabelecimentoTO estabelecimentoTO = (EstabelecimentoTO) request.getSession().getAttribute("establishment_data");
-      
-            eventoTO = new EventoTO(
-                    estabelecimentoTO,
-                    request.getParameter("nome"),
-                    request.getParameter("descricao"),
-                    Integer.parseInt(request.getParameter("qtdPessoa")),
-                    Float.valueOf(request.getParameter("preco")), data);
-            
-            new EventoDAO().insertEvento(eventoTO);
-            
-        } catch (ParseException ex) {
-            Logger.getLogger(InsertEventServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        estabelecimentoTO.setCnpj(Integer.parseInt(request.getParameter("cnpj")));
+        estabelecimentoTO.setEmail(request.getParameter("email"));
+        estabelecimentoTO.setNome(request.getParameter("estabelecimento"));
+        estabelecimentoTO.setSenha(request.getParameter("senha"));
+        estabelecimentoTO.setTelefone(request.getParameter("telefone"));
+        new EstabelecimentoDAO().updateEstabelecimento(estabelecimentoTO);
+        processRequest(request, response);
     }
 
     /**
