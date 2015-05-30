@@ -7,7 +7,16 @@
 			<link href="css/bootstrap.css" rel="stylesheet">
 			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script> 
 		
+		<script type="text/javascript">
 		
+			function sair(){
+				
+				session.invalidate();
+                                 response.sendRedirect("index.jsp");
+       
+			}
+			
+		</script>
 		
 		<style type="text/css">	
 body{
@@ -181,7 +190,7 @@ background-color: #000000;
 				<li><a href="#">Gerenciar</a></li>
 			</ul>
 		
-		<li><a href="formExibePerfil.html" target="iframeCorpo">Perfil</a></li>
+		<li><a href="editarEstabelecimento.jsp" target="iframeCorpo">Perfil</a></li>
 		<li></li>
 		<li></li>
 		<li></li>
@@ -189,15 +198,14 @@ background-color: #000000;
 		<li></li>
 		<li></li>
 		
-	<li><a href="index.html">Sair</a></li>
+	<li><a href="index.html" onclick ="">Sair</a></li>
 	<iframe name="iframeCorpo" method="post" id="formularioCorpoCSS">
 	
 	</iframe>
 	
 
 </body>
-
-
+        
 
 
 
