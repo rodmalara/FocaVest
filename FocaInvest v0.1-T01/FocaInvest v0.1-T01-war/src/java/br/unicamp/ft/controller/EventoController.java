@@ -39,22 +39,20 @@ public class EventoController extends HttpServlet {
         String forward="";
         String action = request.getParameter("action");
  
-        /*if (action.equalsIgnoreCase("delete")){
+        if (action.equalsIgnoreCase("delete")){
             String userId = request.getParameter("userId");
-            dao.deleteUser(userId);
+            dao.remove(Integer.parseInt(userId));
             forward = LIST_USER;
-            request.setAttribute("users", dao.getAllUsers());    
-        } else if (action.equalsIgnoreCase("edit")){
+            request.setAttribute("users", dao.selectListEventoByEstabelecimentoID(1));    
+        } /*else if (action.equalsIgnoreCase("edit")){
             forward = INSERT_OR_EDIT;
             String userId = request.getParameter("userId");
             User user = dao.getUserById(userId);
             request.setAttribute("user", user);
-        } else */if (action.equalsIgnoreCase("listUser")){
+        } */else if (action.equalsIgnoreCase("listUser")){
             forward = LIST_USER;
             request.setAttribute("users", dao.selectListEventoByEstabelecimentoID(1));
-        } /*else {
-            forward = INSERT_OR_EDIT;
-        }*/
+        }
  
         RequestDispatcher view = request.getRequestDispatcher(forward);
         view.forward(request, response);

@@ -27,48 +27,17 @@ public class EventoDAO {
     }
 
     public void insertEvento(EventoTO eventoTO) {
-        try{
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
             session.save(eventoTO);
-            session.getTransaction().commit();
-            session.close();
-            HibernateUtil.close();
-        }catch(HibernateException he){
-            he.printStackTrace();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
     }
 
     public void updateEvento(EventoTO eventoTO) {
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
             session.update(eventoTO);
-            session.getTransaction().commit();
-            session.close();
-            HibernateUtil.close();
-        } catch (HibernateException he) {
-            he.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
-    public void remove(EventoTO eventoTO) {
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
+    public void remove(int ID) {
+            EventoTO eventoTO;
+            eventoTO = selectByID(ID);
             session.delete(eventoTO);
-            session.getTransaction().commit();
-            session.close();
-            HibernateUtil.close();
-        } catch (HibernateException he) {
-            he.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public EventoTO selectByID(int ID) {

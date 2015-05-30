@@ -32,7 +32,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 		#formulario{
 		
 		margin:0 auto; 
-		width:550px; <!--aqui na largura-->
+		width:550px;
 		background:#000000; 
 		position:relative; 
 		top:100px; <!--aqui na posicao de cima-->
