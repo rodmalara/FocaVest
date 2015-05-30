@@ -9,6 +9,7 @@ package br.unicamp.ft.transferobjects;
  *
  * @author Matheus
  */
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -29,13 +30,39 @@ public class PremiacaoTO {
     private int pontoBrinde;
     @Column(name = "C_Nome")
     private String nome;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "C_DataInicio")
+    private Date dataInicio;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "C_DataFinal")
+    private Date dataFinal;
     
     public PremiacaoTO() {
     }
 
-    public PremiacaoTO(String _nome, int _pontoBrinde) {
-        this.nome = _nome;
-        this.pontoBrinde = _pontoBrinde;
+    public PremiacaoTO(int pontoBrinde, String nome, Date dataInicio, Date dataFinal) {
+        this.pontoBrinde = pontoBrinde;
+        this.nome = nome;
+        this.dataInicio = (Date) dataInicio;
+        this.dataFinal = (Date) dataFinal;
+    }
+
+
+
+    public Date getDataInicio() {
+        return dataInicio;
+    }
+
+    public void setDataInicio(Date dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public Date getDataFinal() {
+        return dataFinal;
+    }
+
+    public void setDataFinal(Date dataFinal) {
+        this.dataFinal = dataFinal;
     }
 
     public void setPremiacaoID(int premiacaoID) {

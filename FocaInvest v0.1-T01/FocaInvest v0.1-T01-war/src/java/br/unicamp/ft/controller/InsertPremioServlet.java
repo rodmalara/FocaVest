@@ -17,6 +17,12 @@ import br.unicamp.ft.transferobjects.EstabelecimentoTO;
 import br.unicamp.ft.transferobjects.PremiacaoTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -78,12 +84,29 @@ public class InsertPremioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String strDespesasDataInicio = request.getParameter("dataInicio");  
+        String strDespesasDataFinal = request.getParameter("dataFinal");  
+        DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");  
+        
+        Date dataInicio, dataFinal;
+       
+        try {
+            dataInicio = df.parse (strDespesasDataInicio);
+            dataFinal = df.parse (strDespesasDataFinal);
+        
         PremiacaoTO premiacaoTO = new PremiacaoTO(
+                Integer.parseInt(request.getParameter("pontos")),
                 request.getParameter("nome"),
-                Integer.parseInt(request.getParameter("pontos"))
-                );
+                dataInicio,
+                dataFinal              
+        );
         new PremiacaoDAO().insertPremiacao(premiacaoTO);
-    }
+    
+        } catch (ParseException ex) {
+            Logger.getLogger(InsertPremioServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
 
     /**
      * Returns a short description of the servlet.
