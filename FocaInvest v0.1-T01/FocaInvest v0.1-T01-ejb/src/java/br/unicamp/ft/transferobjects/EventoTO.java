@@ -67,6 +67,10 @@ public class EventoTO {
         this.preco = preco;
         this.estabelecimentoTO = estabelecimentoTO;
     }
+    
+    public EventoTO(){
+    
+    }
 
     public EventoTO(Object object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

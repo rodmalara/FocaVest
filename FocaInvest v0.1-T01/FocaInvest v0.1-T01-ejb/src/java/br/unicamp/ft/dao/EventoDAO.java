@@ -47,6 +47,6 @@ public class EventoDAO {
     
     public List<EventoTO> selectListEventoByEstabelecimentoID(int _id){
         return session.
-            createQuery("from EventoTO e where e.estabelecimentoTO.id = "+ _id).list();
+            createQuery("from EventoTO e where e.estabelecimentoTO.id = "+ _id +" order by C_Nome asc").list();
     }
 }
