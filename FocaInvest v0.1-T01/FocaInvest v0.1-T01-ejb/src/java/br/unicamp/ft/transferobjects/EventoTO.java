@@ -6,11 +6,7 @@
 
 package br.unicamp.ft.transferobjects;
 
-import br.unicamp.ft.transferobjects.ConsumidorTO;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,7 +18,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.crypto.Data;
 
 /**
  *
@@ -68,9 +63,6 @@ public class EventoTO {
         this.estabelecimentoTO = estabelecimentoTO;
     }
     
-    public EventoTO(){
-    
-    }
 
     public EventoTO(Object object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

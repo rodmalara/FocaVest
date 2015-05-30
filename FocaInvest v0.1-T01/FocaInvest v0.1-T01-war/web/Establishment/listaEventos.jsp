@@ -155,14 +155,7 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 		<h1 id="h1_texto">Lista de eventos</h1>
 		<table bgcolor="#00FF00"><!--acredito que aqui vai um loop para criar as linhas da tabela conforme o número de eventos que vão sendo cadastrados-->
 		
-                 <table id="headTable"><!--acredito que aqui vai um loop para criar as linhas da tabela conforme o número de eventos que vão sendo cadastrados-->
-		
-					<!-- <thead>
-						<tr>
-							<th>Nome</th>
-							<th>Descrição</th>
-						</tr>
-					 </thead>-->
+                 <table id="headTable">
                  <tbody>
 				 <tr>
 					<td>Nome</td>

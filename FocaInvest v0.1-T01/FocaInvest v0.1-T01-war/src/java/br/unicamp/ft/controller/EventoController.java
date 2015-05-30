@@ -9,17 +9,11 @@ package br.unicamp.ft.controller;
  *
  * @author rodrigo
  */
-import br.unicamp.ft.dao.EstabelecimentoDAO;
 import br.unicamp.ft.dao.EventoDAO;
-import br.unicamp.ft.transferobjects.EstabelecimentoTO;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
  
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,7 +33,7 @@ public class EventoController extends HttpServlet {
         String forward="";
         String action = request.getParameter("action");
  
-        if (action.equalsIgnoreCase("delete")){
+       if (action.equalsIgnoreCase("delete")){
             String userId = request.getParameter("userId");
             dao.remove(Integer.parseInt(userId));
             forward = LIST_USER;

@@ -35,8 +35,8 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 		width:550px;
 		background:#000000; 
 		position:relative; 
-		top:100px; <!--aqui na posicao de cima-->
-		left:5px; <!--aqui na posicao esquerda-->
+		top:100px; 
+		left:5px; 
 		border:0px solid #32CD32;
 		
 		}
