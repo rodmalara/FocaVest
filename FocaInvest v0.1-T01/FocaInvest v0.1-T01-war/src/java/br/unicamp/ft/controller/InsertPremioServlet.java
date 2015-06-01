@@ -88,6 +88,7 @@ public class InsertPremioServlet extends HttpServlet {
         String strDespesasDataInicio = request.getParameter("dataInicio");  
         String strDespesasDataFinal = request.getParameter("dataFinal");  
         DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");  
+        EstabelecimentoTO estabelecimentoTO = (EstabelecimentoTO) request.getSession().getAttribute("establishment_data");
         
         Date dataInicio, dataFinal;
        
@@ -96,6 +97,7 @@ public class InsertPremioServlet extends HttpServlet {
             dataFinal = df.parse (strDespesasDataFinal);
         
         PremiacaoTO premiacaoTO = new PremiacaoTO(
+                estabelecimentoTO,
                 Integer.parseInt(request.getParameter("pontos")),
                 request.getParameter("nome"),
                 dataInicio,

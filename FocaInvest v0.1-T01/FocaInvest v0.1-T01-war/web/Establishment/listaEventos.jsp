@@ -172,10 +172,9 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
                         <tr>
                             <td id="tamanhoDescricao"><c:out value="${user.nome}" /></td>
                             <td id="tamanhoDescricao"><c:out value="${user.descricao}" /></td>
-							<td> <input type="button" class="button" id="botao1" onclick="abrirFormEvento()"/></td>
+							<td> <a id="botao1" href="EditEventoServlet?action=<c:out value="${user.eventoID}"/>"></a></td>
 							<td> <input type="button" class="button" id="botao2" onclick="abrirListaClientes()"/></td>
-							<td> <input type="button" class="button" id="botao3" href="EventoController?action=delete&userId=<c:out value="${user.eventoID}"/>"/> </td>
-                                                        <td><a href="EventoController?action=delete&userId=<c:out value="${user.eventoID}"/>">Delete</a></td>
+                                                        <td><a id="botao3" href="EventoController?action=delete&userId=<c:out value="${user.eventoID}"/>"></a></td>
                         </tr>
                     </c:forEach>
                  </tbody>

@@ -1,18 +1,14 @@
-package br.unicamp.ft.controller;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package br.unicamp.ft.controller;
 
-/**
- *
- * @author Matheus
- */
-
-import br.unicamp.ft.dao.EstabelecimentoDAO;
+import br.unicamp.ft.dao.ConsumidorDAO;
+import br.unicamp.ft.dao.EventoDAO;
 import br.unicamp.ft.transferobjects.EstabelecimentoTO;
+import br.unicamp.ft.transferobjects.EventoTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -22,9 +18,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "InsertEstabelecimentoServlet", urlPatterns = "/Establishment/InsertEstabelecimentoServlet")
-public class InsertEstabelecimentoServlet extends HttpServlet {
+/**
+ *
+ * @author rodrigo
+ */
+@WebServlet(name = "EditEventoServlet", urlPatterns = {"/Establishment/EditEventoServlet"})
+public class EditEventoServlet extends HttpServlet {
 
+    EventoTO eventoTO;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,19 +37,13 @@ public class InsertEstabelecimentoServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EstabelecimentoServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet EstabelecimentoServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        
+        String action = request.getParameter("action");   
+        eventoTO = new EventoDAO().selectByID(Integer.parseInt(action));
+        
+        request.setAttribute("evento", eventoTO);
+        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Establishment/editarEvento.jsp");
+        requestDispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -77,18 +72,7 @@ public class InsertEstabelecimentoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        EstabelecimentoTO estabelecimentoTO = new EstabelecimentoTO(null, 
-                Integer.parseInt(request.getParameter("cnpj").toString()),
-                request.getParameter("estabelecimento"), 
-                request.getParameter("senha"), 
-                request.getParameter("email"), 
-                request.getParameter("telefone"), 
-                2,
-                1);
-        new EstabelecimentoDAO().insertEstabelecimento(estabelecimentoTO);
-        
-        RequestDispatcher view = request.getRequestDispatcher("Establishment/index.html");
-        view.forward(request, response);
+        processRequest(request, response);
     }
 
     /**

@@ -111,28 +111,28 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 </head>
 <body>
 
-	<form name="meuForm" method="post" id="formulario">
+	<form name="meuForm" method="post" id="formulario" action="EditEventoServlet">
 	<h1 id="h1_texto">Atualize seu evento:</h1>
 	<div class="box">
 			<label>
 			<span>Nome: </span>
-				<input type="text" class="input_text" name="nome" id="name" />
+				<input type="text" class="input_text" name="nome" id="name" value ="${requestScope.nome}"/>
 			</label>
 			<label>
-			<span>DescriÃ§Ã£o: </span>
-				<textarea cols="30" rows="40" id="input_descricao" /></textarea>
+			<span>Descrição: </span>
+				<textarea cols="30" rows="40" id="input_descricao" value ="${requestScope.descricao}"/></textarea>
 			</label>
 			<label>
-			<span>NÃºmero de pessoas: </span>
-				<input type="text" class="input_text" name="nome" id="input_numPessoas" />
+			<span>Número de pessoas: </span>
+				<input type="text" class="input_text" name="nome" id="input_numPessoas" value ="${requestScope.qtdPessoa}"/>
 			</label>
 			<label>
 			<span>Data: </span>
-				<input type="text" class="input_text" name="nome" id="input_data" />
+				<input type="text" class="input_text" name="nome" id="input_data" value ="${requestScope.data}"/>
 			</label>
 			<label>
-			<span>PreÃ§o</span>
-				<input type="text" class="input_text" name="nome" id="input_data" />
+			<span>Preço</span>
+				<input type="text" class="input_text" name="nome" id="input_data" value ="${requestScope.preco}"/>
 			</label>
 			<input type="button" class="button" value="Enviar"/>
 			<input type="button" class="button" value="Voltar" onClick="eventoVoltar()"/>
@@ -142,4 +142,4 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 
 </body>
 
-</html>
+</html> ?

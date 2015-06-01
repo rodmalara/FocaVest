@@ -36,15 +36,19 @@ public class PremiacaoTO {
     @Temporal(TemporalType.DATE)
     @Column(name = "C_DataFinal")
     private Date dataFinal;
+    @ManyToOne
+    @JoinColumn(name = "estabelecimentoID")
+    private EstabelecimentoTO estabelecimentoTO;
     
     public PremiacaoTO() {
     }
 
-    public PremiacaoTO(int pontoBrinde, String nome, Date dataInicio, Date dataFinal) {
+    public PremiacaoTO(EstabelecimentoTO estabelecimentoTO, int pontoBrinde, String nome, Date dataInicio, Date dataFinal) {
         this.pontoBrinde = pontoBrinde;
         this.nome = nome;
         this.dataInicio = (Date) dataInicio;
         this.dataFinal = (Date) dataFinal;
+        this.estabelecimentoTO = estabelecimentoTO;
     }
 
 
