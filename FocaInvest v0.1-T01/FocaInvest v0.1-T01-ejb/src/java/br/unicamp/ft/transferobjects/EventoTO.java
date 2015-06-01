@@ -6,7 +6,9 @@
 
 package br.unicamp.ft.transferobjects;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -120,8 +122,13 @@ public class EventoTO {
         return data;
     }
 
-    public void setData(Date Data) {
-        this.data = Data;
+    public void setData(String Data) throws ParseException {
+        String strDespesasData = Data;
+        DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");  
+  
+        Date data;
+        data = df.parse (strDespesasData);
+        this.data = data;
     }
 
     public float getPreco() {

@@ -32,7 +32,6 @@ public class EventoController extends HttpServlet {
         String forward="";
         String action = request.getParameter("action");
         EstabelecimentoTO estabelecimentoTO = (EstabelecimentoTO) request.getSession().getAttribute("establishment_data");
-      
  
        if (action.equalsIgnoreCase("delete")){
             String userId = request.getParameter("userId");

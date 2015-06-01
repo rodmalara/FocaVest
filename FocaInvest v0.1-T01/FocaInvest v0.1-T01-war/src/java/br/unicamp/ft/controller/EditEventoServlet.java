@@ -11,6 +11,9 @@ import br.unicamp.ft.transferobjects.EstabelecimentoTO;
 import br.unicamp.ft.transferobjects.EventoTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -71,8 +74,22 @@ public class EditEventoServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+        throws ServletException, IOException {           
+        String action = request.getParameter("action");
+        eventoTO = new EventoDAO().selectByID(Integer.parseInt(action));
+        try {
+            eventoTO.setData(request.getParameter("data"));
+        } catch (ParseException ex) {
+            Logger.getLogger(EditEventoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //eventoTO.setDescricao(request.getParameter("descricao"));
+        eventoTO.setNome(request.getParameter("nome"));
+        eventoTO.setPreco(Float.valueOf(request.getParameter("preco")));
+        eventoTO.setQtdPessoa(Integer.parseInt(request.getParameter("qtdPessoa")));
+        
+        new EventoDAO().updateEvento(eventoTO);
+        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Establishment/home.html");
+        requestDispatcher.forward(request, response); 
     }
 
     /**
