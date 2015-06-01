@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -167,7 +168,7 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 </style>
 
 <body>
-	<form id="formulario" style="display:block;">
+	<form id="formulario" style="display:block;" action="PremioController">
 		<h1 id="h1_texto">Lista de eventos</h1>
 		<table bgcolor="#00FF00"><!--acredito que aqui vai um loop para criar as linhas da tabela conforme o número de eventos que vão sendo cadastrados-->
 		
@@ -189,16 +190,25 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 				 </tr>
         
                  <tbody>
-                   
+                   <!--
                         <tr>
                             <td widht="50px">29/05/2015</td>
 							<td>04/06/2015</td>
 							<td id="tamanhoNome">Mauazinho</td>
 							<td>10</td>
                             <td> <input type="button" class="button" id="botao3"> </td>
-                            
+                    -->  
                         </tr>
-                   
+                    <c:forEach items="${users}" var="user">
+                        <tr>
+                            <td id="tamanhoDescricao"><c:out value="${user.pontoBrinde}" /></td>
+                            <td id="tamanhoDescricao"><c:out value="${user.nome}" /></td>
+							
+							<td> <input type="button" class="button" id="botao3" href="PremioController?action=delete&userId=<c:out value="${user.premiacaoID}"/>"/> </td>
+                                                        <td><a href="PremioController?action=delete&userId=<c:out value="${user.premiacaoID}"/>">Delete</a></td>
+                                                       
+                        </tr>
+                    </c:forEach>
                  </tbody>
              </table>
 	
