@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class PremioController extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2L;
     private static String LIST_BRINDES = "/Establishment/listaPremios.jsp";
     private PremiacaoDAO dao;
  
@@ -41,12 +41,8 @@ public class PremioController extends HttpServlet {
             dao.remove(Integer.parseInt(userId));
             forward = LIST_BRINDES;
             request.setAttribute("users", dao.selectListPremiacaoByEstabelecimentoID(estabelecimentoTO.getEstabelecimentoID()));    
-        } /*else if (action.equalsIgnoreCase("edit")){
-            forward = INSERT_OR_EDIT;
-            String userId = request.getParameter("userId");
-            User user = dao.getUserById(userId);
-            request.setAttribute("user", user);
-        } */else if (action.equalsIgnoreCase("listUser")){
+        } 
+       else if (action.equalsIgnoreCase("listUser")){
             forward = LIST_BRINDES;
             dao = new PremiacaoDAO();
             request.setAttribute("users", dao.selectListPremiacaoByEstabelecimentoID(estabelecimentoTO.getEstabelecimentoID()));

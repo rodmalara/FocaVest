@@ -190,22 +190,13 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 				 </tr>
         
                  <tbody>
-                   <!--
-                        <tr>
-                            <td widht="50px">29/05/2015</td>
-							<td>04/06/2015</td>
-							<td id="tamanhoNome">Mauazinho</td>
-							<td>10</td>
-                            <td> <input type="button" class="button" id="botao3"> </td>
-                    -->  
+      
                         </tr>
                     <c:forEach items="${users}" var="user">
                         <tr>
                             <td id="tamanhoDescricao"><c:out value="${user.pontoBrinde}" /></td>
-                            <td id="tamanhoDescricao"><c:out value="${user.nome}" /></td>
-							
-							<td> <input type="button" class="button" id="botao3" href="PremioController?action=delete&userId=<c:out value="${user.premiacaoID}"/>"/> </td>
-                                                        <td><a href="PremioController?action=delete&userId=<c:out value="${user.premiacaoID}"/>">Delete</a></td>
+                            <td id="nome"><c:out value="${user.nome}" /></td>
+                                                        <td><a id="botao3" href="PremioController?action=delete&userId=<c:out value="${user.premiacaoID}"/>">Delete</a></td>
                                                        
                         </tr>
                     </c:forEach>

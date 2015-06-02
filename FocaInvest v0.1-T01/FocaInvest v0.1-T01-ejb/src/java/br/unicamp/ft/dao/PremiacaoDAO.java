@@ -21,14 +21,12 @@ import org.hibernate.Session;
 public class PremiacaoDAO {
     private Session session;
             
-    public PremiacaoDAO(){}
+    public PremiacaoDAO(){
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+    }
     
     public void insertPremiacao(PremiacaoTO _EventoTO){
-        session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
         session.save(_EventoTO);
-        session.getTransaction().commit();
-        HibernateUtil.close();
     }  
     
     public PremiacaoTO selectByID(int ID) {

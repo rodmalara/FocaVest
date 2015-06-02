@@ -39,12 +39,8 @@ public class EventoController extends HttpServlet {
             dao.remove(Integer.parseInt(userId));
             forward = LIST_USER;
             request.setAttribute("users", dao.selectListEventoByEstabelecimentoID(estabelecimentoTO.getEstabelecimentoID()));    
-        } /*else if (action.equalsIgnoreCase("edit")){
-            forward = INSERT_OR_EDIT;
-            String userId = request.getParameter("userId");
-            User user = dao.getUserById(userId);
-            request.setAttribute("user", user);
-        } */else if (action.equalsIgnoreCase("listUser")){
+        } 
+       else if (action.equalsIgnoreCase("listUser")){
             forward = LIST_USER;
             dao = new EventoDAO();
             request.setAttribute("users", dao.selectListEventoByEstabelecimentoID(estabelecimentoTO.getEstabelecimentoID()));
