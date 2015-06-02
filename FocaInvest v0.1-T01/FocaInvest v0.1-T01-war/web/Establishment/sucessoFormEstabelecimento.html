@@ -1,0 +1,158 @@
+<%-- 
+    Document   : formEstabelecimento.jsp
+    Created on : 25/05/2015, 19:55:23
+    Author     : Matheus
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title>FOCA VEST</title>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/jquery.alerts.css" rel="stylesheet" type="text/css">
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery.alerts.js"></script>        
+        <script>
+           			
+		function abreLogin(){ 
+		location.href="index.html"; 
+		} 		
+		
+		</script>
+		
+		<style type="text/css">
+		
+		*{ margin:0; padding:0;}
+		
+		body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
+		
+		form{
+		width:550px;
+		position:relative;
+		top:90px;
+		left:350px;
+		border:0px solid #00FF00;
+		}
+		
+		input,select,textarea{margin:0; padding:0; color:#000000;}
+		
+		
+		#textoSucesso { 
+		color:#32CD32; 
+		align: center;
+		position:relative;
+		bottom:60px;
+		left:40px;
+		font-size:25px; 
+		padding:10px 0 10px 10px; 
+		border-bottom:0px solid #696969; 
+		border-top:0px solid #696969; } 
+
+		div.box{
+		
+		position:relative;
+		bottom:60px;
+		left:50px;
+		
+		}
+		
+		#botao{
+		
+		margin:0 0 10px 0; 
+		float:center;
+		background:#32CD32;
+		font-weight:bold;
+		border:none;
+		height:32px;
+		position: relative; 
+		top:10px; 
+		left:170px; 
+		width:100px; 
+		
+		
+		}
+		
+		
+		div.box label { 
+		width:100%;
+		display: block; 
+		position:relative;
+		
+		background:#000000; 
+		border-top:1px solid #000000; 
+		border-bottom:1px solid #000000; 
+		padding:10px 0 10px 0; } 
+
+		div.box label span { 
+		display: block; 
+		color:#BDBDBD; 
+		font-size:12px; 
+		float:left; 
+		width:100px; 
+		text-align:right; 
+		padding:5px 20px 0 0; } 
+
+		.img-200-200 {
+		position:relative;
+		left:600px;
+		display: flex;
+		align-items: center;
+		justify-content: top;
+		flex-direction: column;	
+		width: 100px;
+		height: 100px;}
+		
+		.img-barra-1{
+		
+		position:relative;
+		left:8px;
+		bottom: 60px;
+		display: flex;
+		align-items: center;
+		justify-content: top;
+		flex-direction: column;	
+		width: 550px;
+		height: 10px;
+		
+		}
+		
+		.img-barra-2{
+		
+		position:relative;
+		left:730px;
+		bottom: 70px;
+		display: flex;
+		align-items: center;
+		justify-content: top;
+		flex-direction: column;	
+		width: 625px;
+		height: 10px;
+		
+		}
+		
+				
+		</style>
+		
+		
+	</head>
+	
+<body>
+
+	<div class="head">
+		<img class="img-200-200" src="caneca.jpg"/>
+		<img class="img-barra-1" src="barra.jpg"/>
+		<img class="img-barra-2" src="barra.jpg"/>
+	</div>
+
+    <form name="f1" method="post" id="formulario" action="InsertEstabelecimentoServlet">
+	
+		<p id="textoSucesso"> Estabelecimento cadastrado com sucesso!<br />
+								Clique em login para continuar. </br>
+								<input type="button" id="botao" value="Log in" onClick="abreLogin()">
+			
+	</form>
+
+</body>	
+</html>
