@@ -21,7 +21,7 @@ import org.junit.Test;
 
 
 /**
- *
+h *
  * @author Matheus
  */
 
@@ -31,9 +31,9 @@ public class EstabelecimentoTest {
   
     @Test
     public void InsertEstabelecimentoTest(){
-      EstabelecimentoTO estabelecimentoTO = new EstabelecimentoTO(new PremiacaoTO("Matheus Florêncio", 20), 11111111, "Fuxico", "root", "bardofuxico@gmail.com", "33119922", 1);
-      estabelecimentoTO.setRelevancia(0);
-      new EstabelecimentoDAO().insertEstabelecimento(estabelecimentoTO);
+//      EstabelecimentoTO estabelecimentoTO = new EstabelecimentoTO(new PremiacaoTO("Matheus Florêncio", 20), 11111111, "Fuxico", "root", "bardofuxico@gmail.com", "33119922", 1);
+  //    estabelecimentoTO.setRelevancia(0);
+    //  new EstabelecimentoDAO().insertEstabelecimento(estabelecimentoTO);
     }
     
     @Test
@@ -74,9 +74,9 @@ public class EstabelecimentoTest {
     
     public void InsertManyEstabelecimentosTest(int nums){
       for(int i=0; i<nums; i++){
-          EstabelecimentoTO estabelecimentoTO = new EstabelecimentoTO(new PremiacaoTO("Matheus Florêncio", 20), 11111111, "Fuxico", "root", "bardofuxico@gmail.com", "33119922", 1);
-          estabelecimentoTO.setRelevancia(i);
-          new EstabelecimentoDAO().insertEstabelecimento(estabelecimentoTO);
+//          EstabelecimentoTO estabelecimentoTO = new EstabelecimentoTO(new PremiacaoTO("Matheus Florêncio", 20), 11111111, "Fuxico", "root", "bardofuxico@gmail.com", "33119922", 1);
+  ///        estabelecimentoTO.setRelevancia(i);
+     //     new EstabelecimentoDAO().insertEstabelecimento(estabelecimentoTO);
       }
     }
     

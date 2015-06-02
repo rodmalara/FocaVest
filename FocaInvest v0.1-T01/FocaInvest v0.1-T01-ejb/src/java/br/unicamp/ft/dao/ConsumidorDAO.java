@@ -9,7 +9,6 @@ import org.hibernate.criterion.Restrictions;
 
 public class ConsumidorDAO {
     private Session session;
-    private Transaction trans;
             
     public ConsumidorDAO(){
         session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -34,45 +33,19 @@ public class ConsumidorDAO {
     }
 
     public void update(ConsumidorTO consumidorTO) {
-	try {
-	session = HibernateUtil.getSessionFactory().openSession();
-	session.beginTransaction();
 	session.update(consumidorTO);
-	session.getTransaction().commit();
-	HibernateUtil.close();
-	} catch (HibernateException he) {
-            he.printStackTrace();
-	} catch (Exception e) {
-            e.printStackTrace();
-	}
     }
 
     public void remove(ConsumidorTO consumidorTO) {
-    	try {
-        	session = HibernateUtil.getSessionFactory().openSession();
-		session.beginTransaction();
-		session.delete(consumidorTO);
-		session.getTransaction().commit();
-		HibernateUtil.close();
-	} catch (HibernateException he) {
-		he.printStackTrace();
-	} catch (Exception e) {
-		e.printStackTrace();
-    	}
+        session.delete(consumidorTO);
     }
     
     public ConsumidorTO selectByID(int ID) {
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            ConsumidorTO consumidorTO = (ConsumidorTO) session.load(ConsumidorTO.class, ID);
-            HibernateUtil.close();
-            return consumidorTO;
-        } catch (HibernateException he) {
-            he.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+        return (ConsumidorTO) session.load(ConsumidorTO.class, ID);
+    }
+    
+    public ConsumidorTO selectCustomerByEmail(String _email){
+        return (ConsumidorTO) 
+                session.createQuery("FROM ConsumidorTO c where c.email = '" + _email + "'").list().get(0);
     }
 }

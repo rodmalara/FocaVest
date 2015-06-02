@@ -55,5 +55,4 @@ public class EstabelecimentoDAO {
     public List<EstabelecimentoTO> selectListEstabelecimento(){
        return session.createQuery("from EstabelecimentoTO").list();
     }
-    
 }

@@ -20,33 +20,20 @@ import org.hibernate.Session;
 public class PremiacaoDAO {
     private Session session;
             
-    public PremiacaoDAO(){}
+    public PremiacaoDAO(){
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+    }
     
     public void insertPremiacao(PremiacaoTO _EventoTO){
-        session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
         session.save(_EventoTO);
-        session.getTransaction().commit();
-        HibernateUtil.close();
-    }  
+    }
     
     public PremiacaoTO selectByID(int ID) {
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            PremiacaoTO premiacaoTO = (PremiacaoTO) session.load(PremiacaoTO.class, ID);
-            HibernateUtil.close();
-            return premiacaoTO;
-        } catch (HibernateException he) {
-            he.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+        PremiacaoTO premiacaoTO = (PremiacaoTO) session.load(PremiacaoTO.class, ID);
+        return premiacaoTO;
     }
     
     public void selectPremiacaoByNomeConsumidor(String _nomeConsumidor){
-        session.beginTransaction();
         Query query = session.createQuery(
                 "FROM Premiacao premiacao "
                         + "LEFT JOIN premiacao.estabelecimentoID estabelecimento "
@@ -56,7 +43,6 @@ public class PremiacaoDAO {
     }
     
     public void selectPremiacaoByEstabelecimento(String _nomeEstabelecimento){
-        session.beginTransaction();
         Query query = session.createQuery(
                 "FROM Premiacao premiacao "
                         + "LEFT JOIN premiacao.estabelecimentoID estabelecimento "

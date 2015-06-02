@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Matheus
  */
-@WebServlet(name = "SearchListBarServlet", urlPatterns = {"/SearchListBarServlet"})
+@WebServlet(name = "SearchListBarServlet", urlPatterns = {"/Customer/SearchListBarServlet"})
 public class SearchListBarServlet extends HttpServlet {
 
     HttpSession httpSession;
@@ -48,6 +48,7 @@ public class SearchListBarServlet extends HttpServlet {
             eventMap.put(_estabelecimentoTO.getEstabelecimentoID(), 
                     new EventoDAO().selectListEventoByEstabelecimentoID(_estabelecimentoTO.getEstabelecimentoID()));
         }
+        
         request.setAttribute("barList", barList);
         request.setAttribute("eventMap", eventMap);
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Customer/Home.jsp");

@@ -4,6 +4,7 @@
     Author     : Matheus
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <head>
@@ -82,7 +83,8 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <form id="login-form"  method="post" role="form" style="display: block;">
+                                <form id="login-form"  method="post" role="form" style="display: block;" action="LoginCustomerServlet">
+                                    <p style="color: red; margin-left: 50px;"><c:out value="${requestScope.errorMessage}"></c:out></p>
                                     <div class="form-group">
                                         <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
                                     </div>

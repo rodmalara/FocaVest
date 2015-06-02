@@ -12,12 +12,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -49,11 +52,12 @@ public class EventoTO {
     @ManyToOne
     @JoinColumn(name = "estabelecimentoID")
     private EstabelecimentoTO estabelecimentoTO;
-
+    @ManyToMany(mappedBy="ListaReservas")
+    private Set<ConsumidorTO> listConsumidores = new HashSet<>();;
+    
     public EventoTO(EstabelecimentoTO estabelecimentoTO, String nome, String descricao, int qtdPessoa, Float preco, Date data) throws ParseException {
         //DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
-        //Date typedata = (java.util.Date)formatter.parse(data);  
-        
+        //Date typedata = (java.util.Date)formatter.parse(data);          
         this.nome = nome;
         this.descricao = descricao;
         this.qtdPessoa = qtdPessoa;
@@ -63,9 +67,7 @@ public class EventoTO {
         this.estabelecimentoTO = estabelecimentoTO;
     }
 
-    public EventoTO(Object object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public EventoTO() {}
 
     /**
      * @return the estabelecimentoTO
@@ -129,6 +131,14 @@ public class EventoTO {
 
     public void setPreco(float preco) {
         this.preco = preco;
+    }
+    
+    public Set<ConsumidorTO> getListConsumidores() {
+        return listConsumidores;
+    }
+
+    public void setListConsumidores(Set<ConsumidorTO> listConsumidores) {
+        this.listConsumidores = listConsumidores;
     }
 }
 

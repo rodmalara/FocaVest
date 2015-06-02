@@ -7,7 +7,9 @@
 package br.unicamp.ft.transferobjects;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -40,14 +42,17 @@ public class EstabelecimentoTO{
     private int role;
     @Column(name = "C_Relevancia")
     private int relevancia;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<EventoTO> listEvento;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<EventoTO> listEvento = new ArrayList<>();;
+    @Column(name = "C_Descricao")
+    private String descricao;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<PontosTO> listPontos = new HashSet<>();
     
     public EstabelecimentoTO(){
     }
     
     public EstabelecimentoTO(PremiacaoTO _premiacaoTO, int _cnpj, String _nome, String _senha, String _email, String _telefone, int _role, int _relevancia){
-     listEvento = new ArrayList<>();
      this.premiacaoTO = _premiacaoTO;
      this.cnpj = _cnpj;
      this.nome = _nome;
@@ -148,5 +153,21 @@ public class EstabelecimentoTO{
      */
     public void setListEvento(List<EventoTO> listEvento) {
         this.listEvento = listEvento;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Set<PontosTO> getListPontos() {
+        return listPontos;
+    }
+
+    public void setListPontos(Set<PontosTO> listPontos) {
+        this.listPontos = listPontos;
     }
 }

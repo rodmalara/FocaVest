@@ -28,16 +28,18 @@ public class HibernateSessionFilter implements Filter {
     
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        sessionFactory = HibernateUtil.getSessionFactory();
+      
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        sessionFactory = HibernateUtil.getSessionFactory();
         sessionFactory.getCurrentSession().beginTransaction();
         
         chain.doFilter(request, response);
         
         sessionFactory.getCurrentSession().getTransaction().commit();
+        sessionFactory.getCurrentSession().close();
     }
     
     @Override

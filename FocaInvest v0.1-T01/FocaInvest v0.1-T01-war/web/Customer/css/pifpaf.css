@@ -278,6 +278,36 @@ hr {
     }
 }
 
+.header-establishment{
+    margin-top: 10px;
+    color: white;
+    font-size: 24px;
+}
+
+.description-establishment{
+    margin-top: 10px;
+    color: white;
+    font-size: 18px;
+}
+
+.event-title{
+    margin-top: 10px;
+    color: white;
+    font-size: 14px;
+}
+
+.event-group{
+    margin-top: 20px;
+}
+
+.img-establishment{
+    
+}
+
+.event-description{
+    color: white;
+}
+
 @media screen and (min-width:1200px) {
     .box:after {
         content: '';
@@ -285,3 +315,4 @@ hr {
         clear: both;
     }
 }
+

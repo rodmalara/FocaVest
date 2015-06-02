@@ -142,19 +142,21 @@
 		height: 10px;
 		
 		}
-		
+		.profile-img{
+                    margin-top: 30px;
+                    margin-left: 250px;
+                    margin-bottom: 20px;
+                    height: 150px;
+                    width: 150px;
+                }
 				
 		</style>
-		
-		
-	</head>
-	
+        </head>
 <body>
-
 	<form name="meuForm" method="post" id="formulario">
 	<h1 id="h1_texto">Atualize seu estabelecimento:</h1>
-		<div class="box">
-			
+        <img class="profile-img" src="http://www.w3schools.com/html/pic_mountain.jpg" /> 
+                        <div class="box">
 			<label>
 			<span>Nome do estabelecimento: </span>
                         <input type="text" class="input_text" name="nome" id="name" value="${requestScope.estabelecimento.nome}" />

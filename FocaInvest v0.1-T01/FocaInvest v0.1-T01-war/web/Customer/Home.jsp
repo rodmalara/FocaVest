@@ -10,7 +10,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,8 +25,8 @@
 
 <body>
 
-    <!-- top navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<!-- top navbar -->
+     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -44,7 +43,12 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
+                        <c:if test="${sessionScope.user_data == null}">
                         <a href="SignIn.jsp">Entrar</a>
+                        </c:if>
+                        <c:if test="${sessionScope.user_data != null}">
+                            <p>${sessionScope.user_data.nome}</p>
+                        </c:if>
                     </li>
                     <li>
                         <a href="#0">Bares Limeira</a>
@@ -118,12 +122,12 @@
                                     Todays Event: <b id="evento"></b>
                                 </div>
                                 <div class="form-group">
-                                    Reward info: <b id="brinde"></b>
+                                    Brinde: <b id="brinde">${bar.premiacaoTO.nome}</b>
                                 </div>
                                 <div class="form-group">
                                     User Rating: <b id="user_rate"></b>
                                     <br>
-                                    <a class="btn btn-primary pull-right" target="_blank" >Eu vou!</a>
+                                    <a style="z-index: 0" class="btn btn-primary pull-right" target="_blank" href="../Customer/SelectEstablishmentIdServlet?barId=${bar.estabelecimentoID}">Ir para o bar</a>
                                 </div>
                             </div>
                         </div>

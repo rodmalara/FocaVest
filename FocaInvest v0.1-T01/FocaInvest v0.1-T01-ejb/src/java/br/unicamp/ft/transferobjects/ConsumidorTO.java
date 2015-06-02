@@ -8,6 +8,7 @@ package br.unicamp.ft.transferobjects;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,7 +19,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -46,17 +49,17 @@ public class ConsumidorTO {
     private String cpf;
     @Column(name = "C_Role")
     private int role;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "T_Consumidor_Evento", joinColumns
             = {
                 @JoinColumn(name = "consumidorID")}, inverseJoinColumns
             = {
                 @JoinColumn(name = "eventoID")})
-    private Set<EventoTO> ListaReservas;
-
-    public ConsumidorTO() {
-        this.ListaReservas = new HashSet<>();
-    }
+    private Set<EventoTO> ListaReservas = new HashSet<>();
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<PontosTO> listPontos = new HashSet<>();
+    
+    public ConsumidorTO() {}
 
     public ConsumidorTO(String _nome, String _senha, String _email, String _telefone, String _rg, String _cpf, int _role) {
         this.ListaReservas = new HashSet<>();
@@ -131,5 +134,21 @@ public class ConsumidorTO {
 
     public void setRole(int role) {
         this.role = role;
+    }
+
+    public Set<EventoTO> getListaReservas() {
+        return ListaReservas;
+    }
+
+    public void setListaReservas(Set<EventoTO> ListaReservas) {
+        this.ListaReservas = ListaReservas;
+    }
+    
+    public Set<PontosTO> getListPontos() {
+        return listPontos;
+    }
+
+    public void setListPontos(Set<PontosTO> listPontos) {
+        this.listPontos = listPontos;
     }
 }

@@ -17,6 +17,10 @@
             <included-library dirs="200">file.reference.FocaInvest_v0.1-T01-FocaInvest_v0.1-T01-war</included-library>
             <included-library dirs="200">file.reference.hibernate3.jar</included-library>
             <included-library dirs="200">file.reference.hibernate3.jar-1</included-library>
+            <included-library dirs="200">file.reference.commons-collections-3.2.1.jar</included-library>
+            <included-library dirs="200">file.reference.commons-fileupload-1.3.1.jar</included-library>
+            <included-library dirs="200">file.reference.commons-io-2.4.jar</included-library>
+            <included-library dirs="200">file.reference.commons-logging-1.2.jar</included-library>
             <source-roots>
                 <root id="src.dir" name="Pacotes de Códigos-fonte"/>
             </source-roots>
