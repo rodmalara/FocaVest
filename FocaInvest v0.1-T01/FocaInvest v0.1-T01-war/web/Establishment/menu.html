@@ -5,7 +5,15 @@
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<link href="css/bootstrap.css" rel="stylesheet">
-			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script> 
+			<script type="text/javascript">
+			
+								
+				window.onload = function() {
+					document.getElementById("formularioCorpoCSS").src="home.html";
+                                        
+				}
+			
+			</script> 
 		
 		
 		
@@ -171,17 +179,17 @@ background-color: #000000;
 		<li><a href="home.html" target="iframeCorpo">Home</a></li>
 		<li><a href="#">Evento</a>
 			<ul>
-				<li><a href="formCadastraEvento.html" target="iframeCorpo">Cadastrar</a></li>
+				<li><a href="formEvent.jsp" target="iframeCorpo">Cadastrar</a></li>
 				<li><a href="EventoController?action=listuser" target="iframeCorpo">Gerenciar</a></li>
 			</ul>
 		</li>
 		<li><a href="#">Premiação</a>
 			<ul>
-				<li><a href="formCadastraPremio.html" target="iframeCorpo">Cadastrar</a></li>
-				<li><a href="#">Gerenciar</a></li>
+				<li><a href="formPremio.jsp" target="iframeCorpo">Cadastrar</a></li>
+				<li><a href="PremioController?action=listuser" target="iframeCorpo">Visualizar</a></li>
 			</ul>
 		
-		<li><a href="formExibePerfil.html" target="iframeCorpo">Perfil</a></li>
+		<li><a href="EditEstabelecimentoServlet" target="iframeCorpo">Perfil</a></li>
 		<li></li>
 		<li></li>
 		<li></li>

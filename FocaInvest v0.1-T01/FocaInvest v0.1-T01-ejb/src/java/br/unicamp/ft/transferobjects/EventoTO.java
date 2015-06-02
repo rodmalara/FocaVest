@@ -6,11 +6,9 @@
 
 package br.unicamp.ft.transferobjects;
 
-import br.unicamp.ft.transferobjects.ConsumidorTO;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,7 +23,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.crypto.Data;
 
 /**
  *
@@ -66,6 +63,7 @@ public class EventoTO {
         this.preco = preco;
         this.estabelecimentoTO = estabelecimentoTO;
     }
+    
 
     public EventoTO() {}
 
@@ -121,8 +119,13 @@ public class EventoTO {
         return data;
     }
 
-    public void setData(Date Data) {
-        this.data = Data;
+    public void setData(String Data) throws ParseException {
+        String strDespesasData = Data;
+        DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");  
+  
+        Date data;
+        data = df.parse (strDespesasData);
+        this.data = data;
     }
 
     public float getPreco() {

@@ -15,6 +15,7 @@ import br.unicamp.ft.dao.EstabelecimentoDAO;
 import br.unicamp.ft.transferobjects.EstabelecimentoTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -85,6 +86,9 @@ public class InsertEstabelecimentoServlet extends HttpServlet {
                 2,
                 1);
         new EstabelecimentoDAO().insertEstabelecimento(estabelecimentoTO);
+        
+        RequestDispatcher view = request.getRequestDispatcher("Establishment/index.html");
+        view.forward(request, response);
     }
 
     /**

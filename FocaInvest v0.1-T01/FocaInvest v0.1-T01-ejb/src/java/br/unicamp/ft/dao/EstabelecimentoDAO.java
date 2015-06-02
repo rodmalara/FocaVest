@@ -36,9 +36,11 @@ public class EstabelecimentoDAO {
         session.update(estabelecimentoTO);
     }
 
-    public void removeEstabelecimento(EstabelecimentoTO estabelecimentoTO) {
+    /*public void removeEstabelecimento(int ID) {
+        EstabelecimentoTO estabelecimentoTO;
+        estabelecimentoTO = selectByID(ID);
         session.delete(estabelecimentoTO);
-    }
+    }*/
 
     public EstabelecimentoTO selectByID(int ID) {
         return (EstabelecimentoTO) session.load(EstabelecimentoTO.class, ID);     

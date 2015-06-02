@@ -34,7 +34,9 @@ public class EventoDAO {
             session.update(eventoTO);
     }
 
-    public void remove(EventoTO eventoTO) {
+    public void remove(int ID) {
+            EventoTO eventoTO;
+            eventoTO = selectByID(ID);
             session.delete(eventoTO);
     }
 
@@ -45,6 +47,6 @@ public class EventoDAO {
     
     public List<EventoTO> selectListEventoByEstabelecimentoID(int _id){
         return session.
-            createQuery("from EventoTO e where e.estabelecimentoTO.id = "+ _id).list();
+            createQuery("from EventoTO e where e.estabelecimentoTO.id = "+ _id +" order by C_Nome asc").list();
     }
 }

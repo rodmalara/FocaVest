@@ -79,6 +79,7 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 	
 	
 	}
+
 	
 	#tamanhoDescricao{
 	
@@ -155,14 +156,7 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 		<h1 id="h1_texto">Lista de eventos</h1>
 		<table bgcolor="#00FF00"><!--acredito que aqui vai um loop para criar as linhas da tabela conforme o número de eventos que vão sendo cadastrados-->
 		
-                 <table id="headTable"><!--acredito que aqui vai um loop para criar as linhas da tabela conforme o número de eventos que vão sendo cadastrados-->
-		
-					<!-- <thead>
-						<tr>
-							<th>Nome</th>
-							<th>Descrição</th>
-						</tr>
-					 </thead>-->
+                 <table id="headTable">
                  <tbody>
 				 <tr>
 					<td>Nome</td>
@@ -178,15 +172,13 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
                         <tr>
                             <td id="tamanhoDescricao"><c:out value="${user.nome}" /></td>
                             <td id="tamanhoDescricao"><c:out value="${user.descricao}" /></td>
-							<td> <input type="button" class="button" id="botao1" onclick="abrirFormEvento()"/></td>
+							<td> <a id="botao1" href="EditEventoServlet?action=<c:out value="${user.eventoID}"/>"></a></td>
 							<td> <input type="button" class="button" id="botao2" onclick="abrirListaClientes()"/></td>
-							<td> <input type="button" class="button" id="botao3"/></td>
+                                                        <td><a id="botao3" href="EventoController?action=delete&userId=<c:out value="${user.eventoID}"/>"></a></td>
                         </tr>
                     </c:forEach>
                  </tbody>
-                    
-             
-		</table>
+             </table>
 	
 		</form>
 		

@@ -20,6 +20,74 @@
 		location.href="index.html"; 
 		} 
 		
+		function validarCampos(){
+			
+			senha1 = document.f1.senha1.value;
+			senha2 = document.f1.senha2.value;
+			
+			if (senha1 != senha2)
+				window.alert("Senha e confirmação de senha com valores diferentes!");
+			
+			
+		}
+		
+		function validarEmail(){
+			
+			email = document.f1.email.value;
+			
+			if (email == "" || document.f1.email.value.indexOf('@') == -1 || document.f1.email.value.indexOf('.') == -1){
+				
+				window.alert("Por favor, informe um e-mail válido!");
+				
+			}
+				
+			
+			
+		}
+		
+		function camposVazios(){
+			
+			estabelecimento = document.f1.estabelecimento.value;
+			email = document.f1.email.value;
+			senha1 = document.f1.senha1.value;
+			senha2 = document.f1.senha2.value;
+			cnpj = document.f1.cnpj.value;
+			telefone = document.f1.telefone.value;
+			
+				if(estabelecimento == ""){
+					window.alert("Preencha o campo Estabelecimento!");
+					return false;
+				} 
+					if(email == ""){
+					window.alert("Preencha o campo E-mail!");
+					return false;
+				}
+					if(senha1 == ""){
+					window.alert("Preencha o campo Senha!");
+					return false;
+				}
+					if(senha2 == ""){
+					window.alert("Preencha o campo Confirmar Senha!");
+					return false;
+				}
+					if(cnpj == ""){
+					window.alert("Preencha o campo CNPJ!");
+					return false;
+				}
+					if(telefone == ""){
+					window.alert("Preencha o campo Telefone!");
+					return false;
+				}	
+				
+					
+					return true;
+			
+		}
+		
+		function validarCNPJ(){
+			
+		}
+		
 		</script>
 		
 		<style type="text/css">
@@ -204,15 +272,15 @@
 			</label>
                         <label>
 			<span>E-mail: </span>
-				<input type="text" required class="input_text" name="email" id="name" placeholder="contato@contato.com"/>
+				<input type="text" required class="input_text" name="email" id="name" placeholder="contato@contato.com" onblur="validarEmail()"/>
 			</label>
 			<label>
 			<span>Senha: </span>
-				<input type="password" required class="input_text" name="senha" size="20" id="input_login" placeholder="Senha para login" />
+				<input type="password" required class="input_text" name="senha1" size="20" id="input_login" placeholder="Senha para login" />
 			</label>
 			<label>
 			<span>Confirmar senha: </span>
-				<input type="password" required class="input_text" name="senha2" size="20" id="input_login" placeholder="Confirme sua senha"/>
+				<input type="password" required class="input_text" name="senha2" size="20" id="input_login" placeholder="Confirme sua senha" onblur="validarCampos()"/>
 			</label>
 			<label>
 			<span>CNPJ: </span>
@@ -222,7 +290,7 @@
 			<span>Telefone: </span>
 				<input type="text" required class="input_text" name="telefone" id="input_cnpj" placeholder="(00)0000-0000"/>
 			</label>
-			<input type="submit" id="alertNormal"  value="Confirmar" />
+			<input type="submit" id="alertNormal"  value="Confirmar" onclick = "camposVazios()"/>
 			<input type="button" class="button" value="Cancelar" onclick="abrirIndex()" />
 			
 			

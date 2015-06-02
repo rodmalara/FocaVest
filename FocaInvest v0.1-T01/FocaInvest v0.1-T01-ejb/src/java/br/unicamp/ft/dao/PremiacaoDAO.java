@@ -7,6 +7,7 @@
 package br.unicamp.ft.dao;
 
 import br.unicamp.ft.commons.util.HibernateUtil;
+import br.unicamp.ft.transferobjects.EventoTO;
 import br.unicamp.ft.transferobjects.PremiacaoTO;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -49,7 +50,21 @@ public class PremiacaoDAO {
                         + "WHERE estabelecimento.estabelecimentoID = :estabeleimentoID");
         query.setParameter("estabeleimentoID", 1);
         List listPremiacoes = query.list();
+    }  
+    
+    public void remove(int ID) {
+            PremiacaoTO premiacaoTO;
+            premiacaoTO = selectByID(ID);
+            session.delete(premiacaoTO);
     }
     
+    public PremiacaoTO selectByID(int ID) {
+            return (PremiacaoTO)
+                    session.createQuery("from PremiacaoTO e where e.id = " + ID).list().get(0);
+    }
     
+    public List<PremiacaoTO> selectListPremiacaoByEstabelecimentoID(int _id){
+        return session.
+            createQuery("from PremiacaoTO e where e.estabelecimentoTO.id = "+ _id +" order by C_DataInicio asc, C_DataFinal asc").list();
+    }   
 }

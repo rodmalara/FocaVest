@@ -32,7 +32,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.crypto.Data;
 
-@WebServlet(name = "InsertEventServlet", urlPatterns = "/InsertEventServlet")
+@WebServlet(name = "InsertEventServlet", urlPatterns = "/Establishment/InsertEventServlet")
 public class InsertEventServlet extends HttpServlet {
 
     /**
@@ -96,9 +96,10 @@ public class InsertEventServlet extends HttpServlet {
             data = df.parse (strDespesasData);
         
         EventoTO eventoTO;
+        EstabelecimentoTO estabelecimentoTO = (EstabelecimentoTO) request.getSession().getAttribute("establishment_data");
       
             eventoTO = new EventoTO(
-                    null,
+                    estabelecimentoTO,
                     request.getParameter("nome"),
                     request.getParameter("descricao"),
                     Integer.parseInt(request.getParameter("qtdPessoa")),

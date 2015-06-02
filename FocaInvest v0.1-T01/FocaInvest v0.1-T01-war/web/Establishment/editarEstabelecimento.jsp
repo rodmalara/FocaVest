@@ -153,13 +153,14 @@
 		</style>
         </head>
 <body>
-	<form name="meuForm" method="post" id="formulario">
+
+	<form name="meuForm" method="post" id="formulario" action="UpdateEstabelecimentoServlet">
 	<h1 id="h1_texto">Atualize seu estabelecimento:</h1>
         <img class="profile-img" src="http://www.w3schools.com/html/pic_mountain.jpg" /> 
                         <div class="box">
 			<label>
 			<span>Nome do estabelecimento: </span>
-                        <input type="text" class="input_text" name="nome" id="name" value="${requestScope.estabelecimento.nome}" />
+                        <input type="text" class="input_text" name="estabelecimento" id="name" value="${requestScope.estabelecimento.nome}" />
 			</label>
 			<label>
 			<!--<span>Usuário: </span>
@@ -167,7 +168,7 @@
 			</label>-->
 			<label>
 			<span>Senha: </span>
-                        <input type="password" class="input_text" name="nome" id="input_login" value="${requestScope.estabelecimento.senha}"/>
+                        <input type="password" class="input_text" name="senha" id="input_login" value="${requestScope.estabelecimento.senha}"/>
 			</label>
 			<label>
 			<span>Confirmar senha: </span>
@@ -175,7 +176,7 @@
 			</label>
 			<label>
 			<span>E-mail: </span>
-                        <input type="text" class="input_text" name="nome" id="name" value="${requestScope.estabelecimento.email}" />
+                        <input type="text" class="input_text" name="email" id="name" value="${requestScope.estabelecimento.email}" />
 			</label>
 			<label>
 			<span>CNPJ: </span>
@@ -183,7 +184,7 @@
 			</label>	
 			<label>
 			<span>Telefone: </span>
-				<input type="text" class="input_text" name="role" id="input_cnpj" ${requestScope.estabelecimento.telefone}/>
+				<input type="text" class="input_text" name="telefone" id="input_cnpj" value="${requestScope.estabelecimento.telefone}"/>
 			</label>
 			<input type="submit" class="button" value="Enviar"/>
 			<input type="button" class="button" value="Cancelar" onclick="abrirIndex()" />	

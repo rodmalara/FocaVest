@@ -2,6 +2,7 @@ package br.unicamp.ft.dao;
 
 import br.unicamp.ft.commons.util.HibernateUtil;
 import br.unicamp.ft.transferobjects.ConsumidorTO;
+import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -47,5 +48,11 @@ public class ConsumidorDAO {
     public ConsumidorTO selectCustomerByEmail(String _email){
         return (ConsumidorTO) 
                 session.createQuery("FROM ConsumidorTO c where c.email = '" + _email + "'").list().get(0);
+    }
+}
+
+    public List<ConsumidorDAO> selectListConsumidorByEvento(int eventoID) {
+        return (List<ConsumidorDAO>) session.createQuery("from T_Consumidor_Evento as ce inner join ce.ConsumidorTO where ce.eventoID = '" + eventoID + "'").list().get(0);
+        
     }
 }
