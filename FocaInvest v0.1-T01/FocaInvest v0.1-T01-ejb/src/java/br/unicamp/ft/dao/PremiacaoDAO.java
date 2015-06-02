@@ -29,43 +29,19 @@ public class PremiacaoDAO {
         session.save(_EventoTO);
     }  
     
-    public PremiacaoTO selectByID(int ID) {
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            PremiacaoTO premiacaoTO = (PremiacaoTO) session.load(PremiacaoTO.class, ID);
-            HibernateUtil.close();
-            return premiacaoTO;
-        } catch (HibernateException he) {
-            he.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    
-    public void selectPremiacaoByNomeConsumidor(String _nomeConsumidor){
-        session.beginTransaction();
-        Query query = session.createQuery(
-                "FROM Premiacao premiacao "
-                        + "LEFT JOIN premiacao.estabelecimentoID estabelecimento "
-                        + "WHERE estabelecimento.estabelecimentoID = :estabeleimentoID");
-        query.setParameter("estabeleimentoID", 1);
-        List listPremiacoes = query.list();
-    }
-    
-
-    
-    public List<PremiacaoTO> selectListPremiacaoByEstabelecimentoID(int _id){
-        return session.
-            createQuery("from PremiacaoTO e where e.estabelecimentoTO.id = "+ _id +" order by C_Nome asc").list();
-    }
-    
     public void remove(int ID) {
             PremiacaoTO premiacaoTO;
             premiacaoTO = selectByID(ID);
             session.delete(premiacaoTO);
     }
     
+    public PremiacaoTO selectByID(int ID) {
+            return (PremiacaoTO)
+                    session.createQuery("from PremiacaoTO e where e.id = " + ID).list().get(0);
+    }
     
+    public List<PremiacaoTO> selectListPremiacaoByEstabelecimentoID(int _id){
+        return session.
+            createQuery("from PremiacaoTO e where e.estabelecimentoTO.id = "+ _id +" order by C_DataInicio asc, C_DataFinal asc").list();
+    }   
 }

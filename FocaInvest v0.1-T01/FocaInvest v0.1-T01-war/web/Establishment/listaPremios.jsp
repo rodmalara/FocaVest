@@ -11,7 +11,7 @@
 <head>
 <meta charset="utf-8">
 
-		<script type="text/javascript">
+<script type="text/javascript">
 		
 			function abrirFormEvento(){
 				
@@ -27,7 +27,7 @@
 				document.getElementById("formulario").style.display = "block";
 			}
 		
-		</script>
+</script>
 		
 
 
@@ -83,6 +83,14 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 		border-bottom: 2px solid #32CD32;
 		border-top: 2px solid #32CD32;
 		
+	
+	
+	}
+        
+        #tamanhoDescricao{
+	
+		height: 1%;
+		width: 40%;
 	
 	
 	}
@@ -169,7 +177,7 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 
 <body>
 	<form id="formulario" style="display:block;" action="PremioController">
-		<h1 id="h1_texto">Lista de eventos</h1>
+		<h1 id="h1_texto">Lista de Premios</h1>
 		<table bgcolor="#00FF00"><!--acredito que aqui vai um loop para criar as linhas da tabela conforme o número de eventos que vão sendo cadastrados-->
 		
                  <table id="headTable"><!--acredito que aqui vai um loop para criar as linhas da tabela conforme o número de eventos que vão sendo cadastrados-->
@@ -182,21 +190,22 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 					 </thead>-->
                  <tbody>
 				 <tr>
-					<td>Início</td>
-					<td>Fim</td>
 					<td>Nome</td>
 					<td>Pontos</td>
-									 
-				 </tr>
-        
+					<td>Data Inicial</td>
+					<td>Data Final</td>
+					<td>Deletar</td>				 
+                                 </tr>       
                  <tbody>
       
                         </tr>
                     <c:forEach items="${users}" var="user">
                         <tr>
-                            <td id="tamanhoDescricao"><c:out value="${user.pontoBrinde}" /></td>
-                            <td id="nome"><c:out value="${user.nome}" /></td>
-                                                        <td><a id="botao3" href="PremioController?action=delete&userId=<c:out value="${user.premiacaoID}"/>">Delete</a></td>
+                            <td id="tamanhoDescricao" id="nome"><c:out value="${user.nome}" /></td>
+                            <td id="tamanhoDescricao" id="nome"><c:out value="${user.pontoBrinde}" /></td>
+                            <td id="tamanhoDescricao" id="nome"><c:out value="${user.dataInicio}" /></td>
+                            <td id="tamanhoDescricao" id="nome"><c:out value="${user.dataFinal}" /></td>
+                            <td><a id="botao3" href="PremioController?action=delete&userId=<c:out value="${user.premiacaoID}"/>"></a></td>
                                                        
                         </tr>
                     </c:forEach>
