@@ -88,6 +88,18 @@
 			
 		}
 		
+		function validarTelefone(){
+			
+			if (isNaN(f1.telefone.value)) {    
+			alert("Digite um telefone válido!");    
+			f1.telefone.select();    
+			return false;    
+				} 
+				else {  
+				return true;  
+				}
+		}
+		
 		</script>
 		
 		<style type="text/css">
@@ -126,7 +138,13 @@
 		text-transform:uppercase; 
 		padding:10px 0 10px 10px; 
 		border-bottom:1px solid #696969; 
-		border-top:1px solid #696969; } 
+		border-top:1px solid #696969; }
+
+		.p{
+			font-size: 8px;
+			color: #32CD32;
+			
+		}
 
 		div.box{
 		
@@ -261,6 +279,7 @@
 
     <form name="f1" method="post" id="formulario" action="InsertEstabelecimentoServlet">
 	<h1 id="h1_texto">Cadastre seu estabelecimento:</h1>
+	<p>Todos os campos são de preenchimento obrigatórios</p>
 		<div class="box">
 			<!--<label>
 				<span>Nome: </span>
@@ -288,7 +307,7 @@
 			</label>	
 			<label>
 			<span>Telefone: </span>
-				<input type="text" required class="input_text" name="telefone" id="input_cnpj" placeholder="(00)0000-0000"/>
+				<input type="text" required class="input_text" name="telefone" id="input_cnpj" placeholder="(00)0000-0000" onblur="validarTelefone()" />
 			</label>
 			<input type="submit" id="alertNormal"  value="Confirmar" onclick = "camposVazios()"/>
 			<input type="button" class="button" value="Cancelar" onclick="abrirIndex()" />

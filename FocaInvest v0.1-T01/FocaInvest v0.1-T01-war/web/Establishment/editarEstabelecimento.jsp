@@ -18,6 +18,87 @@
 		function abrirIndex(){ 
 		location.href="index.html"; 
 		} 
+		
+		function validarCampos(){
+			
+			senha1 = document.f1.senha1.value;
+			senha2 = document.f1.senha2.value;
+			
+			if (senha1 != senha2)
+				window.alert("Senha e confirmação de senha com valores diferentes!");
+			
+			
+		}
+		
+		function validarEmail(){
+			
+			email = document.f1.email.value;
+			
+			if (email == "" || document.f1.email.value.indexOf('@') == -1 || document.f1.email.value.indexOf('.') == -1){
+				
+				window.alert("Por favor, informe um e-mail válido!");
+				
+			}
+				
+			
+			
+		}
+		
+		function camposVazios(){
+			
+			estabelecimento = document.f1.estabelecimento.value;
+			email = document.f1.email.value;
+			senha1 = document.f1.senha1.value;
+			senha2 = document.f1.senha2.value;
+			cnpj = document.f1.cnpj.value;
+			telefone = document.f1.telefone.value;
+			
+				if(estabelecimento == ""){
+					window.alert("Preencha o campo Estabelecimento!");
+					return false;
+				} 
+					if(email == ""){
+					window.alert("Preencha o campo E-mail!");
+					return false;
+				}
+					if(senha1 == ""){
+					window.alert("Preencha o campo Senha!");
+					return false;
+				}
+					if(senha2 == ""){
+					window.alert("Preencha o campo Confirmar Senha!");
+					return false;
+				}
+					if(cnpj == ""){
+					window.alert("Preencha o campo CNPJ!");
+					return false;
+				}
+					if(telefone == ""){
+					window.alert("Preencha o campo Telefone!");
+					return false;
+				}	
+				
+					alert("Estabelecimento atualizado com sucesso!");
+					return true;
+			
+		}
+		
+		function validarCNPJ(){
+			
+		}
+		
+		function validarTelefone(){
+			
+			if (isNaN(f1.telefone.value)) {    
+			alert("Digite um telefone válido!");    
+			f1.telefone.select();    
+			return false;    
+				} 
+				else {  
+				return true;  
+				}
+		}
+		
 		</script>
 		
 		<style type="text/css">
@@ -154,7 +235,7 @@
         </head>
 <body>
 
-	<form name="meuForm" method="post" id="formulario" action="UpdateEstabelecimentoServlet">
+	<form name="f1" method="post" id="formulario" action="UpdateEstabelecimentoServlet">
 	<h1 id="h1_texto">Atualize seu estabelecimento:</h1>
         <img class="profile-img" src="http://www.w3schools.com/html/pic_mountain.jpg" /> 
                         <div class="box">
@@ -168,15 +249,15 @@
 			</label>-->
 			<label>
 			<span>Senha: </span>
-                        <input type="password" class="input_text" name="senha" id="input_login" value="${requestScope.estabelecimento.senha}"/>
+                        <input type="password" class="input_text" name="senha1" id="input_login" value="${requestScope.estabelecimento.senha}"/>
 			</label>
 			<label>
 			<span>Confirmar senha: </span>
-				<input type="password" class="input_text" name="nome" id="input_login" value="${requestScope.estabelecimento.senha}"/>
+				<input type="password" class="input_text" name="senha2" id="input_login" value="${requestScope.estabelecimento.senha}" onblur="validarCampos()"/>
 			</label>
 			<label>
 			<span>E-mail: </span>
-                        <input type="text" class="input_text" name="email" id="name" value="${requestScope.estabelecimento.email}" />
+                        <input type="text" class="input_text" name="email" id="name" value="${requestScope.estabelecimento.email}" onblur="validarEmail()" />
 			</label>
 			<label>
 			<span>CNPJ: </span>
@@ -184,9 +265,9 @@
 			</label>	
 			<label>
 			<span>Telefone: </span>
-				<input type="text" class="input_text" name="telefone" id="input_cnpj" value="${requestScope.estabelecimento.telefone}"/>
+				<input type="text" class="input_text" name="telefone" id="input_cnpj" value="${requestScope.estabelecimento.telefone}" onblur="validarTelefone()"/>
 			</label>
-			<input type="submit" class="button" value="Enviar"/>
+			<input type="submit" class="button" value="Enviar" onclick = "camposVazios()"/>
 			<input type="button" class="button" value="Cancelar" onclick="abrirIndex()" />	
 		</div>
 		
