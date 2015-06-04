@@ -18,6 +18,44 @@
 				
 			location.href = "listaEventos.html";
 		}
+		
+		function validarCamposVazios(){
+			
+			nome = document.f1.nome.value;
+			descricao = document.f1.descricao.value;
+			qtdPessoa = document.f1.qtdPessoa.value;
+			data = document.f1.data.value;
+			preco = document.f1.preco.value;
+			
+			if(nome == ""){
+				window.alert("Insira o campo Nome!");
+				return false;
+			}
+			if(descricao == ""){
+				window.alert("Insira o campo Descrição!");
+				return false;
+			}
+			if(qtdPessoa == ""){
+				window.alert("Insira o campo Quantidade!");
+				return false;
+			}
+			if(data == ""){
+				window.alert("Insira o campo Data!");
+				return false;
+			}
+			if(preco == ""){
+				window.alert("Insira o campo Preço!");
+				return false;
+			}
+			window.alert("Evento editado com sucesso!");
+			return true;
+			
+			
+			
+			
+			
+			
+		}
 			
 	</script>
 	
@@ -115,7 +153,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 </head>
 <body>
 
-	<form name="meuForm" method="post" id="formulario" action="EditEventoServlet?action=<c:out value="${evento.eventoID}"/>" items="${evento}" var="evento">
+	<form name="f1" method="post" id="formulario" action="EditEventoServlet?action=<c:out value="${evento.eventoID}"/>" items="${evento}" var="evento">
 	<h1 id="h1_texto">Atualize seu evento:</h1>
 	<div class="box">
 			<label>
@@ -138,7 +176,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 			<span>Preço</span>
 				<input type="text" class="input_text" name="preco" id="input_data" value ="${evento.preco}"/>
 			</label>
-			<input type="submit" class="button" value="Enviar"/>
+			<input type="submit" class="button" value="Enviar" onclick="validarCamposVazios()"/>
 			<input type="button" class="button" value="Voltar" onClick="eventoVoltar()"/>
 			<input type="button" class="button" value="Cancelar" onClick="eventoCancelar()"/>
 	</div>

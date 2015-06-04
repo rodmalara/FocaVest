@@ -18,6 +18,63 @@
 				location.href = "home.html";
 			}
 			
+		function validarData(){
+			
+			dataInicio = document.f1.dataInicio.value;
+			dataFim = document.f1.dataFinal.value;
+			
+			var diaInicio = (dataInicio.split('/')[0]);
+			var mesInicio = (dataInicio.split('/')[1]);
+			var anoInicio = (dataInicio.split('/')[2]);
+ 
+			var diaFim = (dataFim.split('/')[0]);
+			var mesFim = (dataFim.split('/')[1]);
+			var anoFim = (dataFim.split('/')[2]);
+ 
+			var dataInicio = anoInicio+'-'+mesInicio+'-'+diaInicio;
+			var dataFim = anoFim+'-'+mesFim+'-'+diaFim;
+ 
+			if(Date.parse(dataInicio) > Date.parse(dataFim)){
+				window.alert("Data de início maior do que data final!");
+				return false;
+			}else if(Date.parse(dataFim) < Date.parse(dataInicio)){
+ 
+			}else{
+			return true;
+				
+				}
+			
+			
+		}
+		
+			function validaCamposVazios(){
+				
+				pontos = document.f1.pontos.value;
+				nome = document.f1.nome.value;
+				inicio = document.f1.dataInicio.value;
+				fim = document.f1.dataFim.value;
+				
+				if(pontos == ""){
+					window.alert("Insira o campo Pontos!");
+					return false;
+				}
+				if(nome == ""){
+					window.alert("Insira o campo Nome!");
+					return false;
+				}
+				if(inicio == ""){
+					window.alert("Insira o campo Data Início!");
+					return false;
+				}
+				if(fim == ""){
+					window.alert("Insira o campo Válido até!");
+					return false;
+				}
+				
+				window.alert("Prêmio cadastrado com sucesso!");
+				return true;
+				
+			}		
 	</script>
 	
 
@@ -115,7 +172,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 </head>
 <body>
 
-	<form name="meuForm" method="post" id="formulario" action="InsertPremioServlet">
+	<form name="f1" method="post" id="formulario" action="InsertPremioServlet">
 	<h1 id="h1_texto">Cadastre o prêmio:</h1>
 	<div class="box">
 			<label>
@@ -132,10 +189,10 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 			</label>
 			<label>
 			<span>Válido até: </span>
-				<input type="text" class="input_text" name="dataFinal" id="input_data" />
+				<input type="text" class="input_text" name="dataFinal" id="input_data" onblur="validarData()"/>
 			</label>
 			<label>
-			<input type="submit" class="button" value="Enviar"/>
+			<input type="submit" class="button" value="Enviar" onClick="validaCamposVazios()"/>
 			<input type="button" class="button" value="Cancelar" onClick="eventoCancelar()"/>
 			</label>
 	</div>

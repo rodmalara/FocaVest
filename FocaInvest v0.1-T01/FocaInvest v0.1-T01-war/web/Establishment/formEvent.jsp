@@ -20,6 +20,40 @@
 				location.href = "home.html";
 			}
 			
+		function validaCamposVazios(){
+			
+			nome = document.f1.nome.value;
+			descricao = document.f1.descricao.value;
+			qtdPessoa = document.f1.qtdPessoa.value;
+			data = document.f1.data.value;
+			preco = document.f1.preco.value;
+			
+			if(nome == ""){
+				window.alert("Insira o campo Nome!");
+				return false;
+			}
+			if(descricao == ""){
+				window.alert("Insira o campo Descrição!");
+				return false;
+			}
+			if(qtdPessoa == ""){
+				window.alert("Insira o campo Quantidade!");
+				return false;
+			}
+			if(data == ""){
+				window.alert("Insira o campo Data!");
+				return false;
+			}
+			if(preco == ""){
+				window.alert("Insira o campo Preço!");
+				return false;
+			}
+			
+			window.alert("Cadastro realizado com sucesso!");
+			return true;
+			
+		}
+			
 	</script>
 	
 	
@@ -117,7 +151,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 </head>
 <body>
 
-	<form name="meuForm" method="post" id="formulario" action="InsertEventServlet">
+	<form name="f1" method="post" id="formulario" action="InsertEventServlet">
 	<h1 id="h1_texto">Cadastre seu evento:</h1>
 	<div class="box">
 			<label>
@@ -137,10 +171,10 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 				<input type="text" class="input_text" name="data" id="input_data" />
 			</label>
 			<label>
-			<span>Preço</span>
+			<span>Preço:</span>
 				<input type="text" class="input_text" name="preco" id="input_data" />
 			</label>
-			<input type="submit" class="button" value="Enviar"/>
+			<input type="submit" class="button" value="Enviar" onclick="validaCamposVazios()"/>
 			<input type="button" class="button" value="Cancelar" onClick="eventoCancelar()"/>
 	</div>
 	</form>
