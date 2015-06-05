@@ -74,7 +74,13 @@
 				window.alert("Prêmio cadastrado com sucesso!");
 				return true;
 				
-			}		
+			}
+			
+			
+			
+
+
+			
 	</script>
 	
 

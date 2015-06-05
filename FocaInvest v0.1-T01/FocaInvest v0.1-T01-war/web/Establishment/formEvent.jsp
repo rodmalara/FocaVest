@@ -20,6 +20,31 @@
 				location.href = "home.html";
 			}
 			
+		function validarFormatoData(){
+			
+			data = document.f1.data.value;
+			var dia = data.substring(0,2)
+			var mes = data.substring(3,5)
+			var ano = data.substring(6,10)
+			
+			//Criando um objeto Date usando os valores ano, mes e dia.
+			var novaData = new Date(ano,(mes-1),dia);
+ 
+			var mesmoDia = parseInt(dia,10) == parseInt(novaData.getDate());
+			var mesmoMes = parseInt(mes,10) == parseInt(novaData.getMonth())+1;
+			var mesmoAno = parseInt(ano) == parseInt(novaData.getFullYear());
+ 
+			if (!((mesmoDia) && (mesmoMes) && (mesmoAno)))
+			{
+				alert('Data informada é inválida!');   
+				obj.focus();    
+				return false;
+			}  
+				return true;
+			
+			
+		}
+			
 		function validaCamposVazios(){
 			
 			nome = document.f1.nome.value;
@@ -49,7 +74,7 @@
 				return false;
 			}
 			
-			window.alert("Cadastro realizado com sucesso!");
+			window.alert("Evento cadastrado com sucesso!");
 			return true;
 			
 		}
@@ -168,7 +193,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 			</label>
 			<label>
 			<span>Data: </span>
-				<input type="text" class="input_text" name="data" id="input_data" />
+				<input type="text" class="input_text" name="data" id="input_data" onblur="validarFormatoData()"/>
 			</label>
 			<label>
 			<span>Preço:</span>
