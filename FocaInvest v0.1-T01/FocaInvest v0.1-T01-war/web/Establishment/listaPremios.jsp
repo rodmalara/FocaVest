@@ -157,8 +157,8 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 		vertical-align: middle;
 		}
 		
-		#botao3{
-		background-image: url(excluir.png); 
+		#icone{
+		<!--background-image: url(excluir.png);--> 
 		background-color: transparent; 
 		background-repeat: no-repeat;  
 		background-position: 0px 0px;  
@@ -201,11 +201,11 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
                         </tr>
                     <c:forEach items="${users}" var="user">
                         <tr>
-                            <td id="tamanhoDescricao" id="nome"><c:out value="${user.nome}" /></td>
-                            <td id="tamanhoDescricao" id="nome"><c:out value="${user.pontoBrinde}" /></td>
-                            <td id="tamanhoDescricao" id="nome"><c:out value="${user.dataInicio}" /></td>
-                            <td id="tamanhoDescricao" id="nome"><c:out value="${user.dataFinal}" /></td>
-                            <td><a id="botao3" href="PremioController?action=delete&userId=<c:out value="${user.premiacaoID}"/>"></a></td>
+                            <td width="50%"><c:out value="${user.nome}" /></td>
+                            <td width="15%"><c:out value="${user.pontoBrinde}" /></td>
+                            <td width="15%"><c:out value="${user.dataInicio}" /></td>
+                            <td width="15%"><c:out value="${user.dataFinal}" /></td>
+                            <td width="15%"><a href="PremioController?action=delete&userId=<c:out" value="${user.premiacaoID}"/><img id="icone" src="excluir.png"></a></td>
                                                        
                         </tr>
                     </c:forEach>

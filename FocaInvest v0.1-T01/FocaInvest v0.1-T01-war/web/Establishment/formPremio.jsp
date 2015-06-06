@@ -47,12 +47,12 @@
 			
 		}
 		
-			function validaCamposVazios(){
+			function camposVazios(){
 				
 				pontos = document.f1.pontos.value;
 				nome = document.f1.nome.value;
 				inicio = document.f1.dataInicio.value;
-				fim = document.f1.dataFim.value;
+				fim = document.f1.dataFinal.value;
 				
 				if(pontos == ""){
 					window.alert("Insira o campo Pontos!");
@@ -70,14 +70,63 @@
 					window.alert("Insira o campo Válido até!");
 					return false;
 				}
-				
 				window.alert("Prêmio cadastrado com sucesso!");
 				return true;
 				
+				
 			}
+
+			function validarFormatoDataFinal(){
+			
+			data = document.f1.dataFinal.value;
+			var dia = data.substring(0,2)
+			var mes = data.substring(3,5)
+			var ano = data.substring(6,10)
+			
+			//Criando um objeto Date usando os valores ano, mes e dia.
+			var novaData = new Date(ano,(mes-1),dia);
+ 
+			var mesmoDia = parseInt(dia,10) == parseInt(novaData.getDate());
+			var mesmoMes = parseInt(mes,10) == parseInt(novaData.getMonth())+1;
+			var mesmoAno = parseInt(ano) == parseInt(novaData.getFullYear());
+ 
+			if (!((mesmoDia) && (mesmoMes) && (mesmoAno)))
+			{
+				alert('Data informada é inválida!');   
+				obj.focus();    
+				return false;
+			}  
+				validarData();
+				return true;
 			
 			
+		}
+
+				
+			function validarFormatoDataInicio(){
 			
+			data = document.f1.dataInicio.value;
+			var dia = data.substring(0,2)
+			var mes = data.substring(3,5)
+			var ano = data.substring(6,10)
+			
+			//Criando um objeto Date usando os valores ano, mes e dia.
+			var novaData = new Date(ano,(mes-1),dia);
+ 
+			var mesmoDia = parseInt(dia,10) == parseInt(novaData.getDate());
+			var mesmoMes = parseInt(mes,10) == parseInt(novaData.getMonth())+1;
+			var mesmoAno = parseInt(ano) == parseInt(novaData.getFullYear());
+ 
+			if (!((mesmoDia) && (mesmoMes) && (mesmoAno)))
+			{
+				alert('Data informada é inválida!');   
+				obj.focus();    
+				return false;
+			}  
+				return true;
+			
+			
+		}
 
 
 			
@@ -183,22 +232,22 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 	<div class="box">
 			<label>
 			<span>Pontos: </span>
-				<input type="text" class="" name="pontos" id="input_numPremio" />
+				<input type="text" required class="" name="pontos" id="input_numPremio" placeholder="Qtd"/>
 			</label>
 			<label>
 			<span>Nome: </span>
-				<input type="text" class="input_text" name="nome" id="name" />
+				<input type="text" required class="input_text" name="nome" id="name" placeholder="Nome do prêmio"/>
 			</label>
 			<label>
 			<span>Início: </span>
-				<input type="text" class="input_text" name="dataInicio" id="input_data" />
+				<input type="text" required class="input_text" name="dataInicio" id="input_data" placeholder="00/00/0000" onblur="validarFormatoDataInicio()"/>
 			</label>
 			<label>
 			<span>Válido até: </span>
-				<input type="text" class="input_text" name="dataFinal" id="input_data" onblur="validarData()"/>
+				<input type="text" required class="input_text" name="dataFinal" id="input_data" placeholder="00/00/0000" onblur="validarFormatoDataFinal()"/>
 			</label>
 			<label>
-			<input type="submit" class="button" value="Enviar" onClick="validaCamposVazios()"/>
+			<input type="submit" class="button" value="Enviar" onclick="camposVazios()"/>
 			<input type="button" class="button" value="Cancelar" onClick="eventoCancelar()"/>
 			</label>
 	</div>

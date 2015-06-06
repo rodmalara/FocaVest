@@ -11,13 +11,24 @@
 				location.href = "editarEvento.html";
 			}
 			
-			function abrirListaClientes(){
-				
-				location.href = "listaClientes.html";
-			}
-			
+						
 			function exibirFormulario() {
 				document.getElementById("formulario").style.display = "block";
+			}
+			
+			function confirmaExclusao(){
+				var confirma;
+				
+				confirma = confirm("Deseja realmente excluir este evento?");
+				
+				if(confirma == true){
+					return true;
+				}
+				else{
+					return false;
+				}
+				
+				
 			}
 		
 		</script>
@@ -107,8 +118,8 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 	
 	
 				
-		#botao1{
-		background-image: url(editar.png); 
+		#icone{
+		<!--background-image: url(editar.png);--> 
 		background-color: transparent; 
 		background-repeat: no-repeat;  
 		background-position: 0px 0px;  
@@ -133,15 +144,15 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 		vertical-align: middle;
 		}
 		
-		#botao3{
+		#iconeExcluir{
 		background-image: url(excluir.png); 
 		background-color: transparent; 
 		background-repeat: no-repeat;  
 		background-position: 0px 0px;  
 		border: none;          
 		cursor: pointer;       
-		height: 25px;  
-		width: 25px;
+		height: 1px;  
+		width: 1px;
 		padding-left: 16px;    
 		vertical-align: middle;
 		}
@@ -172,9 +183,9 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
                         <tr>
                             <td id="tamanhoDescricao"><c:out value="${user.nome}" /></td>
                             <td id="tamanhoDescricao"><c:out value="${user.descricao}" /></td>
-							<td> <a id="botao1" href="EditEventoServlet?action=<c:out value="${user.eventoID}"/>"></a></td>
-							<td> <input type="button" class="button" id="botao2" onclick="abrirListaClientes()"/></td>
-                                                        <td><a id="botao3" href="EventoController?action=delete&userId=<c:out value="${user.eventoID}"/>"></a></td>
+							<td> <a href="EditEventoServlet?action=<c:out" value="${user.eventoID}"/><img id="icone" src="editar.png"/></a></td>
+							<td> <a href="listaCliente.html"><img id="icone" src="cliente.png"></a></td>
+                            <td><a href="EventoController?action=delete&userId=<c:out" value="${user.eventoID}" onclick="confirmaExclusao()"/><img id="icone" src="excluir.png"/></a></td>
                         </tr>
                     </c:forEach>
                  </tbody>
