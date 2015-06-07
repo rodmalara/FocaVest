@@ -157,6 +157,12 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 		background:#FFFFFF; 
 		border:solid 3px #32CD32;}
 		
+		#obrigatorio{
+			font-size: 10px;
+			color: #32CD32;
+			
+		}
+		
 		
 		div.box .button{ 
 		margin:0 0 10px 0; 
@@ -179,6 +185,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 	<form name="f1" method="post" id="formulario" action="InsertEventServlet">
 	<h1 id="h1_texto">Cadastre seu evento:</h1>
 	<div class="box">
+	<p id="obrigatorio">Todos os campos são de preenchimento obrigatório</p>
 			<label>
 			<span>Nome: </span>
 				<input type="text" class="input_text" name="nome" id="name" />

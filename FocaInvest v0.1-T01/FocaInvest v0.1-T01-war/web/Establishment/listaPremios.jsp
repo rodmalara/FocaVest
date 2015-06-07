@@ -26,6 +26,21 @@
 			function exibirFormulario() {
 				document.getElementById("formulario").style.display = "block";
 			}
+			
+			function confirmaExclusao(){
+				var confirma;
+				
+				confirma = confirm("Deseja realmente excluir este evento?");
+				
+				if(confirma == true){
+					return true;
+				}
+				else{
+					return false;
+				}
+				
+				
+			}
 		
 </script>
 		
@@ -205,7 +220,7 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
                             <td width="15%"><c:out value="${user.pontoBrinde}" /></td>
                             <td width="15%"><c:out value="${user.dataInicio}" /></td>
                             <td width="15%"><c:out value="${user.dataFinal}" /></td>
-                            <td width="15%"><a href="PremioController?action=delete&userId=<c:out" value="${user.premiacaoID}"/><img id="icone" src="excluir.png"></a></td>
+                            <td width="15%"><a href="PremioController?action=delete&userId=<c:out" value="${user.premiacaoID}" onclick="confirmaExclusao()"/><img id="icone" src="excluir.png"></a></td>
                                                        
                         </tr>
                     </c:forEach>

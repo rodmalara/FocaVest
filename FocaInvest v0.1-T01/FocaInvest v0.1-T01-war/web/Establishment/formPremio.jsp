@@ -151,6 +151,12 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 		
 		}
 		
+		#obrigatorio{
+			font-size: 10px;
+			color: #32CD32;
+			
+		}
+		
 		
 		div.formulario { 
 		margin:0 auto; 
@@ -230,6 +236,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 	<form name="f1" method="post" id="formulario" action="InsertPremioServlet">
 	<h1 id="h1_texto">Cadastre o prêmio:</h1>
 	<div class="box">
+	<p id="obrigatorio">Todos os campos são de preenchimento obrigatório</p>
 			<label>
 			<span>Pontos: </span>
 				<input type="text" required class="" name="pontos" id="input_numPremio" placeholder="Qtd"/>

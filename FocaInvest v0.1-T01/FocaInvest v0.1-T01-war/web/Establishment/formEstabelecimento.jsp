@@ -140,11 +140,7 @@
 		border-bottom:1px solid #696969; 
 		border-top:1px solid #696969; }
 
-		.p{
-			font-size: 8px;
-			color: #32CD32;
-			
-		}
+	
 
 		div.box{
 		
@@ -223,6 +219,12 @@
 		
 		}
 		
+		#obrigatorio{
+			font-size: 10px;
+			color: #32CD32;
+			
+		}
+	
 	
 		
 		.img-200-200 {
@@ -279,8 +281,8 @@
 
     <form name="f1" method="post" id="formulario" action="InsertEstabelecimentoServlet">
 	<h1 id="h1_texto">Cadastre seu estabelecimento:</h1>
-	<p>Todos os campos são de preenchimento obrigatórios</p>
 		<div class="box">
+		<p id="obrigatorio">Todos os campos são de preenchimento obrigatório</p>
 			<!--<label>
 				<span>Nome: </span>
 				<input type="text" required class="input_text" name="nome" id="name" placeholder="Nome do seu estabelecimento"/>

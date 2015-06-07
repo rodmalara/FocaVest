@@ -20,8 +20,30 @@
 				
 			location.href = "listaEventos.html";
 		}
+		
+		
+		function verificaCliente(){
 			
+			var checks;
+			var i;
 			
+			checks = getElementByName("presenca");
+			
+			for(i=0; i<checks; i++){
+				
+				if(checks[i].checked == true){
+					window.alert("Clientes confirmados com sucesso");
+					return true;
+				}else{
+					window.alert("Nenhum cliente foi selecionado");
+					return false;
+				}
+				
+			}
+			
+		}
+			
+						
 		
 		</script>
 		
@@ -121,7 +143,7 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 		
 		<tr id="Tabela"> <!--linha-->
 			<td>
-			<input type="checkbox" class="checkbox" value="presenca">
+			<input type="checkbox" class="checkbox" value="presenca" name="presenca">
 			<label>
 			
 				<input type="text" class="input_text" name="nome" id="txtCliente" disabled/>
@@ -145,7 +167,7 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
                  </tbody>
              </table>
 		
-		<input type="button" class="button" value="Confirmar" id="botao"/>
+		<input type="button" class="button" value="Confirmar" id="botao" onClick="verificaCliente()"/>
 		<input type="button" class="button" value="Voltar" id="botao" onClick="eventoVoltar()"/>
 		<input type="button" class="button" value="Cancelar" id="botao" onClick="eventoCancelar()"/>
 		
