@@ -49,7 +49,6 @@ public class ConsumidorDAO {
         return (ConsumidorTO) 
                 session.createQuery("FROM ConsumidorTO c where c.email = '" + _email + "'").list().get(0);
     }
-}
 
     public List<ConsumidorDAO> selectListConsumidorByEvento(int eventoID) {
         return (List<ConsumidorDAO>) session.createQuery("from T_Consumidor_Evento as ce inner join ce.ConsumidorTO where ce.eventoID = '" + eventoID + "'").list().get(0);
