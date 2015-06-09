@@ -58,10 +58,10 @@ public class PremiacaoDAO {
             session.delete(premiacaoTO);
     }
     
-    public PremiacaoTO selectByID(int ID) {
+    /*public PremiacaoTO selectByID(int ID) {
             return (PremiacaoTO)
                     session.createQuery("from PremiacaoTO e where e.id = " + ID).list().get(0);
-    }
+    }*/
     
     public List<PremiacaoTO> selectListPremiacaoByEstabelecimentoID(int _id){
         return session.

@@ -51,7 +51,7 @@ public class SearchListBarServlet extends HttpServlet {
         
         request.setAttribute("barList", barList);
         request.setAttribute("eventMap", eventMap);
-        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Customer/Home.jsp");
+        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Customer/listaDeBares.jsp");
         requestDispatcher.forward(request, response);
     }
 

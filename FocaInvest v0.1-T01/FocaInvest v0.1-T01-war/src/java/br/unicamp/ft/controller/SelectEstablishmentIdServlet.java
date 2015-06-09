@@ -47,7 +47,7 @@ public class SelectEstablishmentIdServlet extends HttpServlet {
         
         request.setAttribute("listEvento", listEvento);
         request.setAttribute("bar", estabelecimentoTO);
-        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Customer/Establishment.jsp");
+        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Customer/Establishmento.jsp");
         requestDispatcher.forward(request, response);
     }
 

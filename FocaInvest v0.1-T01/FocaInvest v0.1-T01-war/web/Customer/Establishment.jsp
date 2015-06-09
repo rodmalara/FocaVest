@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <c:set var="bar" value="${requestScope.bar}"></c:set>
+    
 <!-- top navbar -->
      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
