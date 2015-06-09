@@ -78,6 +78,7 @@ public class UpdateEstabelecimentoServlet extends HttpServlet {
         EstabelecimentoTO estabelecimentoTO = (EstabelecimentoTO) request.getSession().getAttribute("establishment_data");
         
         estabelecimentoTO.setCnpj(Integer.parseInt(request.getParameter("cnpj")));
+        estabelecimentoTO.setDescricao(request.getParameter("desc"));
         estabelecimentoTO.setEmail(request.getParameter("email"));
         estabelecimentoTO.setNome(request.getParameter("estabelecimento"));
         estabelecimentoTO.setSenha(request.getParameter("senha"));

@@ -172,6 +172,20 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 		left:355px; 
 		width:100px; 
 		}
+                
+                #input {
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    background-color: white;
+    background-color: -moz-field;
+    border: 1px solid darkgray;
+    box-shadow: 1px 1px 1px 0 lightgray inset;  
+    font: -moz-field;
+    font: -webkit-small-control;
+    margin-top: 5px;
+    padding: 2px 3px;
+    width: 398px;    
+}
 		
 </style>
 </head>
@@ -186,7 +200,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 			</label>
 			<label>
 			<span>Descrição: </span>
-				<textarea cols="30" rows="40" id="input_descricao" name="descricao"/>${evento.descricao}</textarea>
+				<textarea cols="30" rows="40" id="input_descricao" name="desc"> ${evento.descricao}</textarea>
 			</label>
 			<label>
 			<span>Número de pessoas: </span>
@@ -201,7 +215,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 				<input type="text" class="input_text" name="preco" id="input_data" value ="${evento.preco}"/>
 			</label>
 			<input type="submit" class="button" value="Enviar" onclick="camposVazios()"/>
-			<input type="button" class="button" value="Voltar" onClick="eventoVoltar()"/>
+			
 			<input type="button" class="button" value="Cancelar" onClick="eventoCancelar()"/>
 	</div>
 	</form>

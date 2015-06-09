@@ -45,6 +45,12 @@ public class EventoController extends HttpServlet {
             dao = new EventoDAO();
             request.setAttribute("users", dao.selectListEventoByEstabelecimentoID(estabelecimentoTO.getEstabelecimentoID()));
         }
+       else if (action.equalsIgnoreCase("listClientes")){
+            String eventoId = request.getParameter("eventoId");
+            forward = "/Establishment/listaCliente.jsp";
+            dao = new EventoDAO();
+            request.setAttribute("evento", dao.selectByID(Integer.parseInt(eventoId)));
+        }
  
         RequestDispatcher view = request.getRequestDispatcher(forward);
         view.forward(request, response);

@@ -184,7 +184,7 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
                             <td id="tamanhoDescricao"><c:out value="${user.nome}" /></td>
                             <td id="tamanhoDescricao"><c:out value="${user.descricao}" /></td>
 							<td> <a href="EditEventoServlet?action=<c:out value="${user.eventoID}"/>"> <img id="icone" src="editar.png"/></a></td>
-							<td> <a href="listaCliente.html"><img id="icone" src="cliente.png"></a></td>
+							<td> <a href="EventoController?action=listClientes&eventoId=<c:out value="${user.eventoID}"/>"><img id="icone" src="cliente.png"></a></td>
                             <td><a href="EventoController?action=delete&userId=<c:out value="${user.eventoID}"/>" onclick="confirmaExclusao()"><img id="icone" src="excluir.png"/></a></td>
                         </tr>
                     </c:forEach>
