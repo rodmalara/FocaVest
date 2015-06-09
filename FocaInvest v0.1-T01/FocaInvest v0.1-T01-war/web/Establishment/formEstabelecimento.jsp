@@ -84,7 +84,71 @@
 			
 		}
 		
+		//site para gerar cnpj válido: http://www.geradorcnpj.com/
 		function validarCNPJ(){
+			
+			cnpj = document.f1.cnpj.value;
+			
+			cnpj = cnpj.replace(/[^\d]+/g,'');
+
+				
+			if (cnpj.length != 14){
+				window.alert("O CNPJ inserido é inválido");
+				return false;
+			}
+
+			
+			
+			// Elimina CNPJs invalidos conhecidos
+			if (cnpj == "00000000000000" || 
+				cnpj == "11111111111111" || 
+				cnpj == "22222222222222" || 
+				cnpj == "33333333333333" || 
+				cnpj == "44444444444444" || 
+				cnpj == "55555555555555" || 
+				cnpj == "66666666666666" || 
+				cnpj == "77777777777777" || 
+				cnpj == "88888888888888" || 
+				cnpj == "99999999999999"){
+				window.alert("O CNPJ inserido é inválido");
+				return false;
+			}
+					
+					
+			// Valida DVs
+			tamanho = cnpj.length - 2;	
+			numeros = cnpj.substring(0,tamanho);
+			digitos = cnpj.substring(tamanho);
+			soma = 0;
+			pos = tamanho - 7;
+			for (i = tamanho; i >= 1; i--) {
+				soma += numeros.charAt(tamanho - i) * pos--;
+					if (pos < 2)
+						pos = 9;
+			}
+			resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+			if (resultado != digitos.charAt(0)){
+				window.alert("O CNPJ inserido é inválido");
+				return false;
+			}
+			
+		
+			tamanho = tamanho + 1;
+			numeros = cnpj.substring(0,tamanho);
+			soma = 0;
+			pos = tamanho - 7;
+			for (i = tamanho; i >= 1; i--) {
+				soma += numeros.charAt(tamanho - i) * pos--;
+					if (pos < 2)
+						pos = 9;
+			}
+			resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+				if (resultado != digitos.charAt(1)){
+				window.alert("O CNPJ inserido é inválido");
+				return false;
+			}else{		
+				return true;
+			}
 			
 		}
 		
@@ -176,7 +240,7 @@
 		border:solid 3px #32CD32;}
 		
 		#input_cnpj { padding:10px 10px; 
-		width:125px; 
+		width:140px; 
 		background:#FFFFFF; 
 		border:solid 3px #32CD32;}
 		
@@ -305,7 +369,7 @@
 			</label>
 			<label>
 			<span>CNPJ: </span>
-				<input type="text" required class="input_text" name="cnpj" id="input_cnpj" placeholder="000-000-000-00"/>
+				<input type="text" required class="input_text" name="cnpj" id="input_cnpj" placeholder="00.000.000/0000-00" onblur="validarCNPJ()"/>
 			</label>	
 			<label>
 			<span>Telefone: </span>

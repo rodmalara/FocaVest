@@ -42,6 +42,21 @@
 			}
 			
 		}
+		
+		function confirmaExclusao(){
+				var confirma;
+				
+				confirma = confirm("Deseja realmente excluir este evento?");
+				
+				if(confirma == true){
+					return true;
+				}
+				else{
+					return false;
+				}
+				
+				
+			}
 			
 						
 		
