@@ -20,6 +20,65 @@
 				location.href = "home.html";
 			}
 			
+		function validarFormatoData(){
+			
+			data = document.f1.data.value;
+			var dia = data.substring(0,2)
+			var mes = data.substring(3,5)
+			var ano = data.substring(6,10)
+			
+			//Criando um objeto Date usando os valores ano, mes e dia.
+			var novaData = new Date(ano,(mes-1),dia);
+ 
+			var mesmoDia = parseInt(dia,10) == parseInt(novaData.getDate());
+			var mesmoMes = parseInt(mes,10) == parseInt(novaData.getMonth())+1;
+			var mesmoAno = parseInt(ano) == parseInt(novaData.getFullYear());
+ 
+			if (!((mesmoDia) && (mesmoMes) && (mesmoAno)))
+			{
+				alert('Data informada é inválida!');   
+				obj.focus();    
+				return false;
+			}  
+				return true;
+			
+			
+		}
+			
+		function validaCamposVazios(){
+			
+			nome = document.f1.nome.value;
+			descricao = document.f1.descricao.value;
+			qtdPessoa = document.f1.qtdPessoa.value;
+			data = document.f1.data.value;
+			preco = document.f1.preco.value;
+			
+			if(nome == ""){
+				window.alert("Insira o campo Nome!");
+				return false;
+			}
+			if(descricao == ""){
+				window.alert("Insira o campo Descrição!");
+				return false;
+			}
+			if(qtdPessoa == ""){
+				window.alert("Insira o campo Quantidade!");
+				return false;
+			}
+			if(data == ""){
+				window.alert("Insira o campo Data!");
+				return false;
+			}
+			if(preco == ""){
+				window.alert("Insira o campo Preço!");
+				return false;
+			}
+			
+			window.alert("Evento cadastrado com sucesso!");
+			return true;
+			
+		}
+			
 	</script>
 	
 	
@@ -98,6 +157,12 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 		background:#FFFFFF; 
 		border:solid 3px #32CD32;}
 		
+		#obrigatorio{
+			font-size: 10px;
+			color: #32CD32;
+			
+		}
+		
 		
 		div.box .button{ 
 		margin:0 0 10px 0; 
@@ -117,9 +182,10 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 </head>
 <body>
 
-	<form name="meuForm" method="post" id="formulario" action="InsertEventServlet">
+	<form name="f1" method="post" id="formulario" action="InsertEventServlet">
 	<h1 id="h1_texto">Cadastre seu evento:</h1>
 	<div class="box">
+	<p id="obrigatorio">Todos os campos são de preenchimento obrigatório</p>
 			<label>
 			<span>Nome: </span>
 				<input type="text" class="input_text" name="nome" id="name" />
@@ -134,13 +200,13 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 			</label>
 			<label>
 			<span>Data: </span>
-				<input type="text" class="input_text" name="data" id="input_data" />
+				<input type="text" class="input_text" name="data" id="input_data" onblur="validarFormatoData()"/>
 			</label>
 			<label>
-			<span>Preço</span>
+			<span>Preço:</span>
 				<input type="text" class="input_text" name="preco" id="input_data" />
 			</label>
-			<input type="submit" class="button" value="Enviar"/>
+			<input type="submit" class="button" value="Enviar" onclick="validaCamposVazios()"/>
 			<input type="button" class="button" value="Cancelar" onClick="eventoCancelar()"/>
 	</div>
 	</form>

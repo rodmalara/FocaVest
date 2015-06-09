@@ -18,6 +18,156 @@
 		function abrirIndex(){ 
 		location.href="index.html"; 
 		} 
+		
+		function validarCampos(){
+			
+			senha1 = document.f1.senha1.value;
+			senha2 = document.f1.senha2.value;
+			
+			if (senha1 != senha2)
+				window.alert("Senha e confirmação de senha com valores diferentes!");
+			
+			
+		}
+		
+		function validarEmail(){
+			
+			email = document.f1.email.value;
+			
+			if (email == "" || document.f1.email.value.indexOf('@') == -1 || document.f1.email.value.indexOf('.') == -1){
+				
+				window.alert("Por favor, informe um e-mail válido!");
+				
+			}
+				
+			
+			
+		}
+		
+		function camposVazios(){
+			
+			estabelecimento = document.f1.estabelecimento.value;
+			email = document.f1.email.value;
+			senha1 = document.f1.senha1.value;
+			senha2 = document.f1.senha2.value;
+			cnpj = document.f1.cnpj.value;
+			telefone = document.f1.telefone.value;
+			
+				if(estabelecimento == ""){
+					window.alert("Preencha o campo Estabelecimento!");
+					return false;
+				} 
+					if(email == ""){
+					window.alert("Preencha o campo E-mail!");
+					return false;
+				}
+					if(senha1 == ""){
+					window.alert("Preencha o campo Senha!");
+					return false;
+				}
+					if(senha2 == ""){
+					window.alert("Preencha o campo Confirmar Senha!");
+					return false;
+				}
+					if(cnpj == ""){
+					window.alert("Preencha o campo CNPJ!");
+					return false;
+				}
+					if(telefone == ""){
+					window.alert("Preencha o campo Telefone!");
+					return false;
+				}	
+				
+					alert("Estabelecimento atualizado com sucesso!");
+					return true;
+			
+		}
+		
+		
+		function validarTelefone(){
+			
+			if (isNaN(f1.telefone.value)) {    
+			alert("Digite um telefone válido!");    
+			f1.telefone.select();    
+			return false;    
+				} 
+				else {  
+				return true;  
+				}
+		}
+		
+		
+		//site para gerar cnpj válido: http://www.geradorcnpj.com/
+		function validarCNPJ(){
+			
+			cnpj = document.f1.cnpj.value;
+			
+			cnpj = cnpj.replace(/[^\d]+/g,'');
+
+				
+			if (cnpj.length != 14){
+				window.alert("O CNPJ inserido é inválido");
+				return false;
+			}
+
+			
+			
+			// Elimina CNPJs invalidos conhecidos
+			if (cnpj == "00000000000000" || 
+				cnpj == "11111111111111" || 
+				cnpj == "22222222222222" || 
+				cnpj == "33333333333333" || 
+				cnpj == "44444444444444" || 
+				cnpj == "55555555555555" || 
+				cnpj == "66666666666666" || 
+				cnpj == "77777777777777" || 
+				cnpj == "88888888888888" || 
+				cnpj == "99999999999999"){
+				window.alert("O CNPJ inserido é inválido");
+				return false;
+			}
+					
+					
+			// Valida DVs
+			tamanho = cnpj.length - 2;	
+			numeros = cnpj.substring(0,tamanho);
+			digitos = cnpj.substring(tamanho);
+			soma = 0;
+			pos = tamanho - 7;
+			for (i = tamanho; i >= 1; i--) {
+				soma += numeros.charAt(tamanho - i) * pos--;
+					if (pos < 2)
+						pos = 9;
+			}
+			resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+			if (resultado != digitos.charAt(0)){
+				window.alert("O CNPJ inserido é inválido");
+				return false;
+			}
+			
+		
+			tamanho = tamanho + 1;
+			numeros = cnpj.substring(0,tamanho);
+			soma = 0;
+			pos = tamanho - 7;
+			for (i = tamanho; i >= 1; i--) {
+				soma += numeros.charAt(tamanho - i) * pos--;
+					if (pos < 2)
+						pos = 9;
+			}
+			resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+				if (resultado != digitos.charAt(1)){
+				window.alert("O CNPJ inserido é inválido");
+				return false;
+			}else{		
+				return true;
+			}
+			
+		}
+		
+		
+		
+		
 		</script>
 		
 		<style type="text/css">
@@ -78,7 +228,7 @@
 		border:solid 3px #32CD32;}
 		
 		#input_cnpj { padding:10px 10px; 
-		width:125px; 
+		width:140px; 
 		background:#FFFFFF; 
 		border:solid 3px #32CD32;}
 		
@@ -154,7 +304,7 @@
         </head>
 <body>
 
-	<form name="meuForm" method="post" id="formulario" action="UpdateEstabelecimentoServlet">
+	<form name="f1" method="post" id="formulario" action="UpdateEstabelecimentoServlet">
 	<h1 id="h1_texto">Atualize seu estabelecimento:</h1>
         <img class="profile-img" src="http://www.w3schools.com/html/pic_mountain.jpg" /> 
                         <div class="box">
@@ -168,25 +318,25 @@
 			</label>-->
 			<label>
 			<span>Senha: </span>
-                        <input type="password" class="input_text" name="senha" id="input_login" value="${requestScope.estabelecimento.senha}"/>
+                        <input type="password" class="input_text" name="senha1" id="input_login" value="${requestScope.estabelecimento.senha}"/>
 			</label>
 			<label>
 			<span>Confirmar senha: </span>
-				<input type="password" class="input_text" name="nome" id="input_login" value="${requestScope.estabelecimento.senha}"/>
+				<input type="password" class="input_text" name="senha2" id="input_login" value="${requestScope.estabelecimento.senha}" onblur="validarCampos()"/>
 			</label>
 			<label>
 			<span>E-mail: </span>
-                        <input type="text" class="input_text" name="email" id="name" value="${requestScope.estabelecimento.email}" />
+                        <input type="text" class="input_text" name="email" id="name" value="${requestScope.estabelecimento.email}" onblur="validarEmail()" />
 			</label>
 			<label>
 			<span>CNPJ: </span>
-                        <input type="text" class="input_text" name="cnpj" id="input_cnpj" value="${requestScope.estabelecimento.cnpj}"/>
+                        <input type="text" class="input_text" name="cnpj" id="input_cnpj" value="${requestScope.estabelecimento.cnpj}" onblur="validarCNPJ()"/>
 			</label>	
 			<label>
 			<span>Telefone: </span>
-				<input type="text" class="input_text" name="telefone" id="input_cnpj" value="${requestScope.estabelecimento.telefone}"/>
+				<input type="text" class="input_text" name="telefone" id="input_cnpj" value="${requestScope.estabelecimento.telefone}" onblur="validarTelefone()"/>
 			</label>
-			<input type="submit" class="button" value="Enviar"/>
+			<input type="submit" class="button" value="Enviar" onclick = "camposVazios()"/>
 			<input type="button" class="button" value="Cancelar" onclick="abrirIndex()" />	
 		</div>
 		

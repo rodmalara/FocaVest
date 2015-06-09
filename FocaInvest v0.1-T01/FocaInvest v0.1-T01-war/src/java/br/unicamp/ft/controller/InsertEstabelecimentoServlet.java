@@ -80,14 +80,14 @@ public class InsertEstabelecimentoServlet extends HttpServlet {
         EstabelecimentoTO estabelecimentoTO = new EstabelecimentoTO(null, 
                 Integer.parseInt(request.getParameter("cnpj").toString()),
                 request.getParameter("estabelecimento"), 
-                request.getParameter("senha"), 
+                request.getParameter("senha1"), 
                 request.getParameter("email"), 
                 request.getParameter("telefone"), 
                 2,
                 1);
         new EstabelecimentoDAO().insertEstabelecimento(estabelecimentoTO);
         
-        RequestDispatcher view = request.getRequestDispatcher("Establishment/index.html");
+        RequestDispatcher view = request.getRequestDispatcher("/Establishment/index.html");
         view.forward(request, response);
     }
 

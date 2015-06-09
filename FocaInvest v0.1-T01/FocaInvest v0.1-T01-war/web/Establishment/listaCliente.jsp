@@ -20,8 +20,45 @@
 				
 			location.href = "listaEventos.html";
 		}
+		
+		
+		function verificaCliente(){
 			
+			var checks;
+			var i;
 			
+			checks = getElementByName("presenca");
+			
+			for(i=0; i<checks; i++){
+				
+				if(checks[i].checked == true){
+					window.alert("Clientes confirmados com sucesso");
+					return true;
+				}else{
+					window.alert("Nenhum cliente foi selecionado");
+					return false;
+				}
+				
+			}
+			
+		}
+		
+		function confirmaExclusao(){
+				var confirma;
+				
+				confirma = confirm("Deseja realmente excluir este evento?");
+				
+				if(confirma == true){
+					return true;
+				}
+				else{
+					return false;
+				}
+				
+				
+			}
+			
+						
 		
 		</script>
 		
@@ -117,19 +154,6 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 <body>
 	<form id="formulario">
 		<h1 id="h1_texto">Lista de clientes</h1>
-		<table><!--acredito que aqui vai um loop para criar as linhas da tabela conforme o n�mero de eventos que v�o sendo cadastrados-->
-		
-		<tr id="Tabela"> <!--linha-->
-			<td>
-			<input type="checkbox" class="checkbox" value="presenca">
-			<label>
-			
-				<input type="text" class="input_text" name="nome" id="txtCliente" disabled/>
-			</label>
-			</td>
-		
-		</table>
-                
                 <table id="headTable">
                  <tbody>
 				 <tr>
@@ -137,20 +161,17 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 				 </tr>
         
                  <tbody>
-                    <c:forEach items="${requestScope.consumidorList}" var="user">
-                        <tr>
-                            <td id="tamanhoDescricao"><c:out value="${consumidorList.nome}" /></td>
-                        </tr>
-                    </c:forEach>
+                <c:forEach items="${evento.listConsumidores}" var="consumidor">
+                    <div class="listUsers" style="color:#fff">
+                       <p class="col-md-2">Nome: ${consumidor.nome}</p>
+                       <p class="col-md-2">Email: ${consumidor.email}</p>
+                       <a href="GivePointsServlet?consumidorId=${consumidor.consumidorID}"><img style = "width:30px;height:30px" id="icone" src="check.png"></a>                      
+                    </div>
+                    
+                </c:forEach>
                  </tbody>
              </table>
-		
-		<input type="button" class="button" value="Confirmar" id="botao"/>
-		<input type="button" class="button" value="Voltar" id="botao" onClick="eventoVoltar()"/>
-		<input type="button" class="button" value="Cancelar" id="botao" onClick="eventoCancelar()"/>
-		
 	</form>
-
 </body>
 
 </head>

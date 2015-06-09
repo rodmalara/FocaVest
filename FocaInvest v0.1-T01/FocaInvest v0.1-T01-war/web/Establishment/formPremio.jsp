@@ -18,6 +18,118 @@
 				location.href = "home.html";
 			}
 			
+		function validarData(){
+			
+			dataInicio = document.f1.dataInicio.value;
+			dataFim = document.f1.dataFinal.value;
+			
+			var diaInicio = (dataInicio.split('/')[0]);
+			var mesInicio = (dataInicio.split('/')[1]);
+			var anoInicio = (dataInicio.split('/')[2]);
+ 
+			var diaFim = (dataFim.split('/')[0]);
+			var mesFim = (dataFim.split('/')[1]);
+			var anoFim = (dataFim.split('/')[2]);
+ 
+			var dataInicio = anoInicio+'-'+mesInicio+'-'+diaInicio;
+			var dataFim = anoFim+'-'+mesFim+'-'+diaFim;
+ 
+			if(Date.parse(dataInicio) > Date.parse(dataFim)){
+				window.alert("Data de início maior do que data final!");
+				return false;
+			}else if(Date.parse(dataFim) < Date.parse(dataInicio)){
+ 
+			}else{
+			return true;
+				
+				}
+			
+			
+		}
+		
+			function camposVazios(){
+				
+				pontos = document.f1.pontos.value;
+				nome = document.f1.nome.value;
+				inicio = document.f1.dataInicio.value;
+				fim = document.f1.dataFinal.value;
+				
+				if(pontos == ""){
+					window.alert("Insira o campo Pontos!");
+					return false;
+				}
+				if(nome == ""){
+					window.alert("Insira o campo Nome!");
+					return false;
+				}
+				if(inicio == ""){
+					window.alert("Insira o campo Data Início!");
+					return false;
+				}
+				if(fim == ""){
+					window.alert("Insira o campo Válido até!");
+					return false;
+				}
+				window.alert("Prêmio cadastrado com sucesso!");
+				return true;
+				
+				
+			}
+
+			function validarFormatoDataFinal(){
+			
+			data = document.f1.dataFinal.value;
+			var dia = data.substring(0,2)
+			var mes = data.substring(3,5)
+			var ano = data.substring(6,10)
+			
+			//Criando um objeto Date usando os valores ano, mes e dia.
+			var novaData = new Date(ano,(mes-1),dia);
+ 
+			var mesmoDia = parseInt(dia,10) == parseInt(novaData.getDate());
+			var mesmoMes = parseInt(mes,10) == parseInt(novaData.getMonth())+1;
+			var mesmoAno = parseInt(ano) == parseInt(novaData.getFullYear());
+ 
+			if (!((mesmoDia) && (mesmoMes) && (mesmoAno)))
+			{
+				alert('Data informada é inválida!');   
+				obj.focus();    
+				return false;
+			}  
+				validarData();
+				return true;
+			
+			
+		}
+
+				
+			function validarFormatoDataInicio(){
+			
+			data = document.f1.dataInicio.value;
+			var dia = data.substring(0,2)
+			var mes = data.substring(3,5)
+			var ano = data.substring(6,10)
+			
+			//Criando um objeto Date usando os valores ano, mes e dia.
+			var novaData = new Date(ano,(mes-1),dia);
+ 
+			var mesmoDia = parseInt(dia,10) == parseInt(novaData.getDate());
+			var mesmoMes = parseInt(mes,10) == parseInt(novaData.getMonth())+1;
+			var mesmoAno = parseInt(ano) == parseInt(novaData.getFullYear());
+ 
+			if (!((mesmoDia) && (mesmoMes) && (mesmoAno)))
+			{
+				alert('Data informada é inválida!');   
+				obj.focus();    
+				return false;
+			}  
+				return true;
+			
+			
+		}
+
+
+			
 	</script>
 	
 
@@ -37,6 +149,12 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 		left:5px; <!--aqui na posicao esquerda-->
 		border:0px solid #32CD32;
 		
+		}
+		
+		#obrigatorio{
+			font-size: 10px;
+			color: #32CD32;
+			
 		}
 		
 		
@@ -115,27 +233,28 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 </head>
 <body>
 
-	<form name="meuForm" method="post" id="formulario" action="InsertPremioServlet">
+	<form name="f1" method="post" id="formulario" action="InsertPremioServlet">
 	<h1 id="h1_texto">Cadastre o prêmio:</h1>
 	<div class="box">
+	<p id="obrigatorio">Todos os campos são de preenchimento obrigatório</p>
 			<label>
 			<span>Pontos: </span>
-				<input type="text" class="" name="pontos" id="input_numPremio" />
+				<input type="text" required class="" name="pontos" id="input_numPremio" placeholder="Qtd"/>
 			</label>
 			<label>
 			<span>Nome: </span>
-				<input type="text" class="input_text" name="nome" id="name" />
+				<input type="text" required class="input_text" name="nome" id="name" placeholder="Nome do prêmio"/>
 			</label>
 			<label>
 			<span>Início: </span>
-				<input type="text" class="input_text" name="dataInicio" id="input_data" />
+				<input type="text" required class="input_text" name="dataInicio" id="input_data" placeholder="00/00/0000" onblur="validarFormatoDataInicio()"/>
 			</label>
 			<label>
 			<span>Válido até: </span>
-				<input type="text" class="input_text" name="dataFinal" id="input_data" />
+				<input type="text" required class="input_text" name="dataFinal" id="input_data" placeholder="00/00/0000" onblur="validarFormatoDataFinal()"/>
 			</label>
 			<label>
-			<input type="submit" class="button" value="Enviar"/>
+			<input type="submit" class="button" value="Enviar" onclick="camposVazios()"/>
 			<input type="button" class="button" value="Cancelar" onClick="eventoCancelar()"/>
 			</label>
 	</div>

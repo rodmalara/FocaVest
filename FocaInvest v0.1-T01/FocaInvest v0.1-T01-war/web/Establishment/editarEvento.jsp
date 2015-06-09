@@ -18,7 +18,69 @@
 				
 			location.href = "listaEventos.html";
 		}
+		
+		function camposVazios(){
 			
+			nome = document.f1.nome.value;
+			descricao = document.f1.descricao.value;
+			numero = document.f1.qtdPessoa.value;
+			data = document.f1.data.value;
+			preco = document.f1.preco.value;
+			
+			
+			if (nome == ""){
+				window.alert("Preencha o campo Nome!");
+				return false;
+			}
+			if(descricao == ""){
+				window.alert("Preencha o campo Descrição!");
+				return false;
+			}
+			if(numero == ""){
+				window.alert("Preencha o campo Número de pessoas!");
+				return false;
+			}
+			if(data == ""){
+				window.alert("Preencha o campo Data!");
+				return false;
+			}
+			if(preco == ""){
+				window.alert("Digite o campo Preço!");
+				return false;
+			}
+			
+			window.alert("Evento editado com sucesso!");
+			return true;
+			
+		}
+		
+		function validarFormatoData(){
+			
+			data = document.f1.data.value;
+			var dia = data.substring(0,2)
+			var mes = data.substring(3,5)
+			var ano = data.substring(6,10)
+			
+			//Criando um objeto Date usando os valores ano, mes e dia.
+			var novaData = new Date(ano,(mes-1),dia);
+ 
+			var mesmoDia = parseInt(dia,10) == parseInt(novaData.getDate());
+			var mesmoMes = parseInt(mes,10) == parseInt(novaData.getMonth())+1;
+			var mesmoAno = parseInt(ano) == parseInt(novaData.getFullYear());
+ 
+			if (!((mesmoDia) && (mesmoMes) && (mesmoAno)))
+			{
+				alert('Data informada é inválida!');   
+				obj.focus();    
+				return false;
+			}  
+				return true;
+			
+			
+		}
+		
+		
+		
 	</script>
 	
 
@@ -110,12 +172,26 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 		left:355px; 
 		width:100px; 
 		}
+                
+                #input {
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    background-color: white;
+    background-color: -moz-field;
+    border: 1px solid darkgray;
+    box-shadow: 1px 1px 1px 0 lightgray inset;  
+    font: -moz-field;
+    font: -webkit-small-control;
+    margin-top: 5px;
+    padding: 2px 3px;
+    width: 398px;    
+}
 		
 </style>
 </head>
 <body>
 
-	<form name="meuForm" method="post" id="formulario" action="EditEventoServlet?action=<c:out value="${evento.eventoID}"/>" items="${evento}" var="evento">
+	<form name="f1" method="post" id="formulario" action="EditEventoServlet?action=<c:out value="${evento.eventoID}"/>" items="${evento}" var="evento">
 	<h1 id="h1_texto">Atualize seu evento:</h1>
 	<div class="box">
 			<label>
@@ -124,7 +200,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 			</label>
 			<label>
 			<span>Descrição: </span>
-				<textarea cols="30" rows="40" id="input_descricao" nome="descricao"/>${evento.descricao}</textarea>
+				<textarea cols="30" rows="40" id="input_descricao" name="desc"> ${evento.descricao}</textarea>
 			</label>
 			<label>
 			<span>Número de pessoas: </span>
@@ -132,14 +208,14 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 			</label>
 			<label>
 			<span>Data: </span>
-				<input type="text" class="input_text" name="data" id="input_data" value ="${evento.data}"/>
+				<input type="text" class="input_text" name="data" id="input_data" value ="${evento.data}" onblur="validarFormatoData()"/>
 			</label>
 			<label>
-			<span>Preço</span>
+			<span>Preço:</span>
 				<input type="text" class="input_text" name="preco" id="input_data" value ="${evento.preco}"/>
 			</label>
-			<input type="submit" class="button" value="Enviar"/>
-			<input type="button" class="button" value="Voltar" onClick="eventoVoltar()"/>
+			<input type="submit" class="button" value="Enviar" onclick="camposVazios()"/>
+			
 			<input type="button" class="button" value="Cancelar" onClick="eventoCancelar()"/>
 	</div>
 	</form>
