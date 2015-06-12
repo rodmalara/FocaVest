@@ -1,4 +1,4 @@
-<%-- 
+﻿<%-- 
     Document   : editarEstabelecimento
     Created on : 25/05/2015, 21:17:19
     Author     : Matheus
@@ -310,19 +310,19 @@
                         <div class="box">
 			<label>
 			<span>Nome do estabelecimento: </span>
-                        <input type="text" class="input_text" name="estabelecimento" id="name" value="${requestScope.estabelecimento.nome}" />
+                        <input type="text" required class="input_text" name="estabelecimento" id="name" value="${requestScope.estabelecimento.nome}" />
 			</label>
 			<label>
 			<!--<span>Usuário: </span>
-                        <input type="text" class="input_text" name="nome" id="input_login" value=""/>
+                        <input type="text" required class="input_text" name="nome" id="input_login" value=""/>
 			</label>-->
 			<label>
 			<span>Senha: </span>
-                        <input type="password" class="input_text" name="senha1" id="input_login" value="${requestScope.estabelecimento.senha}"/>
+                        <input type="password" required class="input_text" name="senha1" id="input_login" value="${requestScope.estabelecimento.senha}"/>
 			</label>
 			<label>
 			<span>Confirmar senha: </span>
-				<input type="password" class="input_text" name="senha2" id="input_login" value="${requestScope.estabelecimento.senha}" onblur="validarCampos()"/>
+				<input type="password" required class="input_text" name="senha2" id="input_login" value="${requestScope.estabelecimento.senha}" onblur="validarCampos()"/>
 			</label>
 			<label>
 			<span>E-mail: </span>
