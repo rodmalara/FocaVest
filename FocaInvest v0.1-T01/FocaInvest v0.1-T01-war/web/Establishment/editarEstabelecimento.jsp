@@ -19,6 +19,11 @@
 		location.href="index.html"; 
 		} 
 		
+		function editarSucesso(){
+			window.alert("Estabelecimento editado com sucesso");
+			location.href="menu.html";
+		}
+		
 		function validarCampos(){
 			
 			senha1 = document.f1.senha1.value;
@@ -304,10 +309,10 @@
         </head>
 <body>
 
-	<form name="f1" method="post" id="formulario" action="UpdateEstabelecimentoServlet">
+	<form name="f1" method="post" id="formulario" action="UpdateEstabelecimentoServlet" onsubmit="editarSucesso()">
 	<h1 id="h1_texto">Atualize seu estabelecimento:</h1>
         <img class="profile-img" src="http://www.w3schools.com/html/pic_mountain.jpg" /> 
-                        <div class="box">
+          <div class="box">
 			<label>
 			<span>Nome do estabelecimento: </span>
                         <input type="text" required class="input_text" name="estabelecimento" id="name" value="${requestScope.estabelecimento.nome}" />
@@ -326,17 +331,17 @@
 			</label>
 			<label>
 			<span>E-mail: </span>
-                        <input type="text" class="input_text" name="email" id="name" value="${requestScope.estabelecimento.email}" onblur="validarEmail()" />
+                        <input type="text" required class="input_text" name="email" id="name" value="${requestScope.estabelecimento.email}" onblur="validarEmail()" />
 			</label>
 			<label>
 			<span>CNPJ: </span>
-                        <input type="text" class="input_text" name="cnpj" id="input_cnpj" value="${requestScope.estabelecimento.cnpj}" onblur="validarCNPJ()"/>
+                        <input type="text" required class="input_text" name="cnpj" id="input_cnpj" value="${requestScope.estabelecimento.cnpj}" onblur="validarCNPJ()"/>
 			</label>	
 			<label>
 			<span>Telefone: </span>
-				<input type="text" class="input_text" name="telefone" id="input_cnpj" value="${requestScope.estabelecimento.telefone}" onblur="validarTelefone()"/>
+				<input type="text" required class="input_text" name="telefone" id="input_cnpj" value="${requestScope.estabelecimento.telefone}" onblur="validarTelefone()"/>
 			</label>
-			<input type="submit" class="button" value="Enviar" onclick = "camposVazios()"/>
+			<input type="submit" class="button" value="Enviar"/>
 			<input type="button" class="button" value="Cancelar" onclick="abrirIndex()" />	
 		</div>
 		

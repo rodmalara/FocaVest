@@ -14,6 +14,11 @@
 				location.href = "home.html";
 			}
 			
+		function editarSucesso(){
+			window.alert("Evento editado com sucesso!");
+			location.href = "home.html";
+		}
+			
 		function eventoVoltar(){
 				
 			location.href = "listaEventos.html";
@@ -191,30 +196,30 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 </head>
 <body>
 
-	<form name="f1" method="post" id="formulario" action="EditEventoServlet?action=<c:out value="${evento.eventoID}"/>" items="${evento}" var="evento">
+	<form name="f1" method="post" id="formulario" action="EditEventoServlet?action=<c:out value="${evento.eventoID}"/>" items="${evento}" var="evento" onsubmit="editarSucesso()">
 	<h1 id="h1_texto">Atualize seu evento:</h1>
 	<div class="box">
 			<label>
 			<span>Nome: </span>
-				<input type="text" class="input_text" name="nome" id="name" value ="${evento.nome}"/>
+				<input type="text" required class="input_text" name="nome" id="name" value ="${evento.nome}"/>
 			</label>
 			<label>
 			<span>Descrição: </span>
-				<textarea cols="30" rows="40" id="input_descricao" name="desc"> ${evento.descricao}</textarea>
+				<textarea cols="30" required rows="40" id="input_descricao" name="desc"> ${evento.descricao}</textarea>
 			</label>
 			<label>
 			<span>Número de pessoas: </span>
-				<input type="text" class="input_text" name="qtdPessoa" id="input_numPessoas" value ="${evento.qtdPessoa}"/>
+				<input type="text" required class="input_text" name="qtdPessoa" id="input_numPessoas" value ="${evento.qtdPessoa}"/>
 			</label>
 			<label>
 			<span>Data: </span>
-				<input type="text" class="input_text" name="data" id="input_data" value ="${evento.data}" onblur="validarFormatoData()"/>
+				<input type="text" required class="input_text" name="data" id="input_data" value ="${evento.data}" onblur="validarFormatoData()"/>
 			</label>
 			<label>
 			<span>Preço:</span>
-				<input type="text" class="input_text" name="preco" id="input_data" value ="${evento.preco}"/>
+				<input type="text" required class="input_text" name="preco" id="input_data" value ="${evento.preco}"/>
 			</label>
-			<input type="submit" class="button" value="Enviar" onclick="camposVazios()"/>
+			<input type="submit" class="button" value="Enviar"/>
 			
 			<input type="button" class="button" value="Cancelar" onClick="eventoCancelar()"/>
 	</div>

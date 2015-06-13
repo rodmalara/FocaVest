@@ -18,6 +18,11 @@
 				location.href = "home.html";
 			}
 			
+		function cadastroSucesso(){
+			window.alert("Prêmio cadastrado com sucesso!");
+			location.href = "home.html";
+		}
+			
 		function validarData(){
 			
 			dataInicio = document.f1.dataInicio.value;
@@ -233,7 +238,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 </head>
 <body>
 
-	<form name="f1" method="post" id="formulario" action="InsertPremioServlet">
+	<form name="f1" method="post" id="formulario" action="InsertPremioServlet" onsubmit="cadastroSucesso()">
 	<h1 id="h1_texto">Cadastre o prêmio:</h1>
 	<div class="box">
 	<p id="obrigatorio">Todos os campos são de preenchimento obrigatório</p>
@@ -254,7 +259,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 				<input type="text" required class="input_text" name="dataFinal" id="input_data" placeholder="00/00/0000" onblur="validarFormatoDataFinal()"/>
 			</label>
 			<label>
-			<input type="submit" class="button" value="Enviar" onclick="camposVazios()"/>
+			<input type="submit" class="button" value="Enviar"/>
 			<input type="button" class="button" value="Cancelar" onClick="eventoCancelar()"/>
 			</label>
 	</div>

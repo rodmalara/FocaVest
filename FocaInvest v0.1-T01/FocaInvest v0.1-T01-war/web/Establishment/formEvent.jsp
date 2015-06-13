@@ -20,6 +20,11 @@
 				location.href = "home.html";
 			}
 			
+		function cadastroSucesso(){
+			window.alert("Evento cadastrado com sucesso!");
+			location.href = "home.html";
+		}
+			
 		function validarFormatoData(){
 			
 			data = document.f1.data.value;
@@ -182,31 +187,31 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 </head>
 <body>
 
-	<form name="f1" method="post" id="formulario" action="InsertEventServlet">
+	<form name="f1" method="post" id="formulario" action="InsertEventServlet" onsubmit="cadastroSucesso()">
 	<h1 id="h1_texto">Cadastre seu evento:</h1>
 	<div class="box">
 	<p id="obrigatorio">Todos os campos são de preenchimento obrigatório</p>
 			<label>
 			<span>Nome: </span>
-				<input type="text" class="input_text" name="nome" id="name" />
+				<input type="text" required class="input_text" name="nome" id="name" />
 			</label>
 			<label>
 			<span>Descrição: </span>
-				<textarea cols="30" rows="40" name="descricao" id="input_descricao" /></textarea>
+				<textarea cols="30" required rows="40" name="descricao" id="input_descricao" /></textarea>
 			</label>
 			<label>
 			<span>Número de pessoas: </span>
-				<input type="text" class="input_text" name="qtdPessoa" id="input_numPessoas" />
+				<input type="text" required class="input_text" name="qtdPessoa" id="input_numPessoas" />
 			</label>
 			<label>
 			<span>Data: </span>
-				<input type="text" class="input_text" name="data" id="input_data" onblur="validarFormatoData()"/>
+				<input type="text" required class="input_text" name="data" id="input_data" onblur="validarFormatoData()"/>
 			</label>
 			<label>
 			<span>Preço:</span>
-				<input type="text" class="input_text" name="preco" id="input_data" />
+				<input type="text" required class="input_text" name="preco" id="input_data" />
 			</label>
-			<input type="submit" class="button" value="Enviar" onclick="validaCamposVazios()"/>
+			<input type="submit" class="button" value="Enviar"/>
 			<input type="button" class="button" value="Cancelar" onClick="eventoCancelar()"/>
 	</div>
 	</form>

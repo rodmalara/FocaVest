@@ -375,7 +375,7 @@
 			<span>Telefone: </span>
 				<input type="text" required class="input_text" name="telefone" id="input_cnpj" placeholder="(00)0000-0000" onblur="validarTelefone()" />
 			</label>
-			<input type="submit" id="alertNormal"  value="Confirmar" onclick = "camposVazios()"/>
+			<input type="submit" id="alertNormal"  value="Confirmar"/>
 			<input type="button" class="button" value="Cancelar" onclick="abrirIndex()" />
 			
 			
