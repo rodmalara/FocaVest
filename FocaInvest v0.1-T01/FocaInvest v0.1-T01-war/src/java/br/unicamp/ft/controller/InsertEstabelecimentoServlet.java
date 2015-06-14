@@ -78,13 +78,13 @@ public class InsertEstabelecimentoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         EstabelecimentoTO estabelecimentoTO = new EstabelecimentoTO(null, 
-                Integer.parseInt(request.getParameter("cnpj").toString()),
+                Integer.parseInt(request.getParameter("cnpj")),
                 request.getParameter("estabelecimento"), 
                 request.getParameter("senha1"), 
                 request.getParameter("email"), 
                 request.getParameter("telefone"), 
                 2,
-                1);
+                0);
         new EstabelecimentoDAO().insertEstabelecimento(estabelecimentoTO);
         
         RequestDispatcher view = request.getRequestDispatcher("/Establishment/index.html");

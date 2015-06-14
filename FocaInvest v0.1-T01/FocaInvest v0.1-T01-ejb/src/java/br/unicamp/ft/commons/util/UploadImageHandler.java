@@ -25,6 +25,7 @@ public class UploadImageHandler {
     private static final int MAX_REQUEST_SIZE = 1024 * 1024;
     private String AbsolutePathURL;
     private String dataDirectory;
+    private String filePath;
     
     public UploadImageHandler(String _absolutePathURL, String _dataDirectory){
         this.AbsolutePathURL = _absolutePathURL;
@@ -46,16 +47,18 @@ public class UploadImageHandler {
         for(FileItem _item : items){
             if(!_item.isFormField()){
                 String fileName = new File(_item.getName()).getName();
-                String filePath = this.getAbsolutePathURL() 
+                filePath = this.getAbsolutePathURL() + 
+                        fileName; 
+                        /*this.getAbsolutePathURL() 
                         + File.separator + this.toHash(this.getDataDirectory()) 
-                        + File.separator + fileName;
+                        + File.separator + fileName;*/
                 File uploadedFile = new File(filePath);
                 if(!uploadedFile.exists())
                     uploadedFile.createNewFile();
                 _item.write(uploadedFile);
             }
         }
-        return "";
+        return filePath;
     }
 
     private void setAbsolutePathURL(String _uploadFolderPath){

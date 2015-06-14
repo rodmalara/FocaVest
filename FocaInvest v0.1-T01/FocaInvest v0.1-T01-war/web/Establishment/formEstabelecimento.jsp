@@ -85,17 +85,17 @@
 		}
 		
 		//site para gerar cnpj válido: http://www.geradorcnpj.com/
-		function validarCNPJ(){
+		// function validarCNPJ(){
 			
-			cnpj = document.f1.cnpj.value;
+		//	cnpj = document.f1.cnpj.value;
 			
-			cnpj = cnpj.replace(/[^\d]+/g,'');
+		//	cnpj = cnpj.replace(/[^\d]+/g,'');
 
 				
-			if (cnpj.length != 14){
-				window.alert("O CNPJ inserido é inválido");
-				return false;
-			}
+		//	if (cnpj.length != 14){
+		//		window.alert("O CNPJ inserido é inválido");
+		//		return false;
+		//	}
 
 			
 			

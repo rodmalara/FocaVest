@@ -39,16 +39,19 @@ public class PremiacaoTO {
     @ManyToOne
     @JoinColumn(name = "estabelecimentoID")
     private EstabelecimentoTO estabelecimentoTO;
+    @Column(name = "C_imgPath")
+    private String imgPath;
     
     public PremiacaoTO() {
     }
 
-    public PremiacaoTO(EstabelecimentoTO estabelecimentoTO, int pontoBrinde, String nome, Date dataInicio, Date dataFinal) {
+    public PremiacaoTO(EstabelecimentoTO estabelecimentoTO, int pontoBrinde, String nome, Date dataInicio, Date dataFinal, String imgPath) {
         this.pontoBrinde = pontoBrinde;
         this.nome = nome;
         this.dataInicio = (Date) dataInicio;
         this.dataFinal = (Date) dataFinal;
         this.estabelecimentoTO = estabelecimentoTO;
+        this.imgPath = imgPath;
     }
 
 
@@ -91,5 +94,13 @@ public class PremiacaoTO {
 
     public String getNome() {
         return nome;
+    }
+    
+    public void setImgPath(String _imgPath){
+        this.imgPath = _imgPath;
+    }
+    
+    public String getImgPath(){
+        return this.imgPath;
     }
 }

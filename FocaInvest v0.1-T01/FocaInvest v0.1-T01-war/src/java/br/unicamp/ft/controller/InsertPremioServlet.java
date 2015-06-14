@@ -11,11 +11,14 @@ package br.unicamp.ft.controller;
  * @author Matheus
  */
 
+import br.unicamp.ft.commons.util.UploadImageHandler;
 import br.unicamp.ft.dao.EstabelecimentoDAO;
 import br.unicamp.ft.dao.PremiacaoDAO;
 import br.unicamp.ft.transferobjects.EstabelecimentoTO;
 import br.unicamp.ft.transferobjects.PremiacaoTO;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -24,12 +27,18 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import org.apache.commons.io.FilenameUtils;
 
 @WebServlet(name = "InsertPremioServlet", urlPatterns = "/Establishment/InsertPremioServlet")
+@MultipartConfig(fileSizeThreshold = 1024*1024*2,
+                 maxFileSize = 1024*1024*10,
+                 maxRequestSize = 1024*1024*50)
 public class InsertPremioServlet extends HttpServlet {
 
     /**
@@ -85,14 +94,29 @@ public class InsertPremioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String strDespesasDataInicio = request.getParameter("dataInicio");  
-        String strDespesasDataFinal = request.getParameter("dataFinal");  
-        DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");  
         EstabelecimentoTO estabelecimentoTO = (EstabelecimentoTO) request.getSession().getAttribute("establishment_data");
         
+        String appPath = "C:\\Users\\Matheus\\Desktop\\FocaVest";
+        String SAVE_DIR = String.valueOf(estabelecimentoTO.getNome().hashCode());
+        String savePath = appPath + File.separator + SAVE_DIR;    
+        
+        String strDespesasDataInicio = request.getParameter("dataInicio");  
+        String strDespesasDataFinal = request.getParameter("dataFinal"); 
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");  
+        
+        File file = new File(savePath);
+        
+        if(!file.exists())
+            file.mkdir();
+        
+        for(Part part : request.getParts()){
+            part.write(savePath + File.separator + extractFileName(part));
+        }
+                
         Date dataInicio, dataFinal;
        
         try {
+            
             dataInicio = df.parse (strDespesasDataInicio);
             dataFinal = df.parse (strDespesasDataFinal);
         
@@ -101,11 +125,12 @@ public class InsertPremioServlet extends HttpServlet {
                 Integer.parseInt(request.getParameter("pontos")),
                 request.getParameter("nome"),
                 dataInicio,
-                dataFinal              
+                dataFinal,
+                ""
         );
         new PremiacaoDAO().insertPremiacao(premiacaoTO);
     
-        } catch (ParseException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(InsertPremioServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
@@ -120,4 +145,15 @@ public class InsertPremioServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    private String extractFileName(Part part) {
+    String contentDisp = part.getHeader("content-disposition");
+    String[] items = contentDisp.split(";");
+    for (String s : items) {
+        if (s.trim().startsWith("filename")) {
+            return s.substring(s.indexOf("=") + 2, s.length()-1);
+        }
+    }
+    return "";
+}
+    
 }

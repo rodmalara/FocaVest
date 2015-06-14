@@ -35,8 +35,10 @@ public class UploadEstablishmentImageServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        UploadImageHandler uploadImageHandler = new UploadImageHandler(request.getSession().
-                getServletContext().getRealPath("/"), "Data_Directory");
+        UploadImageHandler uploadImageHandler = new UploadImageHandler("C:\\Users\\Public\\Documents\\",
+                "");
+        System.out.println("Caminho: " + request.getSession().
+                getServletContext().getRealPath("/"));
         try {
             uploadImageHandler.saveFile(request);
         } catch (Exception ex) {

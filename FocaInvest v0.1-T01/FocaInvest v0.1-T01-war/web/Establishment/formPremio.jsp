@@ -223,20 +223,24 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 		font-weight:bold;
 		border:none;
 		height:32px;
-		position: relative; 
-		top:10px; 
-		left:355px; 
+		position: re; 
 		width:100px; 
 		}
 		
 </style>
 </head>
 <body>
-
-	<form name="f1" method="post" id="formulario" action="InsertPremioServlet">
-	<h1 id="h1_texto">Cadastre o prêmio:</h1>
 	<div class="box">
-	<p id="obrigatorio">Todos os campos são de preenchimento obrigatório</p>
+            <form name="f1" method="post" id="formulario" action="InsertPremioServlet" enctype="multipart/form-data">
+            <h1 id="h1_texto">Cadastre o prêmio:</h1>
+            <img style="margin-left: 170px;" src="${bar.imgPath}" height="200px" width="200px">
+            <br>
+            <br>
+                <span style="color: white">Faça um upload da imagem de seu bar: </span>
+                <br>
+                <br>
+                <input class="" type="file" name="dataFile" id="fileChooser"/><br/><br/>
+        <p id="obrigatorio">Todos os campos são de preenchimento obrigatório</p>
 			<label>
 			<span>Pontos: </span>
 				<input type="text" required class="" name="pontos" id="input_numPremio" placeholder="Qtd"/>
@@ -247,19 +251,20 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 			</label>
 			<label>
 			<span>Início: </span>
-				<input type="text" required class="input_text" name="dataInicio" id="input_data" placeholder="00/00/0000" onblur="validarFormatoDataInicio()"/>
+				<input type="text" required class="input_text" name="dataInicio" id="input_data" placeholder="00/00/0000" onsubmit="validarFormatoDataInicio()"/>
 			</label>
 			<label>
 			<span>Válido até: </span>
-				<input type="text" required class="input_text" name="dataFinal" id="input_data" placeholder="00/00/0000" onblur="validarFormatoDataFinal()"/>
+				<input type="text" required class="input_text" name="dataFinal" id="input_data" placeholder="00/00/0000" onsubmit="validarFormatoDataFinal()"/>
 			</label>
 			<label>
 			<input type="submit" class="button" value="Enviar" onclick="camposVazios()"/>
 			<input type="button" class="button" value="Cancelar" onClick="eventoCancelar()"/>
 			</label>
+        </form>
+        </div>
 	</div>
-	</form>
-
+                    
 </body>
 
 </html>

@@ -46,6 +46,8 @@ public class EstabelecimentoTO{
     private List<EventoTO> listEvento = new ArrayList<>();;
     @Column(name = "C_Descricao")
     private String descricao;
+    @Column(name = "C_imgPath")
+    private String imgPath;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<PontosTO> listPontos = new HashSet<>();
     
@@ -169,5 +171,13 @@ public class EstabelecimentoTO{
 
     public void setListPontos(Set<PontosTO> listPontos) {
         this.listPontos = listPontos;
+    }
+    
+    public void setImgPath(String _imgPath){
+        this.imgPath = _imgPath;
+    }
+    
+    public String getImgPath(){
+        return this.imgPath;
     }
 }
