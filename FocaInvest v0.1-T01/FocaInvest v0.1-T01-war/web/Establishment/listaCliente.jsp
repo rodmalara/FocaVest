@@ -113,6 +113,26 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 		
 		}
 		
+		#headTable{
+	
+		background-color: #2E2E2E;
+		color: #FFFFFF;
+		border-bottom: 2px solid #32CD32;
+		border-top: 2px solid #32CD32;
+		
+	
+	
+	}
+	
+	#tamanhoDescricao{
+	
+		height: 1%;
+		width: 50%;
+	
+	
+	}
+
+		
 
 	#h1_texto { 
 		color:#32CD32; 
@@ -154,19 +174,21 @@ input,select,textarea{margin:0; padding:0; color:#000000;}
 <body>
 	<form id="formulario">
 		<h1 id="h1_texto">Lista de clientes</h1>
+			<table bgcolor="#00FF00">
                 <table id="headTable">
                  <tbody>
 				 <tr>
-					<td>Nome</td>
+					<td id="tamanhoDescricao">Nome</td>
+					<td id="tamanhoDescricao">E-mail</td>
 				 </tr>
         
-                 <tbody>
+                <tbody>
                 <c:forEach items="${evento.listConsumidores}" var="consumidor">
-                    <div class="listUsers" style="color:#fff">
-                       <p class="col-md-2">Nome: ${consumidor.nome}</p>
-                       <p class="col-md-2">Email: ${consumidor.email}</p>
-                       <a href="GivePointsServlet?consumidorId=${consumidor.consumidorID}"><img style = "width:30px;height:30px" id="icone" src="check.png"></a>                      
-                    </div>
+                   <tr>
+                      <td>${consumidor.nome}</td>
+                       <td>${consumidor.email}</td>
+                       <td><a href="GivePointsServlet?consumidorId=${consumidor.consumidorID}"><img style = "width:30px;height:30px" id="icone" src="check.png"></a></td>                   
+                    </tr>
                     
                 </c:forEach>
                  </tbody>
