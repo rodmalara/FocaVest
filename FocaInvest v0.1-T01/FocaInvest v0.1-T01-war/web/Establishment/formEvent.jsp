@@ -188,23 +188,23 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 	<p id="obrigatorio">Todos os campos são de preenchimento obrigatório</p>
 			<label>
 			<span>Nome: </span>
-				<input type="text" class="input_text" name="nome" id="name" />
+				<input type="text" required class="input_text" name="nome" id="name" />
 			</label>
 			<label>
 			<span>Descrição: </span>
-				<textarea cols="30" rows="40" name="descricao" id="input_descricao" /></textarea>
+				<textarea cols="30" required rows="40" name="descricao" id="input_descricao" /></textarea>
 			</label>
 			<label>
 			<span>Número de pessoas: </span>
-				<input type="text" class="input_text" name="qtdPessoa" id="input_numPessoas" />
+				<input type="text" required class="input_text" name="qtdPessoa" id="input_numPessoas" />
 			</label>
 			<label>
 			<span>Data: </span>
-				<input type="text" class="input_text" name="data" id="input_data" onblur="validarFormatoData()"/>
+				<input type="text" required class="input_text" name="data" id="input_data" onblur="validarFormatoData()"/>
 			</label>
 			<label>
 			<span>Preço:</span>
-				<input type="text" class="input_text" name="preco" id="input_data" />
+				<input type="text" required class="input_text" name="preco" id="input_data" />
 			</label>
 			<input type="submit" class="button" value="Enviar" onclick="validaCamposVazios()"/>
 			<input type="button" class="button" value="Cancelar" onClick="eventoCancelar()"/>

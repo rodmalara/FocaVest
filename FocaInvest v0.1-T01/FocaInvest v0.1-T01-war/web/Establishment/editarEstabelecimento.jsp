@@ -19,9 +19,11 @@
 		location.href="index.html"; 
 		} 
 		
-		function editarSucesso(){
-			window.alert("Estabelecimento editado com sucesso!");
-			location.href="menu.html";
+		function editarSucesso(valor){
+			if(valor==true){
+				location.href="menu.html";
+			}
+			
 		}
 		
 		function validarCampos(){
@@ -309,7 +311,7 @@
         </head>
 <body>
 
-	<form name="f1" method="post" id="formulario" action="UpdateEstabelecimentoServlet" onsubmit="editarSucesso()">
+	<form name="f1" method="post" id="formulario" action="UpdateEstabelecimentoServlet">
 	<h1 id="h1_texto">Atualize seu estabelecimento:</h1>
        <div class="box">
 			<label>
