@@ -205,8 +205,8 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 			</label>
 			<label>
 			<span>Descrição: </span>
-				<textarea cols="30" required rows="40" id="input_descricao" name="desc"> ${evento.descricao}</textarea>
-			</label>
+                                <textarea cols="30" required rows="40" name="descricao" id="input_descricao" />${evento.descricao}</textarea>
+				</label>
 			<label>
 			<span>Número de pessoas: </span>
 				<input type="text" required class="input_text" name="qtdPessoa" id="input_numPessoas" value ="${evento.qtdPessoa}"/>

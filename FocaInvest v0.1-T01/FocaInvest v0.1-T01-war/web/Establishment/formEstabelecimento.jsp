@@ -100,7 +100,7 @@
 			
 			
 			// Elimina CNPJs invalidos conhecidos
-			if (cnpj == "00000000000000" || 
+			if (
 				cnpj == "11111111111111" || 
 				cnpj == "22222222222222" || 
 				cnpj == "33333333333333" || 
@@ -124,7 +124,8 @@
 			for (i = tamanho; i >= 1; i--) {
 				soma += numeros.charAt(tamanho - i) * pos--;
 					if (pos < 2)
-						pos = 9;
+						pos =
+                                                    9;
 			}
 			resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
 			if (resultado != digitos.charAt(0)){

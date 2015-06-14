@@ -311,8 +311,7 @@
 
 	<form name="f1" method="post" id="formulario" action="UpdateEstabelecimentoServlet" onsubmit="editarSucesso()">
 	<h1 id="h1_texto">Atualize seu estabelecimento:</h1>
-        <img class="profile-img" src="http://www.w3schools.com/html/pic_mountain.jpg" /> 
-          <div class="box">
+        <div class="box">
 			<label>
 			<span>Nome do estabelecimento: </span>
                         <input type="text" required class="input_text" name="estabelecimento" id="name" value="${requestScope.estabelecimento.nome}" />

@@ -86,7 +86,7 @@ public class EditEventoServlet extends HttpServlet {
         eventoTO.setNome(request.getParameter("nome"));
         eventoTO.setPreco(Float.valueOf(request.getParameter("preco")));
         eventoTO.setQtdPessoa(Integer.parseInt(request.getParameter("qtdPessoa")));
-        
+        eventoTO.setDescricao(request.getParameter("descricao"));
         new EventoDAO().updateEvento(eventoTO);
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Establishment/home.html");
         requestDispatcher.forward(request, response); 
