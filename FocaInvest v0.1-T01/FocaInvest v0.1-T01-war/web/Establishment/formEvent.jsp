@@ -206,7 +206,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 			<span>Preço:</span>
 				<input type="text" required class="input_text" name="preco" id="input_data" />
 			</label>
-			<input type="submit" class="button" value="Enviar" onclick="validaCamposVazios()"/>
+			<input type="submit" class="button" value="Enviar"/>
 			<input type="button" class="button" value="Cancelar" onClick="eventoCancelar()"/>
 	</div>
 	</form>

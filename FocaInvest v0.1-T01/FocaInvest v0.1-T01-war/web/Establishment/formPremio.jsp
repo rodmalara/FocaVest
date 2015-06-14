@@ -236,7 +236,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 </head>
 <body>
 	<div class="box">
-            <form name="f1" method="post" id="formulario" action="InsertPremioServlet" enctype="multipart/form-data" onsubmit="cadastroSucesso()">
+            <form name="f1" method="post" id="formulario" action="InsertPremioServlet" enctype="multipart/form-data">
             <h1 id="h1_texto">Cadastre o prêmio:</h1>
             <img style="margin-left: 170px;" src="${bar.imgPath}" height="200px" width="200px">
             <br>
