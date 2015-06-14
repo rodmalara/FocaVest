@@ -87,7 +87,7 @@ public class InsertEstabelecimentoServlet extends HttpServlet {
                 0);
         new EstabelecimentoDAO().insertEstabelecimento(estabelecimentoTO);
         
-        RequestDispatcher view = request.getRequestDispatcher("/Establishment/index.html");
+        RequestDispatcher view = request.getRequestDispatcher("/Establishment/sucessoFormEstabelecimento.html");
         view.forward(request, response);
     }
 

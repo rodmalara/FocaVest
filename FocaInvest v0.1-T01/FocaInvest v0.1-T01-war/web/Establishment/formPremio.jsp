@@ -235,10 +235,8 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 </style>
 </head>
 <body>
-	<form name="f1" method="post" id="formulario" action="InsertPremioServlet" onsubmit="cadastroSucesso()">
-	<h1 id="h1_texto">Cadastre o prêmio:</h1>
 	<div class="box">
-            <form name="f1" method="post" id="formulario" action="InsertPremioServlet" enctype="multipart/form-data">
+            <form name="f1" method="post" id="formulario" action="InsertPremioServlet" enctype="multipart/form-data" onsubmit="cadastroSucesso()">
             <h1 id="h1_texto">Cadastre o prêmio:</h1>
             <img style="margin-left: 170px;" src="${bar.imgPath}" height="200px" width="200px">
             <br>

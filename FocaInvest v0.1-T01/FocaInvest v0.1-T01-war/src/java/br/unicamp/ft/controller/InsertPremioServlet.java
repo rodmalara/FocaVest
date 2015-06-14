@@ -96,7 +96,7 @@ public class InsertPremioServlet extends HttpServlet {
         
         EstabelecimentoTO estabelecimentoTO = (EstabelecimentoTO) request.getSession().getAttribute("establishment_data");
         
-        String appPath = "C:\\Users\\Matheus\\Desktop\\FocaVest";
+        String appPath = "/Users/rodrigo/GitHub/FocaVest/Fotos";
         String SAVE_DIR = String.valueOf(estabelecimentoTO.getNome().hashCode());
         String savePath = appPath + File.separator + SAVE_DIR;    
         
