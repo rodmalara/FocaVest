@@ -44,6 +44,30 @@
 			
 			
 		}
+		
+		function validarNumPessoas(){
+			
+			if (isNaN(f1.qtdPessoa.value)) {    
+			alert("Digite um valor válido para Número de Pessoas!");    
+			f1.qtdPessoa.select();    
+			return false;    
+				} 
+				else {  
+				return true;  
+				}
+		}
+		
+			function validarPreco(){
+			
+			if (isNaN(f1.preco.value)) {    
+			alert("Digite um valor válido para Preço!");    
+			f1.preco.select();    
+			return false;    
+				} 
+				else {  
+				return true;  
+				}
+		}
 			
 		function validaCamposVazios(){
 			
@@ -196,7 +220,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 			</label>
 			<label>
 			<span>Número de pessoas: </span>
-				<input type="text" required class="input_text" name="qtdPessoa" id="input_numPessoas" />
+				<input type="text" required class="input_text" name="qtdPessoa" id="input_numPessoas" onblur="validarNumPessoas()"/>
 			</label>
 			<label>
 			<span>Data: </span>
@@ -204,7 +228,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 			</label>
 			<label>
 			<span>Preço:</span>
-				<input type="text" required class="input_text" name="preco" id="input_data" />
+				<input type="text" required class="input_text" name="preco" id="input_data" onblur="validarPreco()"/>
 			</label>
 			<input type="submit" class="button" value="Enviar"/>
 			<input type="button" class="button" value="Cancelar" onClick="eventoCancelar()"/>

@@ -132,6 +132,18 @@
 			
 			
 		}
+		
+		function validarPontos(){
+			
+			if (isNaN(f1.pontos.value)) {    
+			alert("Digite um valor válido para Pontos!");    
+			f1.pontos.select();    
+			return false;    
+				} 
+				else {  
+				return true;  
+				}
+		}
 
 
 			
@@ -248,7 +260,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
         <p id="obrigatorio">Todos os campos são de preenchimento obrigatório</p>
 			<label>
 			<span>Pontos: </span>
-				<input type="text" required class="" name="pontos" id="input_numPremio" placeholder="Qtd"/>
+				<input type="text" required class="" name="pontos" id="input_numPremio" placeholder="Qtd" onblur="validarPontos()"/>
 			</label>
 			<label>
 			<span>Nome: </span>

@@ -19,6 +19,30 @@
 			location.href = "listaEventos.html";
 		}
 		
+		function validarNumPessoas(){
+			
+			if (isNaN(f1.qtdPessoa.value)) {    
+			alert("Digite um valor válido para Número de Pessoas!");    
+			f1.qtdPessoa.select();    
+			return false;    
+				} 
+				else {  
+				return true;  
+				}
+		}
+		
+			function validarPreco(){
+			
+			if (isNaN(f1.preco.value)) {    
+			alert("Digite um valor válido para Preço!");    
+			f1.preco.select();    
+			return false;    
+				} 
+				else {  
+				return true;  
+				}
+		}
+		
 		function camposVazios(){
 			
 			nome = document.f1.nome.value;
@@ -204,7 +228,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 			</label>
 			<label>
 			<span>Número de pessoas: </span>
-				<input type="text" required class="input_text" name="qtdPessoa" id="input_numPessoas" value ="${evento.qtdPessoa}"/>
+				<input type="text" required class="input_text" name="qtdPessoa" id="input_numPessoas" value ="${evento.qtdPessoa}" onblur="validarNumPessoas()"/>
 			</label>
 			<label>
 			<span>Data: </span>
@@ -212,7 +236,7 @@ body{ font:100% normal Arial, Helvetica, sans-serif; background:#000000;}
 			</label>
 			<label>
 			<span>Preço:</span>
-				<input type="text" required class="input_text" name="preco" id="input_data" value ="${evento.preco}"/>
+				<input type="text" required class="input_text" name="preco" id="input_data" value ="${evento.preco}" onblur="validarPreco()"/>
 			</label>
 			<input type="submit" class="button" value="Enviar"/>
 			
